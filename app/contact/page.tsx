@@ -1,4 +1,5 @@
 import { LayoutWrapper } from "@/components/layout-wrapper"
+import { HeroSection } from "@/components/hero-section"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -11,15 +12,15 @@ export default function ContactPage() {
   return (
     <LayoutWrapper>
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-50 to-green-50 py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="font-heading text-4xl md:text-5xl font-bold text-gray-900 mb-6">Contact Us</h1>
-          <p className="text-xl text-gray-600 leading-relaxed">
-            Get in touch with our team, join our community, or learn more about our advocacy efforts. We'd love to hear
-            from you!
-          </p>
-        </div>
-      </section>
+      <HeroSection
+        title="Contact Us"
+        subtitle="Get in touch with our team, join our community, or learn more about our advocacy efforts. We'd love to hear from you!"
+        showLogo={false}
+        showNewsletter={false}
+        primaryButtonText="Send Message"
+        secondaryButtonText=""
+        className="py-16"
+      />
 
       {/* Contact Information & Form */}
       <section className="py-16 bg-white">
@@ -68,7 +69,7 @@ export default function ContactPage() {
                           <p className="font-medium">Instagram</p>
                           <p className="text-sm text-gray-600">@asiu_bloomington</p>
                         </div>
-                        <Button size="sm" className="bg-pink-500 hover:bg-pink-600">
+                        <Button size="sm" className="bg-pink-500">
                           <Instagram className="h-4 w-4 mr-2" />
                           Follow
                         </Button>
@@ -78,7 +79,7 @@ export default function ContactPage() {
                           <p className="font-medium">Facebook</p>
                           <p className="text-sm text-gray-600">Advocates for Science @ IU</p>
                         </div>
-                        <Button size="sm" className="bg-blue-600 hover:bg-blue-700">
+                        <Button size="sm" className="bg-blue-600">
                           <Facebook className="h-4 w-4 mr-2" />
                           Follow
                         </Button>
@@ -164,7 +165,7 @@ export default function ContactPage() {
                         </Label>
                       </div>
 
-                      <Button type="submit" className="w-full bg-science-blue hover:bg-blue-700">
+                      <Button type="submit" className="w-full bg-science-blue">
                         Send Message
                       </Button>
                     </div>
@@ -276,7 +277,7 @@ export default function ContactPage() {
                 <p className="text-gray-600 text-sm mb-4">
                   Every Wednesday at 7:00 PM in the Student Union, Room 204. No RSVP required - just show up!
                 </p>
-                <Button className="bg-science-blue hover:bg-blue-700">Get Directions</Button>
+                <Button className="bg-science-blue">Get Directions</Button>
               </CardContent>
             </Card>
 
@@ -292,7 +293,7 @@ export default function ContactPage() {
                 <p className="text-gray-600 text-sm mb-4">
                   Choose from Legislative Advocacy, Education & Outreach, Events, Communications, Steering, or Finance.
                 </p>
-                <Button className="bg-science-green hover:bg-green-700">Explore Groups</Button>
+                <Button className="bg-science-green">Explore Groups</Button>
               </CardContent>
             </Card>
 
@@ -308,7 +309,7 @@ export default function ContactPage() {
                 <p className="text-gray-600 text-sm mb-4">
                   Reach out via email or social media. We're always excited to hear from potential new members.
                 </p>
-                <Button className="bg-science-red hover:bg-red-700">Send Message</Button>
+                <Button className="bg-science-red">Send Message</Button>
               </CardContent>
             </Card>
           </div>

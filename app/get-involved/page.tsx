@@ -1,4 +1,5 @@
 import { LayoutWrapper } from "@/components/layout-wrapper"
+import { HeroSection } from "@/components/hero-section"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -19,15 +20,15 @@ export default function GetInvolvedPage() {
   return (
     <LayoutWrapper>
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-50 to-green-50 py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="font-heading text-4xl md:text-5xl font-bold text-gray-900 mb-6">Get Involved</h1>
-          <p className="text-xl text-gray-600 leading-relaxed">
-            Join our community of passionate advocates working to ensure science guides policy decisions. There are many
-            ways to contribute your skills and make a meaningful impact.
-          </p>
-        </div>
-      </section>
+      <HeroSection
+        title="Get Involved"
+        subtitle="Join our community of passionate advocates working to ensure science guides policy decisions. There are many ways to contribute your skills and make a meaningful impact."
+        showLogo={false}
+        showNewsletter={false}
+        primaryButtonText=""
+        secondaryButtonText=""
+        className="py-16"
+      />
 
       {/* Working Groups */}
       <section className="py-16 bg-white">
@@ -65,7 +66,7 @@ export default function GetInvolvedPage() {
                     Campaign Strategy
                   </Badge>
                 </div>
-                <Button size="sm" className="bg-science-red hover:bg-red-700">
+                <Button size="sm" className="bg-science-red">
                   Join Group
                 </Button>
               </CardContent>
@@ -95,7 +96,7 @@ export default function GetInvolvedPage() {
                     Public Speaking
                   </Badge>
                 </div>
-                <Button size="sm" className="bg-science-blue hover:bg-blue-700">
+                <Button size="sm" className="bg-science-blue">
                   Join Group
                 </Button>
               </CardContent>
@@ -125,7 +126,7 @@ export default function GetInvolvedPage() {
                     Partnership Coordination
                   </Badge>
                 </div>
-                <Button size="sm" className="bg-science-green hover:bg-green-700">
+                <Button size="sm" className="bg-science-green">
                   Join Group
                 </Button>
               </CardContent>
@@ -133,10 +134,10 @@ export default function GetInvolvedPage() {
 
             <Card className="hover:shadow-lg transition-shadow">
               <CardHeader>
-                <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-science-purple rounded-lg flex items-center justify-center mb-4">
                   <MessageSquare className="h-6 w-6 text-white" />
                 </div>
-                <CardTitle className="text-purple-600">Communications</CardTitle>
+                <CardTitle className="text-science-purple">Communications</CardTitle>
                 <CardDescription>Managing our digital presence and messaging</CardDescription>
               </CardHeader>
               <CardContent>
@@ -155,7 +156,7 @@ export default function GetInvolvedPage() {
                     Graphic Design
                   </Badge>
                 </div>
-                <Button size="sm" className="bg-purple-600 hover:bg-purple-700">
+                <Button size="sm" className="bg-science-purple">
                   Join Group
                 </Button>
               </CardContent>
@@ -163,10 +164,10 @@ export default function GetInvolvedPage() {
 
             <Card className="hover:shadow-lg transition-shadow">
               <CardHeader>
-                <div className="w-12 h-12 bg-orange-600 rounded-lg flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-science-orange rounded-lg flex items-center justify-center mb-4">
                   <Settings className="h-6 w-6 text-white" />
                 </div>
-                <CardTitle className="text-orange-600">Steering</CardTitle>
+                <CardTitle className="text-science-orange">Steering</CardTitle>
                 <CardDescription>Strategic planning and organizational leadership</CardDescription>
               </CardHeader>
               <CardContent>
@@ -185,7 +186,7 @@ export default function GetInvolvedPage() {
                     Coordination
                   </Badge>
                 </div>
-                <Button size="sm" className="bg-orange-600 hover:bg-orange-700">
+                <Button size="sm" className="bg-science-orange">
                   Join Group
                 </Button>
               </CardContent>
@@ -193,10 +194,10 @@ export default function GetInvolvedPage() {
 
             <Card className="hover:shadow-lg transition-shadow">
               <CardHeader>
-                <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-science-teal rounded-lg flex items-center justify-center mb-4">
                   <DollarSign className="h-6 w-6 text-white" />
                 </div>
-                <CardTitle className="text-green-600">Finance</CardTitle>
+                <CardTitle className="text-science-teal">Finance</CardTitle>
                 <CardDescription>Budget management and fundraising coordination</CardDescription>
               </CardHeader>
               <CardContent>
@@ -215,7 +216,7 @@ export default function GetInvolvedPage() {
                     Fundraising
                   </Badge>
                 </div>
-                <Button size="sm" className="bg-green-600 hover:bg-green-700">
+                <Button size="sm" className="bg-science-teal">
                   Join Group
                 </Button>
               </CardContent>

@@ -1,5 +1,4 @@
 import { LayoutWrapper } from "@/components/layout-wrapper"
-import { HeroSection } from "@/components/hero-section"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -9,32 +8,54 @@ import {
     MapPin,
     Users,
     ExternalLink,
-    Instagram,
-    Facebook,
-    FileText,
     Megaphone,
     BookOpen,
     Award,
 } from "lucide-react"
+import { redirect } from "next/navigation"
 
-export default function EventsPage() {
+interface EventsPageProps {
+    params: {
+        slug?: string[]
+    }
+}
+
+export default async function EventsPage({ params }: EventsPageProps) {
+    const { slug } = params
+
+    // Determine the active tab from the slug
+    const getActiveTab = () => {
+        if (!slug || slug.length === 0) return "upcoming"
+
+        const tab = slug[0]
+        const validTabs = ["upcoming", "recent"]
+
+        return validTabs.includes(tab) ? tab : "upcoming"
+    }
+
+    const activeTab = getActiveTab()
+
+    // If the slug doesn't match the active tab, redirect to the correct URL
+    if (slug && slug[0] !== activeTab) {
+        redirect(`/events/${activeTab}`)
+    }
+
     return (
         <LayoutWrapper>
             {/* Hero Section */}
-            <HeroSection
-                title="Events"
-                subtitle="Stay updated with our latest advocacy efforts, training sessions, public forums, and policy initiatives."
-                showLogo={false}
-                showNewsletter={false}
-                primaryButtonText=""
-                secondaryButtonText=""
-                className="py-16"
-            />
+            <section className="bg-gradient-to-r from-blue-50 to-green-50 py-16">
+                <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h1 className="font-heading text-4xl md:text-5xl font-bold text-gray-900 mb-6">Events</h1>
+                    <p className="text-xl text-gray-600 leading-relaxed">
+                        Stay updated with our latest advocacy efforts, training sessions, public forums, and policy initiatives.
+                    </p>
+                </div>
+            </section>
 
             {/* Content Tabs */}
             <section className="py-16 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <Tabs defaultValue="upcoming" className="w-full">
+                    <Tabs defaultValue={activeTab} className="w-full">
                         <TabsList className="grid w-full grid-cols-2 max-w-2xl mx-auto mb-12">
                             <TabsTrigger value="upcoming">Upcoming Events</TabsTrigger>
                             <TabsTrigger value="recent">Recent Activities</TabsTrigger>

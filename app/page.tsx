@@ -1,55 +1,23 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Input } from "@/components/ui/input"
 import { LayoutWrapper } from "@/components/layout-wrapper"
+import { HeroSection } from "@/components/hero-section"
 import Image from "next/image"
+import Link from "next/link"
 import { ArrowRight, Users, Megaphone, BookOpen, Calendar, ExternalLink, Quote } from "lucide-react"
 
 export default function HomePage() {
   return (
     <LayoutWrapper>
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-50 to-green-50 py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="mb-8">
-            <div className="w-24 h-24 mx-auto relative">
-              <Image
-                src="/logo.svg"
-                alt="ASIU Logo"
-                width={108}
-                height={108}
-                className="w-full h-full relative z-10"
-                priority
-              />
-            </div>
-          </div>
-          <h1 className="font-heading text-5xl md:text-7xl font-bold text-gray-900 mb-8">
-            Advocating for <span className="text-science-blue">Evidence-Based</span> Policy
-          </h1>
-          <p className="text-xl text-gray-600 mb-10 max-w-3xl mx-auto">
-            Student affiliate of Concerned Scientists @ IU, working to promote scientific integrity and evidence-based
-            decision making in policy and society.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
-            <Button size="lg" className="bg-science-red hover:bg-red-700 text-white">
-              Get Involved
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-science-green text-science-green hover:bg-science-green hover:text-white bg-transparent"
-            >
-              Donate Now
-            </Button>
-          </div>
-          <div className="flex flex-col sm:flex-row gap-2 justify-center max-w-md mx-auto">
-            <Input type="email" placeholder="Sign Up to Our Newsletter" className="flex-1" />
-            <Button className="bg-science-blue hover:bg-blue-700 text-white">Subscribe</Button>
-          </div>
-        </div>
-      </section>
+      <HeroSection
+        title="Advocating Evidence-Based Policy"
+        subtitle="Student affiliate of Concerned Scientists @ IU, working to promote scientific integrity and evidence-based decision making in policy and society."
+        primaryButtonText="Get Involved"
+        primaryButtonLink="/get-involved"
+        secondaryButtonText="Donate Now"
+      />
 
       {/* Recent News & Activities */}
       <section className="py-16 bg-white">
@@ -445,7 +413,7 @@ export default function HomePage() {
                   Join our weekly planning meetings to coordinate advocacy efforts and discuss current policy issues.
                 </p>
                 <div className="text-sm text-gray-500 mb-4">Location: Student Union, Room 204</div>
-                <Button className="bg-science-blue hover:bg-blue-700 text-white">Join Meeting</Button>
+                <Button className="bg-science-blue text-white">Join Meeting</Button>
               </CardContent>
             </Card>
 
@@ -463,7 +431,7 @@ export default function HomePage() {
                   Learn effective strategies for communicating complex scientific concepts to diverse audiences.
                 </p>
                 <div className="text-sm text-gray-500 mb-4">Location: Wells Library, Conference Room A</div>
-                <Button className="bg-science-red hover:bg-red-700 text-white">Register Now</Button>
+                <Button className="bg-science-red text-white">Register Now</Button>
               </CardContent>
             </Card>
           </div>
@@ -479,9 +447,11 @@ export default function HomePage() {
             decisions.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary" className="bg-white text-science-blue hover:bg-gray-100">
-              Join Our Team
-            </Button>
+            <Link href="/get-involved">
+              <Button size="lg" variant="secondary" className="bg-white text-science-blue hover:bg-gray-100">
+                Join Our Team
+              </Button>
+            </Link>
             <Button
               size="lg"
               variant="outline"
@@ -492,6 +462,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-    </LayoutWrapper>
+    </LayoutWrapper >
   )
 }

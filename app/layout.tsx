@@ -1,30 +1,35 @@
-import type React from "react"
 import type { Metadata } from "next"
-import { IBM_Plex_Sans } from "next/font/google"
+import { Inter } from "next/font/google"
 import "./globals.css"
+import { ThemeProvider } from "@/components/theme-provider"
+import { ToastProvider } from "@/components/ui/toast"
 
-const ibmPlexSans = IBM_Plex_Sans({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-ibm-plex",
-  weight: ["300", "400", "500", "600", "700"],
-})
+const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Advocates for Science @ IU",
-  description:
-    "Student affiliate of Concerned Scientists @ IU - Advocating for evidence-based policy and scientific integrity",
-  generator: "v0.app",
+  description: "Student affiliate of Concerned Scientists @ IU, working to promote scientific integrity and evidence-based decision making in policy and society.",
 }
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
-    <html lang="en" className={`${ibmPlexSans.variable} antialiased`}>
-      <body className="font-sans">{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body suppressHydrationWarning className={inter.className}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <ToastProvider>
+            {children}
+          </ToastProvider>
+        </ThemeProvider>
+      </body>
     </html>
   )
 }

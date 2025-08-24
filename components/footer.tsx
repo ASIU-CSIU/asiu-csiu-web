@@ -1,7 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+import { NewsletterSignup } from "@/components/newsletter-signup"
 import { Instagram, Mail, Facebook } from "lucide-react"
 
 export function Footer() {
@@ -69,7 +69,7 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/resources" className="text-gray-300 hover:text-white transition-colors">
+                <Link href="/news" className="text-gray-300 hover:text-white transition-colors">
                   News
                 </Link>
               </li>
@@ -82,16 +82,7 @@ export function Footer() {
             <p className="text-gray-300 mb-4 text-sm">
               Subscribe to our newsletter for updates on advocacy efforts and events.
             </p>
-            <div className="flex flex-col space-y-2">
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                className="bg-gray-800 border-gray-700 text-white placeholder-gray-400"
-              />
-              <Button size="sm" className="bg-science-blue hover:bg-blue-700">
-                Subscribe
-              </Button>
-            </div>
+            <NewsletterSignup />
           </div>
         </div>
 
@@ -105,7 +96,7 @@ export function Footer() {
             <span className="text-gray-400 text-sm">In partnership with Concerned Scientists @ IU</span>
           </div>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <Button size="sm" className="bg-science-red hover:bg-red-700">
+            <Button size="sm" className="bg-science-red">
               Donate Now
             </Button>
             <Link href="/contact" className="text-gray-400 hover:text-white text-sm transition-colors">

@@ -34,7 +34,7 @@ export function Navigation() {
                   priority
                 />
               </div>
-              <h1 className="font-heading text-xl md:text-2xl font-bold text-science-blue">ASIU</h1>
+              <h1 className="font-heading text-xl md:text-2xl font-bold text-science-black">ASIU</h1>
             </Link>
           </div>
 
@@ -49,7 +49,7 @@ export function Navigation() {
                 {item.label}
               </Link>
             ))}
-            <Button size="sm" className="bg-science-red hover:bg-red-700 text-white ml-4" asChild>
+            <Button size="sm" className="bg-science-red text-white ml-4" asChild>
               <Link href="/get-involved">Get Involved</Link>
             </Button>
           </nav>
@@ -82,7 +82,7 @@ export function Navigation() {
                 </Link>
               ))}
               <div className="px-3 py-2">
-                <Button size="sm" className="bg-science-red hover:bg-red-700 text-white w-full" asChild>
+                <Button size="sm" className="bg-science-red text-white w-full" asChild>
                   <Link href="/get-involved">Get Involved</Link>
                 </Button>
               </div>

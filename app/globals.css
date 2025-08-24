@@ -44,6 +44,22 @@
   --color-green: #257d70; /* Brand green */
   --color-black: #2a2a2a; /* Brand black */
 
+  /* Updated custom secondary color variables to match new brand colors */
+  --color-yellow: #998a2e;  /* Brand yellow */
+  --color-orange: #99612e;  /* Brand orange */
+  --color-purple: #5f2e99;  /* Brand purple */
+  --color-teal: #2e9999;    /* Brand teal */
+  --color-pink: #992e61;    /* Brand pink */
+
+  --color-brown: #664422;   /* Brand brown */
+  --color-cyan: #2e7a99;    /* Brand cyan */
+  --color-lime: #66992e;    /* Brand lime */
+  --color-magenta: #992e7a; /* Brand magenta */
+  --color-olive: #667a2e;   /* Brand olive */
+  --color-indigo: #2e3a99;  /* Brand indigo */
+  --color-sand: #99855c;    /* Brand sand / beige */
+  --color-slate: #3d4c66;   /* Brand slate / gray-blue */
+
   /* Updated typography variables for IBM Plex Sans */
   --font-heading: var(--font-ibm-plex);
   --font-body: var(--font-ibm-plex);
@@ -126,6 +142,89 @@
   .border-science-blue {
     border-color: var(--color-blue);
   }
+
+  /* Secondary color text utilities */
+  .text-science-yellow {
+    color: var(--color-yellow);
+  }
+  .text-science-orange {
+    color: var(--color-orange);
+  }
+  .text-science-purple {
+    color: var(--color-purple);
+  }
+  .text-science-teal {
+    color: var(--color-teal);
+  }
+  .text-science-pink {
+    color: var(--color-pink);
+  }
+  .text-science-brown {
+    color: var(--color-brown);
+  }
+  .text-science-cyan {
+    color: var(--color-cyan);
+  }
+  .text-science-lime {
+    color: var(--color-lime);
+  }
+  .text-science-magenta {
+    color: var(--color-magenta);
+  }
+  .text-science-olive {
+    color: var(--color-olive);
+  }
+  .text-science-indigo {
+    color: var(--color-indigo);
+  }
+  .text-science-sand {
+    color: var(--color-sand);
+  }
+  .text-science-slate {
+    color: var(--color-slate);
+  }
+
+  /* Secondary color background utilities */
+  .bg-science-yellow {
+    background-color: var(--color-yellow);
+  }
+  .bg-science-orange {
+    background-color: var(--color-orange);
+  }
+  .bg-science-purple {
+    background-color: var(--color-purple);
+  }
+  .bg-science-teal {
+    background-color: var(--color-teal);
+  }
+  .bg-science-pink {
+    background-color: var(--color-pink);
+  }
+  .bg-science-brown {
+    background-color: var(--color-brown);
+  }
+  .bg-science-cyan {
+    background-color: var(--color-cyan);
+  }
+  .bg-science-lime {
+    background-color: var(--color-lime);
+  }
+  .bg-science-magenta {
+    background-color: var(--color-magenta);
+  }
+  .bg-science-olive {
+    background-color: var(--color-olive);
+  }
+  .bg-science-indigo {
+    background-color: var(--color-indigo);
+  }
+  .bg-science-sand {
+    background-color: var(--color-sand);
+  }
+  .bg-science-slate {
+    background-color: var(--color-slate);
+  }
+
   .font-heading {
     font-family: var(--font-heading);
   }
@@ -136,6 +235,15 @@
   /* Added standardized card shadow utility */
   .card-shadow {
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  }
+
+  /* Button hover styles - darken only background, preserve text */
+  .btn-filled:hover {
+    filter: brightness(0.85);
+    transition: filter 0.2s ease;
+    transform: none !important;
+    scale: none !important;
+    animation: none !important;
   }
 }
 
