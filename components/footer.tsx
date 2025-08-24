@@ -2,7 +2,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { NewsletterSignup } from "@/components/newsletter-signup"
-import { Instagram, Mail, Facebook } from "lucide-react"
+import { Instagram, Mail, Facebook, Linkedin, Slack } from "lucide-react"
 
 export function Footer() {
   return (
@@ -30,21 +30,47 @@ export function Footer() {
             </p>
             <div className="flex space-x-4">
               <Link
-                href="https://instagram.com/asiu_bloomington"
+                href="https://www.linkedin.com/company/advocates-for-science-at-iu/"
                 className="text-gray-400 hover:text-white transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="h-6 w-6" />
+              </Link>
+              <Link
+                href="https://www.instagram.com/asiu.indiana/"
+                className="text-gray-400 hover:text-white transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
               >
                 <Instagram className="h-6 w-6" />
               </Link>
               <Link
+                href="https://www.facebook.com/profile.php?id=61573877797290"
+                className="text-gray-400 hover:text-white transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+              >
+                <Facebook className="h-6 w-6" />
+              </Link>
+              <Link
+                href="https://join.slack.com/t/advocatesforscienceiu/shared_invite/zt-3bwj6o6j7-LW6FhQAr1lFWHkvT4pxnFA"
+                className="text-gray-400 hover:text-white transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Slack"
+              >
+                <Slack className="h-6 w-6" />
+              </Link>
+              <Link
                 href="mailto:advocatesforscience.in@gmail.com"
                 className="text-gray-400 hover:text-white transition-colors"
+                aria-label="Email"
               >
                 <Mail className="h-6 w-6" />
-              </Link>
-              <Link href="#" className="text-gray-400 hover:text-white transition-colors">
-                <Facebook className="h-6 w-6" />
               </Link>
             </div>
           </div>
@@ -93,15 +119,16 @@ export function Footer() {
             <Link href="/accessibility" className="text-gray-400 hover:text-white text-sm transition-colors">
               Accessibility Statement
             </Link>
-            <span className="text-gray-400 text-sm">In partnership with Concerned Scientists @ IU</span>
+            <Link href="/privacy" className="text-gray-400 hover:text-white text-sm transition-colors">
+              Privacy Policy
+            </Link>
           </div>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <Button size="sm" className="bg-science-red">
-              Donate Now
+            <Button size="sm" className="bg-science-red" asChild>
+              <a href="https://www.gofundme.com/f/support-advocates-for-science-iu/donate?source=btn_donate" target="_blank" rel="noopener noreferrer">
+                Donate Now
+              </a>
             </Button>
-            <Link href="/contact" className="text-gray-400 hover:text-white text-sm transition-colors">
-              Contact Us
-            </Link>
           </div>
         </div>
       </div>

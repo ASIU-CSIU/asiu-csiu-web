@@ -12,11 +12,12 @@ export default function HomePage() {
     <LayoutWrapper>
       {/* Hero Section */}
       <HeroSection
-        title="Advocating Evidence-Based Policy"
+        title="Science at the Heart of Policy"
         subtitle="Student affiliate of Concerned Scientists @ IU, working to promote scientific integrity and evidence-based decision making in policy and society."
         primaryButtonText="Get Involved"
         primaryButtonLink="/get-involved"
         secondaryButtonText="Donate Now"
+        secondaryButtonLink="https://www.gofundme.com/f/support-advocates-for-science-iu/donate?source=btn_donate"
       />
 
       {/* Recent News & Activities */}
@@ -462,6 +463,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-    </LayoutWrapper >
+    </LayoutWrapper>
   )
 }
