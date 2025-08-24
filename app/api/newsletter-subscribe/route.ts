@@ -1,5 +1,35 @@
 import { NextRequest, NextResponse } from 'next/server'
-import * as nodemailer from 'nodemailer'
+import FormData from "form-data";
+import Mailgun from "mailgun.js";
+
+async function sendSimpleMessage(email: string) {
+  const mailgun = new Mailgun(FormData);
+  const mg = mailgun.client({
+    username: "api",
+    key: process.env.MAILGUN_SENDING_API_KEY || process.env.API_KEY || "API_KEY",
+    // When you have an EU-domain, you must specify the endpoint:
+    // url: "https://api.eu.mailgun.net"
+  });
+
+  // Use environment variable for domain or fallback to sandbox
+  const domain = process.env.MAILGUN_DOMAIN || "sandboxb59394efc53c4f0b988b236318247c26.mailgun.org";
+  const fromEmail = process.env.MAILGUN_FROM || `postmaster@${domain}`;
+
+  try {
+    const data = await mg.messages.create(domain, {
+      from: fromEmail,
+      to: ["advocatesforscience.in@gmail.com"],
+      subject: "Newsletter Subscription Request - Advocates for Science @ IU",
+      text: `Please subscribe ${email} to the CSIU mailing list. This request was submitted through the Advocates for Science @ IU website.`,
+    });
+
+    console.log(data); // logs response data
+    return data;
+  } catch (error) {
+    console.log(error); //logs any error
+    throw error;
+  }
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -13,30 +43,8 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Create transporter for Gmail
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_APP_PASSWORD,
-      },
-    })
-
-    // Email content
-    const mailOptions = {
-      from: process.env.GMAIL_USER,
-      to: 'csiu-l-request@list.iu.edu',
-      subject: 'Subscribe',
-      text: `Please subscribe ${email} to the CSIU mailing list.`,
-      html: `
-        <p>Please subscribe the following email address to the CSIU mailing list:</p>
-        <p><strong>${email}</strong></p>
-        <p>This request was submitted through the Advocates for Science @ IU website.</p>
-      `,
-    }
-
-    // Send email
-    await transporter.sendMail(mailOptions)
+    // Send email using the working Mailgun function
+    await sendSimpleMessage(email);
 
     return NextResponse.json(
       { message: 'Subscription request sent successfully' },
