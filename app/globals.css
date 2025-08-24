@@ -245,6 +245,22 @@
     scale: none !important;
     animation: none !important;
   }
+
+  /* Ensure proper scrolling on mobile devices */
+  html, body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  /* Prevent any fixed positioning issues on mobile */
+  @media (max-width: 768px) {
+    html, body {
+      position: relative;
+      width: 100%;
+    }
+  }
 }
 
 @theme inline {

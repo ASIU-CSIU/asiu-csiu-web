@@ -9,6 +9,7 @@ interface HeroBackgroundProps {
     starCount?: number
     starMinScale?: number
     overflowThreshold?: number
+    minVelocityMode?: boolean // New option: when true, minimum velocity is more than zero
 }
 
 export function HeroBackground({
@@ -17,7 +18,8 @@ export function HeroBackground({
     starSize = 3,
     starCount,
     starMinScale = 0.2,
-    overflowThreshold = 50
+    overflowThreshold = 50,
+    minVelocityMode = true
 }: HeroBackgroundProps) {
     const canvasRef = useRef<HTMLCanvasElement>(null)
     const containerRef = useRef<HTMLDivElement>(null)
@@ -39,6 +41,11 @@ export function HeroBackground({
         let pointerY: number | null = null
         let velocity = { x: 0, y: 0, tx: 0, ty: 0, z: 0.0005 }
         let touchInput = false
+
+        // Set minimum velocity when minVelocityMode is enabled
+        if (minVelocityMode) {
+            velocity.z = 0.005 // Higher minimum velocity for more active animation
+        }
 
         // Calculate star count based on window size if not provided
         const calculatedStarCount = starCount || Math.floor((window.innerWidth + window.innerHeight) / 8)
@@ -118,6 +125,15 @@ export function HeroBackground({
 
             velocity.x += (velocity.tx - velocity.x) * 0.8
             velocity.y += (velocity.ty - velocity.y) * 0.8
+
+            // Maintain minimum velocity when minVelocityMode is enabled
+            if (minVelocityMode) {
+                // Add subtle random movement when no user input
+                if (Math.abs(velocity.x) < 0.1 && Math.abs(velocity.y) < 0.1) {
+                    velocity.x += (Math.random() - 0.5) * 0.02
+                    velocity.y += (Math.random() - 0.5) * 0.02
+                }
+            }
 
             stars.forEach((star) => {
                 star.x += velocity.x * star.z
@@ -209,7 +225,8 @@ export function HeroBackground({
             if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
                 touchInput = true
                 movePointer(event.touches[0].clientX, event.touches[0].clientY)
-                event.preventDefault()
+                // Don't prevent default to allow normal scrolling
+                // The animation will still work but won't interfere with scrolling
             }
         }
 
@@ -241,7 +258,7 @@ export function HeroBackground({
             document.removeEventListener('touchend', onMouseLeave)
             document.removeEventListener('mouseleave', onMouseLeave)
         }
-    }, [starColor, starSize, starCount, starMinScale, overflowThreshold])
+    }, [starColor, starSize, starCount, starMinScale, overflowThreshold, minVelocityMode])
 
     return (
         <div
@@ -253,7 +270,8 @@ export function HeroBackground({
                 ref={canvasRef}
                 className="absolute inset-0 w-full h-full pointer-events-none"
                 style={{
-                    background: 'radial-gradient(circle at top right, rgba(121, 68, 154, 0.13), transparent), radial-gradient(circle at 20% 80%, rgba(41, 196, 255, 0.13), transparent)'
+                    background: 'radial-gradient(circle at top right, rgba(121, 68, 154, 0.13), transparent), radial-gradient(circle at 20% 80%, rgba(41, 196, 255, 0.13), transparent)',
+                    touchAction: 'pan-y' // Allow vertical scrolling on touch devices
                 }}
             />
         </div>

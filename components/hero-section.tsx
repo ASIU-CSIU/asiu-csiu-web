@@ -45,7 +45,7 @@ export function HeroSection({
             <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 {showLogo && (
                     <div className="mb-8">
-                        <div className="w-24 h-24 mx-auto relative">
+                        <div className="w-48 h-48 mx-auto relative">
                             <Image
                                 src={logoPath}
                                 alt="ASIU Logo"
