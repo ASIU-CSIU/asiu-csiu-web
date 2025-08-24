@@ -40,16 +40,16 @@ export default async function NewsPage() {
 
     return (
         <LayoutWrapper>
-                  {/* Hero Section */}
-      <HeroSection
-        title="News"
-        subtitle="Stay updated with our latest news bulletins, articles, and educational content."
-        showLogo={false}
-        showNewsletter={false}
-        primaryButtonText=""
-        secondaryButtonText=""
-        className="py-16"
-      />
+            {/* Hero Section */}
+            <HeroSection
+                title="News"
+                subtitle="Stay updated with our latest news bulletins, articles, and educational content."
+                showLogo={false}
+                showNewsletter={false}
+                primaryButtonText=""
+                secondaryButtonText=""
+                className="py-16"
+            />
 
             {/* Content Tabs */}
             <section className="py-16 bg-white">

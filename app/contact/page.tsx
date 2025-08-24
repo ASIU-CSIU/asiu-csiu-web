@@ -17,7 +17,7 @@ export default function ContactPage() {
         subtitle="Get in touch with our team, join our community, or learn more about our advocacy efforts. We'd love to hear from you!"
         showLogo={false}
         showNewsletter={false}
-        primaryButtonText="Send Message"
+        primaryButtonText=""
         secondaryButtonText=""
         className="py-16"
       />
