@@ -90,13 +90,13 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/events" className="text-gray-300 hover:text-white transition-colors">
-                  Events
+                <Link href="/news" className="text-gray-300 hover:text-white transition-colors">
+                  News
                 </Link>
               </li>
               <li>
-                <Link href="/news" className="text-gray-300 hover:text-white transition-colors">
-                  News
+                <Link href="/contact" className="text-gray-300 hover:text-white transition-colors">
+                  Contact
                 </Link>
               </li>
             </ul>
