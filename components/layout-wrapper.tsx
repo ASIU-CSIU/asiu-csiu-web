@@ -1,6 +1,7 @@
 import type React from "react"
 import { Navigation } from "./navigation"
 import { Footer } from "./footer"
+import { ScrollIndicator } from "./scroll-indicator"
 
 interface LayoutWrapperProps {
   children: React.ReactNode
@@ -12,6 +13,7 @@ export function LayoutWrapper({ children }: LayoutWrapperProps) {
       <Navigation />
       <main className="flex-1">{children}</main>
       <Footer />
+      <ScrollIndicator />
     </div>
   )
 }

@@ -35,7 +35,7 @@ export function HeroSection({
     className = ""
 }: HeroSectionProps) {
     return (
-        <section className={`relative bg-gradient-to-r ${backgroundGradient} py-32 overflow-hidden ${className}`}>
+        <section className={`relative bg-gradient-to-r ${backgroundGradient} pt-36 pb-32 overflow-hidden ${className}`}>
             <HeroBackground
                 starColor="#FFFFFF"
                 starSize={8}

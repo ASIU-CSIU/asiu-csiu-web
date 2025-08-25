@@ -16,10 +16,14 @@ import {
   BookOpen,
   Award,
   Calendar,
-  MessageSquare,
+  Slack,
   Settings,
   DollarSign,
   ArrowRight,
+  Vote,
+  Monitor,
+  PenTool,
+  CalendarDays,
 } from "lucide-react"
 import { getPageMetadata, getStructuredData } from "@/lib/metadata"
 
@@ -38,7 +42,7 @@ export default function GetInvolvedPage() {
         {/* Hero Section */}
         <HeroSection
           title="Get Involved"
-          subtitle="Join Advocates for Science @ IU and make a difference in science policy. Discover upcoming events, volunteer opportunities, and ways to contribute to evidence-based advocacy efforts."
+          subtitle="Join Advocates for Science @ IU and make a difference in science policy. Discover upcoming events, join working groups, and contribute to evidence-based advocacy efforts."
           showLogo={false}
           showNewsletter={false}
           primaryButtonText=""
@@ -50,11 +54,10 @@ export default function GetInvolvedPage() {
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <Tabs defaultValue="events" className="w-full">
-              <TabsList className="grid w-full grid-cols-4 max-w-2xl mx-auto mb-12">
+              <TabsList className="grid w-full grid-cols-3 max-w-2xl mx-auto mb-12">
                 <TabsTrigger value="events">Upcoming Events</TabsTrigger>
-                <TabsTrigger value="opportunities">Volunteer Opportunities</TabsTrigger>
-                <TabsTrigger value="working-groups">Working Groups</TabsTrigger>
-                <TabsTrigger value="resources">Resources</TabsTrigger>
+                <TabsTrigger value="past-events">Past Events</TabsTrigger>
+                <TabsTrigger value="working-groups">Join Committees</TabsTrigger>
               </TabsList>
 
               <TabsContent value="events" className="space-y-8">
@@ -202,112 +205,146 @@ export default function GetInvolvedPage() {
                 </div>
               </TabsContent>
 
-              <TabsContent value="opportunities" className="space-y-8">
+              <TabsContent value="past-events" className="space-y-8">
                 <div className="text-center mb-8">
-                  <h2 className="font-heading text-3xl font-bold mb-4">Volunteer Opportunities</h2>
-                  <p className="text-gray-600">Find ways to contribute your skills and time to our advocacy efforts</p>
+                  <h2 className="font-heading text-3xl font-bold mb-4">Past Events</h2>
+                  <p className="text-gray-600">Check out our recent advocacy training, public forums, and community engagement events</p>
                 </div>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  <Card className="hover:shadow-lg transition-shadow">
+                <div className="grid md:grid-cols-2 gap-8">
+                  <Card className="border-l-4 border-l-science-blue hover:shadow-lg transition-shadow opacity-75">
                     <CardHeader>
-                      <div className="w-12 h-12 bg-science-blue rounded-lg flex items-center justify-center mb-4">
-                        <Megaphone className="h-6 w-6 text-white" />
+                      <div className="flex items-center justify-between mb-2">
+                        <Badge className="bg-science-blue">Advocacy Training</Badge>
+                        <span className="text-sm text-gray-500">Dec 10, 2024</span>
                       </div>
-                      <CardTitle>Event Planning</CardTitle>
-                      <CardDescription>Help organize advocacy events and workshops</CardDescription>
+                      <CardTitle className="text-xl">Policy Briefing Workshop</CardTitle>
+                      <CardDescription>Learn how to create effective policy briefs for legislators</CardDescription>
                     </CardHeader>
                     <CardContent>
+                      <div className="space-y-3 mb-4">
+                        <div className="flex items-center space-x-2">
+                          <Clock className="h-4 w-4 text-gray-500" />
+                          <span className="text-sm">6:00 PM - 8:00 PM</span>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <MapPin className="h-4 w-4 text-gray-500" />
+                          <span className="text-sm">Wells Library, Conference Room B</span>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <Users className="h-4 w-4 text-gray-500" />
+                          <span className="text-sm">25 attendees</span>
+                        </div>
+                      </div>
                       <p className="text-gray-600 text-sm mb-4">
-                        Assist with planning and coordinating public forums, training sessions, and community engagement
-                        events.
+                        Workshop covered policy brief structure, effective messaging, and how to present scientific
+                        information to policymakers.
                       </p>
-                      <Badge variant="secondary" className="text-xs">2-4 hours/week</Badge>
+                      <Button size="sm" variant="outline" className="border-science-blue text-science-blue">
+                        View Photos
+                      </Button>
                     </CardContent>
                   </Card>
 
-                  <Card className="hover:shadow-lg transition-shadow">
+                  <Card className="border-l-4 border-l-science-green hover:shadow-lg transition-shadow opacity-75">
                     <CardHeader>
-                      <div className="w-12 h-12 bg-science-green rounded-lg flex items-center justify-center mb-4">
-                        <BookOpen className="h-6 w-6 text-white" />
+                      <div className="flex items-center justify-between mb-2">
+                        <Badge className="bg-science-green">Public Forum</Badge>
+                        <span className="text-sm text-gray-500">Nov 28, 2024</span>
                       </div>
-                      <CardTitle>Research Support</CardTitle>
-                      <CardDescription>Contribute to policy research and analysis</CardDescription>
+                      <CardTitle className="text-xl">Healthcare Policy Discussion</CardTitle>
+                      <CardDescription>Community forum on evidence-based healthcare policy</CardDescription>
                     </CardHeader>
                     <CardContent>
+                      <div className="space-y-3 mb-4">
+                        <div className="flex items-center space-x-2">
+                          <Clock className="h-4 w-4 text-gray-500" />
+                          <span className="text-sm">7:00 PM - 9:00 PM</span>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <MapPin className="h-4 w-4 text-gray-500" />
+                          <span className="text-sm">Monroe County Public Library</span>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <Users className="h-4 w-4 text-gray-500" />
+                          <span className="text-sm">40 attendees</span>
+                        </div>
+                      </div>
                       <p className="text-gray-600 text-sm mb-4">
-                        Help research policy issues, analyze legislation, and prepare briefing materials for advocacy
-                        efforts.
+                        Featured local healthcare experts discussing evidence-based approaches to healthcare policy
+                        and community health initiatives.
                       </p>
-                      <Badge variant="secondary" className="text-xs">3-5 hours/week</Badge>
+                      <Button size="sm" variant="outline" className="border-science-green text-science-green">
+                        Read Summary
+                      </Button>
                     </CardContent>
                   </Card>
 
-                  <Card className="hover:shadow-lg transition-shadow">
+                  <Card className="border-l-4 border-l-science-red hover:shadow-lg transition-shadow opacity-75">
                     <CardHeader>
-                      <div className="w-12 h-12 bg-science-red rounded-lg flex items-center justify-center mb-4">
-                        <MessageSquare className="h-6 w-6 text-white" />
+                      <div className="flex items-center justify-between mb-2">
+                        <Badge className="bg-science-red">Special Event</Badge>
+                        <span className="text-sm text-gray-500">Nov 15, 2024</span>
                       </div>
-                      <CardTitle>Communications</CardTitle>
-                      <CardDescription>Help with social media and content creation</CardDescription>
+                      <CardTitle className="text-xl">Science Advocacy Awards</CardTitle>
+                      <CardDescription>Annual recognition of outstanding science advocates</CardDescription>
                     </CardHeader>
                     <CardContent>
+                      <div className="space-y-3 mb-4">
+                        <div className="flex items-center space-x-2">
+                          <Clock className="h-4 w-4 text-gray-500" />
+                          <span className="text-sm">6:30 PM - 9:00 PM</span>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <MapPin className="h-4 w-4 text-gray-500" />
+                          <span className="text-sm">Indiana Memorial Union</span>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <Users className="h-4 w-4 text-gray-500" />
+                          <span className="text-sm">60 attendees</span>
+                        </div>
+                      </div>
                       <p className="text-gray-600 text-sm mb-4">
-                        Create social media content, write blog posts, and help maintain our digital presence to reach
-                        broader audiences.
+                        Celebrated the achievements of local science advocates and recognized outstanding contributions
+                        to evidence-based policy making.
                       </p>
-                      <Badge variant="secondary" className="text-xs">2-3 hours/week</Badge>
+                      <Button size="sm" variant="outline" className="border-science-red text-science-red">
+                        View Winners
+                      </Button>
                     </CardContent>
                   </Card>
 
-                  <Card className="hover:shadow-lg transition-shadow">
+                  <Card className="border-l-4 border-l-purple-600 hover:shadow-lg transition-shadow opacity-75">
                     <CardHeader>
-                      <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center mb-4">
-                        <Users className="h-6 w-6 text-white" />
+                      <div className="flex items-center justify-between mb-2">
+                        <Badge className="bg-purple-600">Training Session</Badge>
+                        <span className="text-sm text-gray-500">Oct 30, 2024</span>
                       </div>
-                      <CardTitle>Outreach Coordinator</CardTitle>
-                      <CardDescription>Help build partnerships and community connections</CardDescription>
+                      <CardTitle className="text-xl">Social Media Advocacy</CardTitle>
+                      <CardDescription>Workshop on effective digital advocacy strategies</CardDescription>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-gray-600 text-sm mb-4">
-                        Reach out to potential partners, coordinate with other organizations, and help expand our network
-                        of supporters.
-                      </p>
-                      <Badge variant="secondary" className="text-xs">3-4 hours/week</Badge>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="hover:shadow-lg transition-shadow">
-                    <CardHeader>
-                      <div className="w-12 h-12 bg-orange-600 rounded-lg flex items-center justify-center mb-4">
-                        <FileText className="h-6 w-6 text-white" />
+                      <div className="space-y-3 mb-4">
+                        <div className="flex items-center space-x-2">
+                          <Clock className="h-4 w-4 text-gray-500" />
+                          <span className="text-sm">5:00 PM - 7:00 PM</span>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <MapPin className="h-4 w-4 text-gray-500" />
+                          <span className="text-sm">Student Union, Room 204</span>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <Users className="h-4 w-4 text-gray-500" />
+                          <span className="text-sm">18 attendees</span>
+                        </div>
                       </div>
-                      <CardTitle>Grant Writing</CardTitle>
-                      <CardDescription>Help secure funding for our programs</CardDescription>
-                    </CardHeader>
-                    <CardContent>
                       <p className="text-gray-600 text-sm mb-4">
-                        Assist with grant applications, fundraising campaigns, and financial planning to support our
-                        advocacy initiatives.
+                        Covered best practices for social media advocacy, content creation, and building online
+                        communities around science policy issues.
                       </p>
-                      <Badge variant="secondary" className="text-xs">4-6 hours/week</Badge>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="hover:shadow-lg transition-shadow">
-                    <CardHeader>
-                      <div className="w-12 h-12 bg-teal-600 rounded-lg flex items-center justify-center mb-4">
-                        <Settings className="h-6 w-6 text-white" />
-                      </div>
-                      <CardTitle>Technical Support</CardTitle>
-                      <CardDescription>Help with website and technical needs</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-gray-600 text-sm mb-4">
-                        Provide technical support for our website, digital tools, and help maintain our online presence
-                        and systems.
-                      </p>
-                      <Badge variant="secondary" className="text-xs">2-3 hours/week</Badge>
+                      <Button size="sm" variant="outline" className="border-purple-600 text-purple-600">
+                        Access Materials
+                      </Button>
                     </CardContent>
                   </Card>
                 </div>
@@ -315,20 +352,29 @@ export default function GetInvolvedPage() {
 
               <TabsContent value="working-groups" className="space-y-8">
                 <div className="text-center mb-8">
-                  <h2 className="font-heading text-3xl font-bold mb-4">Working Groups</h2>
-                  <p className="text-gray-600">Join specialized teams focused on different aspects of our advocacy work</p>
+                  <h2 className="font-heading text-3xl font-bold mb-4">Join Our Committees</h2>
+                  <p className="text-gray-600">Choose a specialized committee focused on different aspects of our advocacy work and contribute your skills</p>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-8">
                   <Card className="border-l-4 border-l-science-blue">
                     <CardHeader>
-                      <CardTitle className="text-science-blue">Legislative Advocacy</CardTitle>
-                      <CardDescription>Direct engagement with policymakers and legislative processes</CardDescription>
+                      <div className="flex items-center space-x-4 mb-4">
+                        <div className="w-12 h-12 bg-science-blue clip-hexagon flex items-center justify-center">
+                          <div className="h-10 w-11 flex items-center justify-center">
+                            <Vote className="h-6 w-6 text-white" />
+                          </div>
+                        </div>
+                        <div>
+                          <CardTitle className="text-science-blue">Policy & Government Relations</CardTitle>
+                          <CardDescription>Direct engagement with policymakers and legislative processes</CardDescription>
+                        </div>
+                      </div>
                     </CardHeader>
                     <CardContent>
                       <p className="text-gray-600 text-sm mb-4">
-                        Work directly with elected officials, track legislation, and develop policy positions on key
-                        science issues.
+                        Work directly with elected officials, track legislation, develop policy positions on key
+                        science issues, and coordinate political action campaigns.
                       </p>
                       <div className="space-y-2 mb-4">
                         <div className="flex items-center space-x-2">
@@ -339,22 +385,36 @@ export default function GetInvolvedPage() {
                           <Calendar className="h-4 w-4 text-gray-500" />
                           <span className="text-sm">Meets bi-weekly</span>
                         </div>
+                        <div className="flex items-center space-x-2">
+                          <Clock className="h-4 w-4 text-gray-500" />
+                          <span className="text-sm">3-5 hours/week commitment</span>
+                        </div>
                       </div>
                       <Button size="sm" className="bg-science-blue">
-                        Join Group
+                        <Slack className="h-4 w-4 mr-0.5" />
+                        Join Slack
                       </Button>
                     </CardContent>
                   </Card>
 
                   <Card className="border-l-4 border-l-science-green">
                     <CardHeader>
-                      <CardTitle className="text-science-green">Education & Outreach</CardTitle>
-                      <CardDescription>Community engagement and science communication</CardDescription>
+                      <div className="flex items-center space-x-4 mb-4">
+                        <div className="w-12 h-12 bg-science-green clip-hexagon flex items-center justify-center">
+                          <div className="h-10 w-11 flex items-center justify-center">
+                            <Monitor className="h-6 w-6 text-white" />
+                          </div>
+                        </div>
+                        <div>
+                          <CardTitle className="text-science-green">Digital Media & Communications</CardTitle>
+                          <CardDescription>Digital presence, media relations, and content strategy</CardDescription>
+                        </div>
+                      </div>
                     </CardHeader>
                     <CardContent>
                       <p className="text-gray-600 text-sm mb-4">
-                        Develop educational materials, organize public forums, and create science communication content
-                        for diverse audiences.
+                        Manage social media accounts, create digital content, develop communication strategies, and
+                        build relationships with media outlets to amplify our advocacy messages.
                       </p>
                       <div className="space-y-2 mb-4">
                         <div className="flex items-center space-x-2">
@@ -365,22 +425,36 @@ export default function GetInvolvedPage() {
                           <Calendar className="h-4 w-4 text-gray-500" />
                           <span className="text-sm">Meets weekly</span>
                         </div>
+                        <div className="flex items-center space-x-2">
+                          <Clock className="h-4 w-4 text-gray-500" />
+                          <span className="text-sm">2-4 hours/week commitment</span>
+                        </div>
                       </div>
                       <Button size="sm" className="bg-science-green">
-                        Join Group
+                        <Slack className="h-4 w-4 mr-0.5" />
+                        Join Slack
                       </Button>
                     </CardContent>
                   </Card>
 
                   <Card className="border-l-4 border-l-science-red">
                     <CardHeader>
-                      <CardTitle className="text-science-red">Events</CardTitle>
-                      <CardDescription>Planning and coordinating advocacy events and activities</CardDescription>
+                      <div className="flex items-center space-x-4 mb-4">
+                        <div className="w-12 h-12 bg-science-red clip-hexagon flex items-center justify-center">
+                          <div className="h-10 w-11 flex items-center justify-center">
+                            <PenTool className="ml-0.5 mt-0.5 h-6 w-6 text-white" />
+                          </div>
+                        </div>
+                        <div>
+                          <CardTitle className="text-science-red">Written Journalism</CardTitle>
+                          <CardDescription>Content creation, editorial work, and written advocacy</CardDescription>
+                        </div>
+                      </div>
                     </CardHeader>
                     <CardContent>
                       <p className="text-gray-600 text-sm mb-4">
-                        Plan and execute advocacy training sessions, public forums, and community engagement events
-                        throughout the year.
+                        Write articles, op-eds, policy briefs, and other written content to advance science advocacy
+                        and communicate complex issues to diverse audiences.
                       </p>
                       <div className="space-y-2 mb-4">
                         <div className="flex items-center space-x-2">
@@ -389,24 +463,38 @@ export default function GetInvolvedPage() {
                         </div>
                         <div className="flex items-center space-x-2">
                           <Calendar className="h-4 w-4 text-gray-500" />
-                          <span className="text-sm">Meets weekly</span>
+                          <span className="text-sm">Meets bi-weekly</span>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <Clock className="h-4 w-4 text-gray-500" />
+                          <span className="text-sm">2-3 hours/week commitment</span>
                         </div>
                       </div>
                       <Button size="sm" className="bg-science-red">
-                        Join Group
+                        <Slack className="h-4 w-4 mr-0.5" />
+                        Join Slack
                       </Button>
                     </CardContent>
                   </Card>
 
                   <Card className="border-l-4 border-l-purple-600">
                     <CardHeader>
-                      <CardTitle className="text-purple-600">Communications</CardTitle>
-                      <CardDescription>Digital presence and content strategy</CardDescription>
+                      <div className="flex items-center space-x-4 mb-4">
+                        <div className="w-12 h-12 bg-purple-600 clip-hexagon flex items-center justify-center">
+                          <div className="h-10 w-11 flex items-center justify-center">
+                            <CalendarDays className="h-6 w-6 text-white" />
+                          </div>
+                        </div>
+                        <div>
+                          <CardTitle className="text-purple-600">Event Planning</CardTitle>
+                          <CardDescription>Planning and coordinating advocacy events and activities</CardDescription>
+                        </div>
+                      </div>
                     </CardHeader>
                     <CardContent>
                       <p className="text-gray-600 text-sm mb-4">
-                        Manage social media accounts, create content, and develop communication strategies to amplify
-                        our advocacy messages.
+                        Plan and execute advocacy training sessions, public forums, workshops, and community engagement
+                        events throughout the year.
                       </p>
                       <div className="space-y-2 mb-4">
                         <div className="flex items-center space-x-2">
@@ -415,77 +503,16 @@ export default function GetInvolvedPage() {
                         </div>
                         <div className="flex items-center space-x-2">
                           <Calendar className="h-4 w-4 text-gray-500" />
-                          <span className="text-sm">Meets bi-weekly</span>
+                          <span className="text-sm">Meets weekly</span>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <Clock className="h-4 w-4 text-gray-500" />
+                          <span className="text-sm">2-3 hours/week commitment</span>
                         </div>
                       </div>
                       <Button size="sm" className="bg-purple-600">
-                        Join Group
-                      </Button>
-                    </CardContent>
-                  </Card>
-                </div>
-              </TabsContent>
-
-              <TabsContent value="resources" className="space-y-8">
-                <div className="text-center mb-8">
-                  <h2 className="font-heading text-3xl font-bold mb-4">Resources</h2>
-                  <p className="text-gray-600">Tools and materials to help you get started with science advocacy</p>
-                </div>
-
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  <Card className="hover:shadow-lg transition-shadow">
-                    <CardHeader>
-                      <div className="w-12 h-12 bg-science-blue rounded-lg flex items-center justify-center mb-4">
-                        <FileText className="h-6 w-6 text-white" />
-                      </div>
-                      <CardTitle>Advocacy Guide</CardTitle>
-                      <CardDescription>Comprehensive guide to science policy advocacy</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-gray-600 text-sm mb-4">
-                        Step-by-step guide covering effective communication strategies, policy research methods, and
-                        engagement techniques.
-                      </p>
-                      <Button size="sm" className="bg-science-blue">
-                        Download Guide
-                      </Button>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="hover:shadow-lg transition-shadow">
-                    <CardHeader>
-                      <div className="w-12 h-12 bg-science-green rounded-lg flex items-center justify-center mb-4">
-                        <BookOpen className="h-6 w-6 text-white" />
-                      </div>
-                      <CardTitle>Training Materials</CardTitle>
-                      <CardDescription>Workshop materials and presentation templates</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-gray-600 text-sm mb-4">
-                        Access to training materials, presentation templates, and workshop resources for science
-                        communication.
-                      </p>
-                      <Button size="sm" className="bg-science-green">
-                        Access Materials
-                      </Button>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="hover:shadow-lg transition-shadow">
-                    <CardHeader>
-                      <div className="w-12 h-12 bg-science-red rounded-lg flex items-center justify-center mb-4">
-                        <Award className="h-6 w-6 text-white" />
-                      </div>
-                      <CardTitle>Policy Database</CardTitle>
-                      <CardDescription>Research and analysis resources</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-gray-600 text-sm mb-4">
-                        Database of policy research, legislative tracking tools, and analysis frameworks for
-                        understanding complex issues.
-                      </p>
-                      <Button size="sm" className="bg-science-red">
-                        Explore Database
+                        <Slack className="h-4 w-4 mr-0.5" />
+                        Join Slack
                       </Button>
                     </CardContent>
                   </Card>
