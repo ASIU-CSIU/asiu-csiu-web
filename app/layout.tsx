@@ -23,6 +23,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={poppins.variable} suppressHydrationWarning>
       <head>
+        {/* Favicon */}
+        <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/logo.svg" />
+        <link rel="shortcut icon" href="/logo.svg" />
+
         {/* Preload critical resources */}
         <link rel="preload" href="/logo.svg" as="image" type="image/svg+xml" />
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
