@@ -30,6 +30,9 @@ export default function HomePage() {
           primaryButtonText="Get Involved"
           secondaryButtonText="Learn More"
           className="py-16"
+          overlayImage="/overlay.JPG"
+          overlayOpacity={0.4}
+          showAffiliateOutcrop={true}
         />
 
         {/* Latest News & Activities */}

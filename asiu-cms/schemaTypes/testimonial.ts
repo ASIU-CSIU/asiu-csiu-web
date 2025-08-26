@@ -23,4 +23,23 @@ export const testimonialType = defineType({
       type: 'string',
     }),
   ],
+  preview: {
+    select: {
+      author: 'author',
+      role: 'role',
+      quote: 'quote'
+    },
+    prepare(selection) {
+      const {author, role, quote} = selection
+      const quoteExcerpt = quote ? quote.substring(0, 60) + (quote.length > 60 ? '...' : '') : 'No quote'
+      const subtitle = role ? `${role} • ${quoteExcerpt}` : quoteExcerpt
+      return {
+        title: author || 'Anonymous',
+        subtitle: subtitle
+      }
+    }
+  }
 })
+
+
+// adela krenz

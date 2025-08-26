@@ -1,3 +1,5 @@
+"use client"
+
 import { LayoutWrapper } from "@/components/layout-wrapper"
 import { HeroSection } from "@/components/hero-section"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -7,19 +9,44 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Mail, Instagram, Facebook, MapPin, Clock, MessageSquare, Users, Calendar } from "lucide-react"
-import { getPageMetadata, getStructuredData } from "@/lib/metadata"
-
-export const metadata = getPageMetadata("contact")
+import { useState } from "react"
 
 export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    subject: "",
+    message: ""
+  })
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target
+    setFormData(prev => ({
+      ...prev,
+      [id]: value
+    }))
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+
+    const { firstName, lastName, subject, message } = formData
+    const fullName = `${firstName} ${lastName}`.trim()
+
+    // Create mailto link with prefilled data
+    const mailtoLink = `mailto:advocatesforscience.in@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Dear Advocates for Science @ IU,
+
+${message}
+
+Best regards,
+${fullName}`)}`
+
+    // Open the user's default email client
+    window.location.href = mailtoLink
+  }
+
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(getStructuredData("contact"))
-        }}
-      />
       <LayoutWrapper>
         {/* Hero Section */}
         <HeroSection
@@ -39,24 +66,38 @@ export default function ContactPage() {
               {/* Contact Form */}
               <div>
                 <h2 className="font-heading text-3xl font-bold mb-8">Send Us a Message</h2>
-                <form className="space-y-6">
+                <form className="space-y-6" onSubmit={handleSubmit}>
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <Label htmlFor="firstName">First Name</Label>
-                      <Input id="firstName" placeholder="Your first name" />
+                      <Input
+                        id="firstName"
+                        placeholder="Your first name"
+                        value={formData.firstName}
+                        onChange={handleInputChange}
+                        required
+                      />
                     </div>
                     <div>
                       <Label htmlFor="lastName">Last Name</Label>
-                      <Input id="lastName" placeholder="Your last name" />
+                      <Input
+                        id="lastName"
+                        placeholder="Your last name"
+                        value={formData.lastName}
+                        onChange={handleInputChange}
+                        required
+                      />
                     </div>
                   </div>
                   <div>
-                    <Label htmlFor="email">Email</Label>
-                    <Input id="email" type="email" placeholder="your.email@example.com" />
-                  </div>
-                  <div>
                     <Label htmlFor="subject">Subject</Label>
-                    <Input id="subject" placeholder="What can we help you with?" />
+                    <Input
+                      id="subject"
+                      placeholder="What can we help you with?"
+                      value={formData.subject}
+                      onChange={handleInputChange}
+                      required
+                    />
                   </div>
                   <div>
                     <Label htmlFor="message">Message</Label>
@@ -64,6 +105,9 @@ export default function ContactPage() {
                       id="message"
                       placeholder="Tell us more about your inquiry..."
                       rows={6}
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      required
                     />
                   </div>
                   <Button type="submit" className="bg-science-blue">

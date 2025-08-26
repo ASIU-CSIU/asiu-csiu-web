@@ -37,3 +37,20 @@ export interface NewsBulletin {
   content: string
   articles?: BulletinArticle[]
 }
+
+export interface Event {
+  _id: string
+  title: string
+  subtitle: string
+  description: string
+  date: string
+  startTime: string
+  endTime: string
+  location: string
+  locationUrl: string
+  audience: string[]
+  participantCount?: number
+  tags: string[]
+  btnText: string
+  btnUrl: string
+}

@@ -71,7 +71,7 @@ export function NewsletterSignup({
     }
 
     return (
-        <div className={`flex flex-col sm:flex-row gap-2 justify-center max-w-md mx-auto ${className}`}>
+        <div suppressHydrationWarning className={`flex flex-col sm:flex-row gap-2 justify-center max-w-md mx-auto ${className}`}>
             <Input
                 type="email"
                 placeholder={placeholder}

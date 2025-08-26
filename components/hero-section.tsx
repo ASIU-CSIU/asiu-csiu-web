@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { NewsletterSignup } from "@/components/newsletter-signup"
 import { HeroBackground } from "@/components/hero-background"
+import { AffiliateOutcrop } from "@/components/affiliate-outcrop"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
@@ -19,6 +20,9 @@ interface HeroSectionProps {
     showNewsletter?: boolean
     backgroundGradient?: string
     className?: string
+    overlayImage?: string
+    overlayOpacity?: number
+    showAffiliateOutcrop?: boolean
 }
 
 export function HeroSection({
@@ -31,8 +35,11 @@ export function HeroSection({
     secondaryButtonText = "Donate Now",
     secondaryButtonLink = "#",
     showNewsletter = true,
-    backgroundGradient = "from-blue-50 to-green-50",
-    className = ""
+    backgroundGradient = "from-blue-50 to-red-50",
+    className = "",
+    overlayImage,
+    overlayOpacity = 0.2,
+    showAffiliateOutcrop = false
 }: HeroSectionProps) {
     return (
         <section className={`relative bg-gradient-to-r ${backgroundGradient} pt-36 pb-32 overflow-hidden ${className}`}>
@@ -41,6 +48,8 @@ export function HeroSection({
                 starSize={8}
                 starCount={150}
                 className="opacity-100"
+                overlayImage={overlayImage}
+                overlayOpacity={overlayOpacity}
             />
             <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 {/* {showLogo && (
@@ -99,6 +108,9 @@ export function HeroSection({
 
                 {/* {showNewsletter && <NewsletterSignup />} */}
             </div>
+
+            {/* Affiliate Outcrop */}
+            {showAffiliateOutcrop && <AffiliateOutcrop />}
         </section>
     )
 }

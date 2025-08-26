@@ -105,9 +105,18 @@ export const getEvents = async () => {
   const query = `*[_type == "event"] {
     _id,
     title,
+    subtitle,
     description,
     date,
-    location
+    startTime,
+    endTime,
+    location,
+    locationUrl,
+    audience,
+    participantCount,
+    tags,
+    btnText,
+    btnUrl
   } | order(date asc)`
 
   return await client.fetch(query)

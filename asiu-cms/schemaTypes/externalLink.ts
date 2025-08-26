@@ -23,4 +23,19 @@ export const externalLinkType = defineType({
       type: 'text',
     }),
   ],
+  preview: {
+    select: {
+      title: 'title',
+      url: 'url',
+      description: 'description'
+    },
+    prepare(selection) {
+      const {title, url, description} = selection
+      const domain = url ? new URL(url).hostname : 'No URL'
+      return {
+        title: title || 'Untitled Link',
+        subtitle: description ? `${domain} • ${description.substring(0, 40)}${description.length > 40 ? '...' : ''}` : domain
+      }
+    }
+  }
 })

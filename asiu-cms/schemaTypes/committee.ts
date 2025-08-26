@@ -17,4 +17,17 @@ export const committeeType = defineType({
       type: 'text',
     }),
   ],
+  preview: {
+    select: {
+      title: 'name',
+      description: 'description'
+    },
+    prepare(selection) {
+      const {title, description} = selection
+      return {
+        title: title || 'Unnamed Committee',
+        subtitle: description ? description.substring(0, 60) + (description.length > 60 ? '...' : '') : 'No description'
+      }
+    }
+  }
 })

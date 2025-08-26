@@ -49,4 +49,19 @@ export const facultyAdvisorType = defineType({
       of: [{ type: 'url' }],
     }),
   ],
+  preview: {
+    select: {
+      title: 'name',
+      role: 'role',
+      image: 'image'
+    },
+    prepare(selection) {
+      const {title, role, image} = selection
+      return {
+        title: title || 'Unnamed Advisor',
+        subtitle: role || 'No role specified',
+        media: image
+      }
+    }
+  }
 })

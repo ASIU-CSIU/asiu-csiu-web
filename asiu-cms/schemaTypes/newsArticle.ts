@@ -24,4 +24,20 @@ export const newsArticleType = defineType({
       validation: (Rule) => Rule.required(),
     }),
   ],
+  preview: {
+    select: {
+      title: 'title',
+      publishedAt: 'publishedAt',
+      content: 'content'
+    },
+    prepare(selection) {
+      const {title, publishedAt, content} = selection
+      const formattedDate = publishedAt ? new Date(publishedAt).toLocaleDateString() : 'Not published'
+      const excerpt = content ? content.substring(0, 50) + (content.length > 50 ? '...' : '') : 'No content'
+      return {
+        title: title || 'Untitled Article',
+        subtitle: `${formattedDate} • ${excerpt}`
+      }
+    }
+  }
 })

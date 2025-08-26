@@ -10,6 +10,8 @@ interface HeroBackgroundProps {
     starMinScale?: number
     overflowThreshold?: number
     minVelocityMode?: boolean // New option: when true, minimum velocity is more than zero
+    overlayImage?: string // Path to overlay image
+    overlayOpacity?: number // Opacity of overlay (0-1)
 }
 
 export function HeroBackground({
@@ -19,7 +21,9 @@ export function HeroBackground({
     starCount,
     starMinScale = 0.2,
     overflowThreshold = 50,
-    minVelocityMode = true
+    minVelocityMode = true,
+    overlayImage,
+    overlayOpacity = 0.3
 }: HeroBackgroundProps) {
     const canvasRef = useRef<HTMLCanvasElement>(null)
     const containerRef = useRef<HTMLDivElement>(null)
@@ -258,7 +262,7 @@ export function HeroBackground({
             document.removeEventListener('touchend', onMouseLeave)
             document.removeEventListener('mouseleave', onMouseLeave)
         }
-    }, [starColor, starSize, starCount, starMinScale, overflowThreshold, minVelocityMode])
+    }, [starColor, starSize, starCount, starMinScale, overflowThreshold, minVelocityMode, overlayImage, overlayOpacity])
 
     return (
         <div
@@ -274,6 +278,21 @@ export function HeroBackground({
                     touchAction: 'pan-y' // Allow vertical scrolling on touch devices
                 }}
             />
+
+            {/* Overlay Image */}
+            {overlayImage && (
+                <div
+                    className="absolute inset-0 w-full h-full pointer-events-none"
+                    style={{
+                        backgroundImage: `url(${overlayImage})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        backgroundRepeat: 'no-repeat',
+                        opacity: overlayOpacity,
+                        zIndex: 2
+                    }}
+                />
+            )}
         </div>
     )
 }
