@@ -78,7 +78,7 @@ export const baseMetadata: Metadata = {
 // Page-specific metadata configurations
 export const pageMetadata = {
   home: {
-    title: "ASIU | Evidence-Based Policy",
+    title: "Advocates for Science @ IU | Science Policy Advocacy",
     description: "Join Advocates for Science @ IU in promoting scientific integrity and evidence-based decision making. Discover our latest advocacy efforts, events, and opportunities to get involved.",
     keywords: [
       "science policy advocacy",
