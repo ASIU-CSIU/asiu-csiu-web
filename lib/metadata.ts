@@ -70,7 +70,8 @@ export const baseMetadata: Metadata = {
     },
   },
   verification: {
-    google: "your-google-verification-code",
+    // Add your actual Google Search Console verification code here
+    // google: "your-actual-verification-code",
   },
 }
 
@@ -104,6 +105,16 @@ export const pageMetadata = {
     alternates: {
       canonical: "/",
     },
+    other: {
+      link: [
+        {
+          rel: "preload",
+          href: "/images/overlays/overlay-home.JPG",
+          as: "image",
+          type: "image/jpeg"
+        }
+      ]
+    },
   },
   about: {
     title: "About Our Mission",
@@ -133,6 +144,16 @@ export const pageMetadata = {
     alternates: {
       canonical: "/about",
     },
+    other: {
+      link: [
+        {
+          rel: "preload",
+          href: "/images/overlays/overlay-about.JPG",
+          as: "image",
+          type: "image/jpeg"
+        }
+      ]
+    },
   },
   contact: {
     title: "Contact Us",
@@ -159,6 +180,16 @@ export const pageMetadata = {
     },
     alternates: {
       canonical: "/contact",
+    },
+    other: {
+      link: [
+        {
+          rel: "preload",
+          href: "/images/overlays/overlay-contact.JPG",
+          as: "image",
+          type: "image/jpeg"
+        }
+      ]
     },
   },
   getInvolved: {
@@ -187,6 +218,16 @@ export const pageMetadata = {
     },
     alternates: {
       canonical: "/get-involved",
+    },
+    other: {
+      link: [
+        {
+          rel: "preload",
+          href: "/images/overlays/overlay-get-involved.JPG",
+          as: "image",
+          type: "image/jpeg"
+        }
+      ]
     },
   },
   team: {
@@ -241,6 +282,16 @@ export const pageMetadata = {
     alternates: {
       canonical: "/news",
     },
+    other: {
+      link: [
+        {
+          rel: "preload",
+          href: "/images/overlays/overlay-news.JPG",
+          as: "image",
+          type: "image/jpeg"
+        }
+      ]
+    },
   },
   privacy: {
     title: "Privacy Policy",
@@ -266,6 +317,16 @@ export const pageMetadata = {
     alternates: {
       canonical: "/privacy",
     },
+    other: {
+      link: [
+        {
+          rel: "preload",
+          href: "/images/overlays/overlay-privacy.JPG",
+          as: "image",
+          type: "image/jpeg"
+        }
+      ]
+    },
   },
   accessibility: {
     title: "Accessibility Statement",
@@ -290,6 +351,16 @@ export const pageMetadata = {
     },
     alternates: {
       canonical: "/accessibility",
+    },
+    other: {
+      link: [
+        {
+          rel: "preload",
+          href: "/images/overlays/overlay-accessibility.JPG",
+          as: "image",
+          type: "image/jpeg"
+        }
+      ]
     },
   },
 }

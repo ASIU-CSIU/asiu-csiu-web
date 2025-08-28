@@ -1,0 +1,332 @@
+import { LayoutWrapper } from "@/components/layout/layout-wrapper"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/composite/card"
+import { Badge } from "@/components/ui/primitives/badge"
+import { Button } from "@/components/ui/primitives/button"
+import { Mail, Linkedin, Twitter, Users, Award, BookOpen, Heart } from "lucide-react"
+import { getPageMetadata, getStructuredData } from "@/lib/metadata"
+
+export const metadata = getPageMetadata("team")
+
+export default function TeamPage() {
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(getStructuredData("team"))
+        }}
+      />
+      <LayoutWrapper>
+        {/* Hero Section */}
+        <section className="py-16 bg-gradient-to-r from-science-blue to-science-green text-white">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 className="font-heading text-4xl font-bold mb-6">Our Team</h1>
+            <p className="text-xl text-blue-100 leading-relaxed">
+              Meet the dedicated students and faculty who lead Advocates for Science @ IU's advocacy efforts. Our
+              diverse team brings together expertise from various disciplines to drive meaningful change in science
+              policy.
+            </p>
+          </div>
+        </section>
+
+        {/* Leadership Team */}
+        <section className="py-16 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="font-heading text-3xl font-bold text-center mb-12">Leadership Team</h2>
+            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              <Card className="hover:shadow-lg transition-shadow">
+                <CardHeader className="text-center">
+                  <div className="w-24 h-24 bg-science-blue rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-white font-bold text-2xl">AM</span>
+                  </div>
+                  <CardTitle className="text-xl">Alex Martinez</CardTitle>
+                  <CardDescription className="text-science-blue font-medium">Co-President</CardDescription>
+                </CardHeader>
+                <CardContent className="text-center">
+                  <p className="text-gray-600 mb-4">
+                    Graduate student in Environmental Science with a focus on climate policy. Alex leads our legislative
+                    advocacy efforts and coordinates with state representatives on environmental legislation.
+                  </p>
+                  <div className="flex flex-wrap justify-center gap-2 mb-4">
+                    <Badge variant="secondary">Climate Policy</Badge>
+                    <Badge variant="secondary">Legislative Advocacy</Badge>
+                    <Badge variant="secondary">Environmental Science</Badge>
+                  </div>
+                  <div className="flex justify-center space-x-2">
+                    <Button size="sm" variant="outline">
+                      <Mail className="h-4 w-4" />
+                    </Button>
+                    <Button size="sm" variant="outline">
+                      <Linkedin className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="hover:shadow-lg transition-shadow">
+                <CardHeader className="text-center">
+                  <div className="w-24 h-24 bg-science-red rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-white font-bold text-2xl">SP</span>
+                  </div>
+                  <CardTitle className="text-xl">Sarah Patel</CardTitle>
+                  <CardDescription className="text-science-red font-medium">Co-President</CardDescription>
+                </CardHeader>
+                <CardContent className="text-center">
+                  <p className="text-gray-600 mb-4">
+                    Undergraduate in Public Policy and Biology. Sarah specializes in science communication and leads our
+                    education and outreach initiatives, making complex scientific concepts accessible to all.
+                  </p>
+                  <div className="flex flex-wrap justify-center gap-2 mb-4">
+                    <Badge variant="secondary">Science Communication</Badge>
+                    <Badge variant="secondary">Public Policy</Badge>
+                    <Badge variant="secondary">Education</Badge>
+                  </div>
+                  <div className="flex justify-center space-x-2">
+                    <Button size="sm" variant="outline">
+                      <Mail className="h-4 w-4" />
+                    </Button>
+                    <Button size="sm" variant="outline">
+                      <Twitter className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* Committee Chairs */}
+        <section className="py-16 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="font-heading text-3xl font-bold text-center mb-12">Committee Chairs</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <Card>
+                <CardHeader className="text-center">
+                  <div className="w-16 h-16 bg-science-green rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-white font-bold">MJ</span>
+                  </div>
+                  <CardTitle>Marcus Johnson</CardTitle>
+                  <CardDescription className="text-science-green font-medium">Legislative Advocacy Chair</CardDescription>
+                </CardHeader>
+                <CardContent className="text-center">
+                  <p className="text-gray-600 text-sm mb-3">
+                    PhD candidate in Political Science coordinating our policy research and government relations efforts.
+                  </p>
+                  <Badge variant="outline" className="text-xs">
+                    Policy Research
+                  </Badge>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader className="text-center">
+                  <div className="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-white font-bold">EL</span>
+                  </div>
+                  <CardTitle>Emily Liu</CardTitle>
+                  <CardDescription className="text-purple-600 font-medium">Education & Outreach Chair</CardDescription>
+                </CardHeader>
+                <CardContent className="text-center">
+                  <p className="text-gray-600 text-sm mb-3">
+                    Master's student in Science Education developing workshops and community engagement programs.
+                  </p>
+                  <Badge variant="outline" className="text-xs">
+                    Workshop Development
+                  </Badge>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader className="text-center">
+                  <div className="w-16 h-16 bg-orange-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-white font-bold">DK</span>
+                  </div>
+                  <CardTitle>David Kim</CardTitle>
+                  <CardDescription className="text-orange-600 font-medium">Events Chair</CardDescription>
+                </CardHeader>
+                <CardContent className="text-center">
+                  <p className="text-gray-600 text-sm mb-3">
+                    Undergraduate in Event Management organizing our advocacy training sessions and public forums.
+                  </p>
+                  <Badge variant="outline" className="text-xs">
+                    Event Planning
+                  </Badge>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader className="text-center">
+                  <div className="w-16 h-16 bg-pink-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-white font-bold">RT</span>
+                  </div>
+                  <CardTitle>Rachel Thompson</CardTitle>
+                  <CardDescription className="text-pink-600 font-medium">Communications Chair</CardDescription>
+                </CardHeader>
+                <CardContent className="text-center">
+                  <p className="text-gray-600 text-sm mb-3">
+                    Graduate student in Media Studies managing our digital presence and content strategy.
+                  </p>
+                  <Badge variant="outline" className="text-xs">
+                    Digital Strategy
+                  </Badge>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader className="text-center">
+                  <div className="w-16 h-16 bg-teal-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-white font-bold">JW</span>
+                  </div>
+                  <CardTitle>Jordan Williams</CardTitle>
+                  <CardDescription className="text-teal-600 font-medium">Steering Chair</CardDescription>
+                </CardHeader>
+                <CardContent className="text-center">
+                  <p className="text-gray-600 text-sm mb-3">
+                    PhD candidate in Organizational Leadership coordinating strategic planning and group coordination.
+                  </p>
+                  <Badge variant="outline" className="text-xs">
+                    Strategic Planning
+                  </Badge>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader className="text-center">
+                  <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-white font-bold">AC</span>
+                  </div>
+                  <CardTitle>Aisha Chen</CardTitle>
+                  <CardDescription className="text-green-600 font-medium">Finance Chair</CardDescription>
+                </CardHeader>
+                <CardContent className="text-center">
+                  <p className="text-gray-600 text-sm mb-3">
+                    Master's student in Public Administration managing budgets, grants, and fundraising initiatives.
+                  </p>
+                  <Badge variant="outline" className="text-xs">
+                    Budget Management
+                  </Badge>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* Faculty Advisor */}
+        <section className="py-16 bg-white">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="font-heading text-3xl font-bold text-center mb-12">Faculty Advisor</h2>
+            <Card className="max-w-2xl mx-auto hover:shadow-lg transition-shadow">
+              <CardHeader className="text-center">
+                <div className="w-32 h-32 bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <span className="text-white font-bold text-3xl">DR</span>
+                </div>
+                <CardTitle className="text-2xl">Dr. Rebecca Foster</CardTitle>
+                <CardDescription className="text-gray-700 font-medium text-lg">Faculty Advisor</CardDescription>
+              </CardHeader>
+              <CardContent className="text-center">
+                <p className="text-gray-600 mb-6 leading-relaxed">
+                  Professor of Environmental Policy and Director of the Science Policy Institute at IU. Dr. Foster brings
+                  over 15 years of experience in science policy research and has advised numerous student advocacy
+                  organizations. Her research focuses on the intersection of scientific evidence and democratic
+                  decision-making.
+                </p>
+                <div className="flex flex-wrap justify-center gap-2 mb-6">
+                  <Badge variant="secondary">Environmental Policy</Badge>
+                  <Badge variant="secondary">Science Policy Research</Badge>
+                  <Badge variant="secondary">Democratic Governance</Badge>
+                  <Badge variant="secondary">Student Mentorship</Badge>
+                </div>
+                <div className="flex justify-center space-x-4">
+                  <Button size="sm" variant="outline">
+                    <Mail className="h-4 w-4 mr-2" />
+                    Contact
+                  </Button>
+                  <Button size="sm" variant="outline">
+                    <BookOpen className="h-4 w-4 mr-2" />
+                    Research
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+        {/* Team Spotlight */}
+        <section className="py-16 bg-gray-50">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="font-heading text-3xl font-bold text-center mb-12">Team Spotlight</h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              <Card>
+                <CardHeader>
+                  <div className="w-12 h-12 bg-science-blue rounded-lg flex items-center justify-center mb-4">
+                    <Users className="h-6 w-6 text-white" />
+                  </div>
+                  <CardTitle className="text-science-blue">Collaborative Leadership</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-600 text-sm">
+                    Our co-president model ensures diverse perspectives and shared responsibility in guiding the
+                    organization's mission and activities.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <div className="w-12 h-12 bg-science-red rounded-lg flex items-center justify-center mb-4">
+                    <Award className="h-6 w-6 text-white" />
+                  </div>
+                  <CardTitle className="text-science-red">Expertise & Experience</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-600 text-sm">
+                    Our team brings together students from diverse academic backgrounds, creating a rich foundation of
+                    knowledge and skills.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <div className="w-12 h-12 bg-science-green rounded-lg flex items-center justify-center mb-4">
+                    <Heart className="h-6 w-6 text-white" />
+                  </div>
+                  <CardTitle className="text-science-green">Passion for Change</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-600 text-sm">
+                    Every team member is driven by a shared commitment to ensuring science guides policy decisions for a
+                    better future.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* Join the Team CTA */}
+        <section className="py-16 bg-science-blue text-white">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h3 className="font-heading text-3xl font-bold mb-6">Want to Join Our Leadership Team?</h3>
+            <p className="text-xl mb-8 text-blue-100">
+              We're always looking for passionate students to take on leadership roles and help guide our advocacy
+              efforts.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" variant="secondary" className="bg-white text-science-blue hover:bg-gray-100">
+                Learn About Leadership Opportunities
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-white text-white hover:bg-white hover:text-science-blue bg-transparent"
+              >
+                Contact Leadership Team
+              </Button>
+            </div>
+          </div>
+        </section>
+      </LayoutWrapper>
+    </>
+  )
+}

@@ -1,9 +1,9 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { LayoutWrapper } from "@/components/layout-wrapper"
-import { HeroSection } from "@/components/hero-section"
-import { NewsActivityCard } from "@/components/news-activity-card"
+import { Button } from "@/components/ui/primitives/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/composite/card"
+import { Badge } from "@/components/ui/primitives/badge"
+import { LayoutWrapper } from "@/components/layout/layout-wrapper"
+import { HeroSection } from "@/components/sections/hero/hero-section"
+import { NewsActivityCard } from "@/components/cards/news-activity-card"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, Users, Megaphone, BookOpen, Calendar, ExternalLink, Quote, TrendingUp, Award, Target } from "lucide-react"
@@ -30,7 +30,7 @@ export default function HomePage() {
           primaryButtonText="Get Involved"
           secondaryButtonText="Learn More"
           className="py-16"
-          overlayImage="/overlay.JPG"
+          overlayImage="/images/overlays/overlay.JPG"
           overlayOpacity={0.4}
           showAffiliateOutcrop={true}
         />
@@ -47,7 +47,7 @@ export default function HomePage() {
 
             <div className="flex overflow-x-auto gap-6 pb-4 scrollbar-hide">
               <NewsActivityCard
-                image="/climate-policy-workshop.png"
+                image="/images/events/climate-policy-workshop.png"
                 imageAlt="Climate Policy Workshop"
                 badge="Climate Policy"
                 badgeColor="science-blue"
@@ -61,7 +61,7 @@ export default function HomePage() {
               />
 
               <NewsActivityCard
-                image="/healthcare-policy-open-letter.png"
+                image="/images/events/healthcare-policy-open-letter.png"
                 imageAlt="Healthcare Policy Forum"
                 badge="Healthcare"
                 badgeColor="science-green"
@@ -75,7 +75,7 @@ export default function HomePage() {
               />
 
               <NewsActivityCard
-                image="/science-democracy-forum.png"
+                image="/images/events/science-democracy-forum.png"
                 imageAlt="Science Democracy Forum"
                 badge="Democracy"
                 badgeColor="science-red"
@@ -89,7 +89,7 @@ export default function HomePage() {
               />
 
               <NewsActivityCard
-                image="/environmental-advocacy-meeting.png"
+                image="/images/events/environmental-advocacy-meeting.png"
                 imageAlt="Environmental Advocacy Meeting"
                 badge="Environment"
                 badgeColor="science-blue"
@@ -103,7 +103,7 @@ export default function HomePage() {
               />
 
               <NewsActivityCard
-                image="/science-presentation.png"
+                image="/images/events/science-presentation.png"
                 imageAlt="Science Policy Presentation"
                 badge="Education"
                 badgeColor="science-green"
@@ -370,7 +370,7 @@ export default function HomePage() {
                   <div className="flex items-center justify-center space-x-3">
                     <div className="w-10 h-10 rounded-lg overflow-hidden">
                       <Image
-                        src="/placeholder-user.jpg"
+                        src="/images/placeholders/placeholder-user.jpg"
                         alt="Sarah Chen"
                         width={40}
                         height={40}
@@ -394,7 +394,7 @@ export default function HomePage() {
                   <div className="flex items-center justify-center space-x-3">
                     <div className="w-10 h-10 rounded-lg overflow-hidden">
                       <Image
-                        src="/placeholder-user.jpg"
+                        src="/images/placeholders/placeholder-user.jpg"
                         alt="Marcus Johnson"
                         width={40}
                         height={40}
@@ -418,7 +418,7 @@ export default function HomePage() {
                   <div className="flex items-center justify-center space-x-3">
                     <div className="w-10 h-10 rounded-lg overflow-hidden">
                       <Image
-                        src="/placeholder-user.jpg"
+                        src="/images/placeholders/placeholder-user.jpg"
                         alt="Dr. Emily Rodriguez"
                         width={40}
                         height={40}

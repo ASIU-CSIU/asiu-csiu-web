@@ -1,8 +1,8 @@
 import type { Metadata } from "next"
 import { Poppins } from "next/font/google"
 import "./globals.css"
-import { ThemeProvider } from "@/components/theme-provider"
-import { ToastProvider } from "@/components/ui/toast"
+import { ThemeProvider } from "@/components/layout/theme-provider"
+import { ToastProvider } from "@/components/ui/feedback/toast"
 import { baseMetadata, getStructuredData } from "@/lib/metadata"
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
@@ -27,13 +27,13 @@ export default function RootLayout({
     <html lang="en" className={poppins.variable} suppressHydrationWarning>
       <head>
         {/* Favicon */}
-        <link rel="icon" type="image/svg+xml" href="/logo.svg" />
-        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/logo.svg" />
-        <link rel="shortcut icon" href="/logo.svg" />
+        <link rel="icon" type="image/svg+xml" href="/icons/logo.svg" />
+        <link rel="icon" type="image/x-icon" href="/icons/favicon.ico" />
+        <link rel="apple-touch-icon" href="/icons/logo.svg" />
+        <link rel="shortcut icon" href="/icons/logo.svg" />
 
         {/* Preload critical resources */}
-        <link rel="preload" href="/logo.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/icons/logo.svg" as="image" type="image/svg+xml" />
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="dns-prefetch" href="//fonts.gstatic.com" />
 
