@@ -31,14 +31,14 @@ export const baseMetadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://advocatesforscienceatiu.org"),
+  metadataBase: new URL("https://www.advocatesforscienceatiu.org"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://advocatesforscienceatiu.org",
+    url: "https://www.advocatesforscienceatiu.org",
     siteName: "Advocates for Science @ IU",
     title: "Advocates for Science @ IU | Science Policy Advocacy",
     description: "Student affiliate of Concerned Scientists @ IU, working to promote scientific integrity and evidence-based decision making in policy and society.",
@@ -373,9 +373,9 @@ export const structuredData = {
     "name": "Advocates for Science @ IU",
     "alternateName": "ASIU",
     "description": "Student affiliate of Concerned Scientists @ IU, working to promote scientific integrity and evidence-based decision making in policy and society.",
-    "url": "https://advocatesforscienceatiu.org",
-    "logo": "https://advocatesforscienceatiu.org/logo.svg",
-    "image": "https://advocatesforscienceatiu.org/logo.svg",
+    "url": "https://www.advocatesforscienceatiu.org",
+    "logo": "https://www.advocatesforscienceatiu.org/logo.svg",
+    "image": "https://www.advocatesforscienceatiu.org/logo.svg",
     "sameAs": [
       "https://www.instagram.com/asiu.indiana",
       "https://www.facebook.com/profile.php?id=61573877797290"
@@ -402,7 +402,7 @@ export const structuredData = {
     "@type": "WebPage",
     "name": "Advocates for Science @ IU - Home",
     "description": "Student affiliate of Concerned Scientists @ IU, working to promote scientific integrity and evidence-based decision making in policy and society.",
-    "url": "https://advocatesforscienceatiu.org",
+    "url": "https://www.advocatesforscienceatiu.org",
     "mainEntity": {
       "@type": "Organization",
       "name": "Advocates for Science @ IU",
@@ -411,7 +411,7 @@ export const structuredData = {
     "potentialAction": [
       {
         "@type": "JoinAction",
-        "target": "https://advocatesforscienceatiu.org/get-involved",
+        "target": "https://www.advocatesforscienceatiu.org/get-involved",
         "description": "Join Advocates for Science @ IU"
       },
       {
@@ -426,7 +426,7 @@ export const structuredData = {
     "@type": "WebPage",
     "name": "About - Advocates for Science @ IU",
     "description": "Learn about our mission to bridge the gap between scientific research and public policy",
-    "url": "https://advocatesforscienceatiu.org/about",
+    "url": "https://www.advocatesforscienceatiu.org/about",
     "mainEntity": {
       "@type": "Organization",
       "name": "Advocates for Science @ IU",
@@ -440,7 +440,7 @@ export const structuredData = {
     "@type": "ContactPage",
     "name": "Contact - Advocates for Science @ IU",
     "description": "Get in touch with our leadership team and learn how to get involved",
-    "url": "https://advocatesforscienceatiu.org/contact",
+    "url": "https://www.advocatesforscienceatiu.org/contact",
     "mainEntity": {
       "@type": "Organization",
       "name": "Advocates for Science @ IU",
@@ -457,7 +457,7 @@ export const structuredData = {
     "@type": "WebPage",
     "name": "Get Involved - Advocates for Science @ IU",
     "description": "Join us and make a difference in science policy",
-    "url": "https://advocatesforscienceatiu.org/get-involved",
+    "url": "https://www.advocatesforscienceatiu.org/get-involved",
     "mainEntity": {
       "@type": "ItemList",
       "name": "Upcoming Events",
@@ -511,7 +511,7 @@ export const structuredData = {
     "@type": "WebPage",
     "name": "Our Team - Advocates for Science @ IU",
     "description": "Meet our dedicated leadership team driving meaningful change in science policy",
-    "url": "https://advocatesforscienceatiu.org/team",
+    "url": "https://www.advocatesforscienceatiu.org/team",
     "mainEntity": {
       "@type": "Organization",
       "name": "Advocates for Science @ IU",
@@ -543,7 +543,7 @@ export const structuredData = {
     "@type": "CollectionPage",
     "name": "News - Advocates for Science @ IU",
     "description": "Stay updated with our latest news bulletins, articles, and educational content about science policy and advocacy.",
-    "url": "https://advocatesforscienceatiu.org/news",
+    "url": "https://www.advocatesforscienceatiu.org/news",
     "mainEntity": {
       "@type": "ItemList",
       "name": "News Articles",
@@ -565,7 +565,7 @@ export const structuredData = {
               "name": "Advocates for Science @ IU",
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://advocatesforscienceatiu.org/logo.svg"
+                "url": "https://www.advocatesforscienceatiu.org/logo.svg"
               }
             },
             "datePublished": "2024-12-15",
@@ -576,7 +576,7 @@ export const structuredData = {
     },
     "potentialAction": {
       "@type": "SubscribeAction",
-      "target": "https://advocatesforscienceatiu.org/news",
+      "target": "https://www.advocatesforscienceatiu.org/news",
       "description": "Subscribe to our news updates"
     }
   },
@@ -585,7 +585,7 @@ export const structuredData = {
     "@type": "WebPage",
     "name": "Privacy Policy - Advocates for Science @ IU",
     "description": "Learn about our privacy practices and how we protect your personal information",
-    "url": "https://advocatesforscienceatiu.org/privacy",
+    "url": "https://www.advocatesforscienceatiu.org/privacy",
     "mainEntity": {
       "@type": "WebPage",
       "name": "Privacy Policy",
@@ -597,7 +597,7 @@ export const structuredData = {
     "@type": "WebPage",
     "name": "Accessibility Statement - Advocates for Science @ IU",
     "description": "Learn about our commitment to digital accessibility and inclusive design",
-    "url": "https://advocatesforscienceatiu.org/accessibility",
+    "url": "https://www.advocatesforscienceatiu.org/accessibility",
     "mainEntity": {
       "@type": "WebPage",
       "name": "Accessibility Statement",
@@ -618,7 +618,7 @@ export function getPageMetadata(page: keyof typeof pageMetadata): Metadata {
       ...baseMetadata.openGraph,
       title: pageMeta.openGraph.title,
       description: pageMeta.openGraph.description,
-      url: `https://advocatesforscienceatiu.org${pageMeta.alternates.canonical}`,
+      url: `https://www.advocatesforscienceatiu.org${pageMeta.alternates.canonical}`,
     },
     twitter: {
       ...baseMetadata.twitter,
@@ -631,7 +631,7 @@ export function getPageMetadata(page: keyof typeof pageMetadata): Metadata {
 
 // Helper function to get breadcrumb structured data
 export function getBreadcrumbData(path: string, title: string) {
-  const baseUrl = "https://advocatesforscienceatiu.org"
+  const baseUrl = "https://www.advocatesforscienceatiu.org"
   const pathSegments = path.split('/').filter(Boolean)
 
   const breadcrumbItems = [
