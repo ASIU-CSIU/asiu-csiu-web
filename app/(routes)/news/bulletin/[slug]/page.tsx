@@ -8,6 +8,19 @@ import { getNewsBulletins } from "@/lib/sanity"
 import { parseBulletinContent, formatPublicationDateLong, getCategoryColor } from "@/lib/utils"
 import type { NewsBulletin } from "@/lib/types"
 
+// Generate static params for build-time optimization
+export async function generateStaticParams() {
+    try {
+        const bulletins = await getNewsBulletins()
+        return bulletins.map((bulletin) => ({
+            slug: bulletin.publication,
+        }))
+    } catch (error) {
+        console.error('Failed to generate static params:', error)
+        return []
+    }
+}
+
 interface BulletinPageProps {
     params: {
         slug: string

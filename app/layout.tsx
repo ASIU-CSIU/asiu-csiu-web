@@ -28,12 +28,16 @@ export default function RootLayout({
       <head>
         {/* Favicon */}
         <link rel="icon" type="image/x-icon" href="/icons/favicon.ico" />
-        <link rel="icon" type="image/svg+xml" href="/icons/logo.svg" />
-        <link rel="apple-touch-icon" href="/icons/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/icons/favicon-apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/icons/favicon-android-chrome-192x192.png" />
+        <link rel="icon" type="image/png" sizes="512x512" href="/icons/favicon-android-chrome-512x512.png" />
+        <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
         <link rel="shortcut icon" href="/icons/favicon.ico" />
 
         {/* Preload critical resources */}
-        <link rel="preload" href="/icons/logo.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/icons/favicon.svg" as="image" type="image/svg+xml" />
 
         {/* Preload overlay images for all pages */}
         <link rel="preload" href="/images/overlays/overlay-home.JPG" as="image" />
