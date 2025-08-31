@@ -10,6 +10,7 @@ import { Label } from "@/components/ui/primitives/label"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/composite/accordion"
 import { Mail, Instagram, Facebook, MapPin, Clock, MessageSquare, Users, Calendar } from "lucide-react"
 import { useState } from "react"
+import Link from "next/link"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -57,6 +58,7 @@ ${fullName}`)}`
           primaryButtonText=""
           secondaryButtonText=""
           className="py-16"
+          overlayImage="/images/overlays/overlay-contact.JPG"
         />
 
         {/* Contact Information */}
@@ -172,13 +174,17 @@ ${fullName}`)}`
                 <div className="mt-8">
                   <h3 className="font-heading text-xl font-bold mb-4">Follow Us</h3>
                   <div className="flex space-x-4">
-                    <Button variant="outline" size="sm" className="flex items-center space-x-2">
-                      <Instagram className="h-4 w-4" />
-                      <span>Instagram</span>
+                    <Button variant="outline" size="sm" className="flex items-center space-x-2" asChild>
+                      <a href="https://www.instagram.com/asiu.indiana" target="_blank" rel="noopener noreferrer">
+                        <Instagram className="h-4 w-4" />
+                        <span>Instagram</span>
+                      </a>
                     </Button>
-                    <Button variant="outline" size="sm" className="flex items-center space-x-2">
-                      <Facebook className="h-4 w-4" />
-                      <span>Facebook</span>
+                    <Button variant="outline" size="sm" className="flex items-center space-x-2" asChild>
+                      <a href="https://www.facebook.com/asiu.indiana" target="_blank" rel="noopener noreferrer">
+                        <Facebook className="h-4 w-4" />
+                        <span>Facebook</span>
+                      </a>
                     </Button>
                   </div>
                 </div>
@@ -245,15 +251,16 @@ ${fullName}`)}`
               future.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" variant="secondary" className="bg-white text-science-blue hover:bg-gray-100">
-                Attend a Meeting
+              <Button size="lg" variant="secondary" className="bg-white text-science-blue hover:bg-gray-100" asChild>
+                <Link href="/news">Attend a Meeting</Link>
               </Button>
               <Button
                 size="lg"
                 variant="outline"
                 className="border-white text-white hover:bg-white hover:text-science-blue bg-transparent"
+                asChild
               >
-                Learn More
+                <Link href="/about">Learn More</Link>
               </Button>
             </div>
           </div>

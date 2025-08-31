@@ -2,6 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/primitives/badge"
 import { Button } from "@/components/ui/primitives/button"
 import { Clock, MapPin, Users, ExternalLink } from "lucide-react"
+import Image from "next/image"
 import type { Event } from "@/lib/types"
 
 interface EventCardProps {
@@ -77,6 +78,18 @@ export function EventCard({ event, isPast = false }: EventCardProps) {
 
     return (
         <Card className={`${borderColor} hover:shadow-lg transition-shadow ${isPast ? 'opacity-75' : ''}`}>
+            {event.imageUrl && (
+                <div className="relative h-48 w-full">
+                    <Image
+                        src={event.imageUrl}
+                        alt={event.title}
+                        fill
+                        className="object-cover rounded-t-lg"
+                        loading="lazy"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                </div>
+            )}
             <CardHeader>
                 <div className="flex items-center justify-between mb-2">
                     <Badge className={badgeColor}>{event.tags[0] || 'Event'}</Badge>

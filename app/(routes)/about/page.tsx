@@ -44,6 +44,7 @@ export default async function AboutPage() {
           primaryButtonText="Learn More"
           secondaryButtonText=""
           className="py-16"
+          overlayImage="/images/overlays/overlay-about.JPG"
         />
 
         {/* Mission Statement */}
@@ -179,15 +180,16 @@ export default async function AboutPage() {
               efforts.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" variant="secondary" className="bg-white text-science-blue hover:bg-gray-100">
-                Learn About Leadership Opportunities
+              <Button size="lg" variant="secondary" className="bg-white text-science-blue hover:bg-gray-100" asChild>
+                <Link href="/get-involved">Learn About Leadership Opportunities</Link>
               </Button>
               <Button
                 size="lg"
                 variant="outline"
                 className="border-white text-white hover:bg-white hover:text-science-blue bg-transparent"
+                asChild
               >
-                Contact Leadership Team
+                <Link href="/contact">Contact Leadership Team</Link>
               </Button>
             </div>
           </div>
@@ -245,6 +247,7 @@ export default async function AboutPage() {
                   width={120}
                   height={80}
                   className="object-contain"
+                  loading="lazy"
                 />
                 <Image
                   src="/partner-logosArtboard-2.png"
@@ -252,6 +255,7 @@ export default async function AboutPage() {
                   width={120}
                   height={80}
                   className="object-contain"
+                  loading="lazy"
                 />
                 <Image
                   src="/partner-logosArtboard-3.png"
@@ -259,6 +263,7 @@ export default async function AboutPage() {
                   width={120}
                   height={80}
                   className="object-contain"
+                  loading="lazy"
                 />
                 <Image
                   src="/partner-logosArtboard-4.png"
@@ -266,6 +271,7 @@ export default async function AboutPage() {
                   width={120}
                   height={80}
                   className="object-contain"
+                  loading="lazy"
                 />
                 <Image
                   src="/partner-logosArtboard-5.png"
@@ -273,6 +279,7 @@ export default async function AboutPage() {
                   width={120}
                   height={80}
                   className="object-contain"
+                  loading="lazy"
                 />
                 <Image
                   src="/partner-logosArtboard-6.png"
@@ -280,6 +287,7 @@ export default async function AboutPage() {
                   width={120}
                   height={80}
                   className="object-contain"
+                  loading="lazy"
                 />
                 <Image
                   src="/partner-logosArtboard-7.png"
@@ -287,6 +295,7 @@ export default async function AboutPage() {
                   width={120}
                   height={80}
                   className="object-contain"
+                  loading="lazy"
                 />
                 <Image
                   src="/partner-logosArtboard-10.png"
@@ -294,6 +303,7 @@ export default async function AboutPage() {
                   width={120}
                   height={80}
                   className="object-contain"
+                  loading="lazy"
                 />
               </div>
             </div>

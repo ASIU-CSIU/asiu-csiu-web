@@ -21,7 +21,7 @@ export function PersonCard({ person }: PersonCardProps) {
               width={64}
               height={64}
               className="w-full h-full rounded-full object-cover"
-              priority={false}
+              loading="lazy"
             />
           ) : (
             <span className="text-white font-bold">

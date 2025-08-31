@@ -42,7 +42,7 @@ export function NewsletterSignup({
 
         try {
             // Send subscription email
-            const response = await fetch('/api/newsletter-subscribe', {
+            const response = await fetch('/newsletter-subscribe', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -51,7 +51,8 @@ export function NewsletterSignup({
             })
 
             if (response.ok) {
-                showToast("Successfully subscribed to our newsletter!", "success")
+                const result = await response.json()
+                showToast("Thank you! Your subscription request has been received.", "success")
                 setEmail("")
             } else {
                 const error = await response.json()
@@ -71,7 +72,15 @@ export function NewsletterSignup({
     }
 
     return (
-        <div suppressHydrationWarning className={`flex flex-col sm:flex-row gap-2 justify-center max-w-md mx-auto ${className}`}>
+        <form
+            onSubmit={(e) => {
+                e.preventDefault()
+                handleSubscribe()
+            }}
+            className={`flex flex-col sm:flex-row gap-2 justify-center max-w-md mx-auto ${className}`}
+            aria-label="Newsletter subscription form"
+            suppressHydrationWarning
+        >
             <Input
                 type="email"
                 placeholder={placeholder}
@@ -80,24 +89,33 @@ export function NewsletterSignup({
                 onKeyPress={handleKeyPress}
                 className="flex-1"
                 disabled={isLoading}
+                aria-label="Email address for newsletter subscription"
+                aria-describedby="email-help"
+                aria-invalid={email && !validateEmail(email) ? "true" : "false"}
+                required
+                suppressHydrationWarning
             />
             <Button
-                onClick={handleSubscribe}
+                type="submit"
                 disabled={isLoading}
                 className="bg-science-blue text-white"
+                aria-label={isLoading ? "Subscribing to newsletter..." : `Subscribe to newsletter with email: ${email}`}
             >
                 {isLoading ? (
                     <div className="flex items-center gap-2">
-                        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                        Subscribing...
+                        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" aria-hidden="true"></div>
+                        <span>Subscribing...</span>
                     </div>
                 ) : (
                     <>
-                        <Mail className="mr-2 h-4 w-4" />
-                        {buttonText}
+                        <Mail className="mr-2 h-4 w-4" aria-hidden="true" />
+                        <span>{buttonText}</span>
                     </>
                 )}
             </Button>
-        </div>
+            <div id="email-help" className="sr-only">
+                Enter your email address to subscribe to our newsletter
+            </div>
+        </form>
     )
 }

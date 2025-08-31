@@ -17,7 +17,7 @@ interface HeroBackgroundProps {
 export function HeroBackground({
     className = '',
     starColor = '#fff',
-    starSize = 3,
+    starSize = 2,
     starCount,
     starMinScale = 0.2,
     overflowThreshold = 50,
@@ -289,10 +289,29 @@ export function HeroBackground({
                         backgroundPosition: 'center',
                         backgroundRepeat: 'no-repeat',
                         opacity: overlayOpacity,
-                        zIndex: 2
+                        zIndex: 1
                     }}
                 />
             )}
+
+            {/* Gradient Background */}
+            <div
+                className="absolute inset-0 w-full h-full pointer-events-none"
+                style={{
+                    background: 'radial-gradient(circle at top right, rgba(0, 0, 0, 0.13), transparent), radial-gradient(circle at 20% 80%, rgba(0, 0, 0, 0.13), transparent)',
+                    zIndex: 2
+                }}
+            />
+
+            {/* Particle Effect Canvas (Overlay) */}
+            <canvas
+                ref={canvasRef}
+                className="absolute inset-0 w-full h-full pointer-events-none"
+                style={{
+                    touchAction: 'pan-y', // Allow vertical scrolling on touch devices
+                    zIndex: 3
+                }}
+            />
         </div>
     )
 }

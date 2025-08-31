@@ -107,6 +107,55 @@ export const getEvents = async () => {
     title,
     subtitle,
     description,
+    "imageUrl": image.asset->url,
+    date,
+    startTime,
+    endTime,
+    location,
+    locationUrl,
+    audience,
+    participantCount,
+    tags,
+    btnText,
+    btnUrl
+  } | order(date asc)`
+
+  return await client.fetch(query)
+}
+
+// Query to fetch past events (events with date before today)
+export const getPastEvents = async () => {
+  const today = new Date().toISOString().split('T')[0] // Format: YYYY-MM-DD
+  const query = `*[_type == "event" && date < "${today}"] {
+    _id,
+    title,
+    subtitle,
+    description,
+    "imageUrl": image.asset->url,
+    date,
+    startTime,
+    endTime,
+    location,
+    locationUrl,
+    audience,
+    participantCount,
+    tags,
+    btnText,
+    btnUrl
+  } | order(date desc)`
+
+  return await client.fetch(query)
+}
+
+// Query to fetch upcoming events (events with date today or in the future)
+export const getUpcomingEvents = async () => {
+  const today = new Date().toISOString().split('T')[0] // Format: YYYY-MM-DD
+  const query = `*[_type == "event" && date >= "${today}"] {
+    _id,
+    title,
+    subtitle,
+    description,
+    "imageUrl": image.asset->url,
     date,
     startTime,
     endTime,

@@ -3,15 +3,21 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/primitives/badge"
 import { LayoutWrapper } from "@/components/layout/layout-wrapper"
 import { HeroSection } from "@/components/sections/hero/hero-section"
-import { NewsActivityCard } from "@/components/cards/news-activity-card"
+import { LatestNewsCard } from "@/components/cards/latest-news-card"
+import { EventCard } from "@/components/cards/event-card"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, Users, Megaphone, BookOpen, Calendar, ExternalLink, Quote, TrendingUp, Award, Target } from "lucide-react"
 import { getPageMetadata, getStructuredData } from "@/lib/metadata"
+import { getPastEvents, getUpcomingEvents } from "@/lib/sanity"
+import type { Event } from "@/lib/types"
 
 export const metadata = getPageMetadata("home")
 
-export default function HomePage() {
+export default async function HomePage() {
+  const pastEvents = await getPastEvents()
+  const upcomingEvents = await getUpcomingEvents()
+
   return (
     <>
       <script
@@ -28,10 +34,11 @@ export default function HomePage() {
           showLogo={true}
           showNewsletter={true}
           primaryButtonText="Get Involved"
+          primaryButtonLink="/get-involved"
           secondaryButtonText="Learn More"
+          secondaryButtonLink="/about"
           className="py-16"
-          overlayImage="/images/overlays/overlay.JPG"
-          overlayOpacity={0.4}
+          overlayImage="/images/overlays/overlay-home.JPG"
           showAffiliateOutcrop={true}
         />
 
@@ -46,75 +53,15 @@ export default function HomePage() {
             </div>
 
             <div className="flex overflow-x-auto gap-6 pb-4 scrollbar-hide">
-              <NewsActivityCard
-                image="/images/events/climate-policy-workshop.png"
-                imageAlt="Climate Policy Workshop"
-                badge="Climate Policy"
-                badgeColor="science-blue"
-                date="Dec 2024"
-                title="Climate Action Workshop"
-                subtitle="Training session on effective climate policy advocacy"
-                description="Hosted a comprehensive workshop teaching students how to effectively communicate climate science to policymakers and the public."
-                participants="45 participants"
-                buttonColor="science-blue"
-                borderColor="science-blue"
-              />
-
-              <NewsActivityCard
-                image="/images/events/healthcare-policy-open-letter.png"
-                imageAlt="Healthcare Policy Forum"
-                badge="Healthcare"
-                badgeColor="science-green"
-                date="Nov 2024"
-                title="Healthcare Policy Forum"
-                subtitle="Community discussion on evidence-based healthcare policy"
-                description="Organized a public forum bringing together healthcare professionals, researchers, and community members to discuss evidence-based healthcare policy solutions."
-                participants="120 attendees"
-                buttonColor="science-green"
-                borderColor="science-green"
-              />
-
-              <NewsActivityCard
-                image="/images/events/science-democracy-forum.png"
-                imageAlt="Science Democracy Forum"
-                badge="Democracy"
-                badgeColor="science-red"
-                date="Oct 2024"
-                title="Science Democracy Forum"
-                subtitle="Advocating for science in democratic processes"
-                description="Hosted a forum on the importance of scientific evidence in democratic decision-making processes and policy formation."
-                participants="85 participants"
-                buttonColor="science-red"
-                borderColor="science-red"
-              />
-
-              <NewsActivityCard
-                image="/images/events/environmental-advocacy-meeting.png"
-                imageAlt="Environmental Advocacy Meeting"
-                badge="Environment"
-                badgeColor="science-blue"
-                date="Sep 2024"
-                title="Environmental Advocacy Meeting"
-                subtitle="Collaborative session with environmental organizations"
-                description="Partnered with local environmental organizations to coordinate advocacy efforts and share best practices for science communication."
-                participants="60 attendees"
-                buttonColor="science-blue"
-                borderColor="science-blue"
-              />
-
-              <NewsActivityCard
-                image="/images/events/science-presentation.png"
-                imageAlt="Science Policy Presentation"
-                badge="Education"
-                badgeColor="science-green"
-                date="Aug 2024"
-                title="Science Policy Presentation"
-                subtitle="Educational session on science policy fundamentals"
-                description="Delivered an educational presentation to incoming students about the intersection of science and policy, and how to get involved in advocacy."
-                participants="200+ students"
-                buttonColor="science-green"
-                borderColor="science-green"
-              />
+              {pastEvents && pastEvents.length > 0 ? (
+                pastEvents.slice(0, 5).map((event: Event) => (
+                  <LatestNewsCard key={event._id} event={event} />
+                ))
+              ) : (
+                <div className="text-center text-gray-500 py-12 w-full">
+                  <p>No past events available yet.</p>
+                </div>
+              )}
             </div>
           </div>
         </section>
@@ -269,83 +216,15 @@ export default function HomePage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <Card className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="flex items-center justify-between mb-2">
-                    <Badge className="bg-science-blue">Training</Badge>
-                    <span className="text-sm text-gray-500">Jan 15, 2025</span>
-                  </div>
-                  <CardTitle>Science Communication Workshop</CardTitle>
-                  <CardDescription>Learn effective strategies for communicating with policymakers</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-3 mb-4">
-                    <div className="flex items-center space-x-2">
-                      <Calendar className="h-4 w-4 text-gray-500" />
-                      <span className="text-sm">6:00 PM - 9:00 PM</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Users className="h-4 w-4 text-gray-500" />
-                      <span className="text-sm">Open to all members</span>
-                    </div>
-                  </div>
-                  <Button size="sm" className="bg-science-blue">
-                    Register Now
-                  </Button>
-                </CardContent>
-              </Card>
-
-              <Card className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="flex items-center justify-between mb-2">
-                    <Badge className="bg-science-green">Public Forum</Badge>
-                    <span className="text-sm text-gray-500">Jan 22, 2025</span>
-                  </div>
-                  <CardTitle>Climate Action Town Hall</CardTitle>
-                  <CardDescription>Community discussion on local climate policy initiatives</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-3 mb-4">
-                    <div className="flex items-center space-x-2">
-                      <Calendar className="h-4 w-4 text-gray-500" />
-                      <span className="text-sm">7:00 PM - 8:30 PM</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Users className="h-4 w-4 text-gray-500" />
-                      <span className="text-sm">Open to the public</span>
-                    </div>
-                  </div>
-                  <Button size="sm" className="bg-science-green">
-                    Learn More
-                  </Button>
-                </CardContent>
-              </Card>
-
-              <Card className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="flex items-center justify-between mb-2">
-                    <Badge className="bg-science-red">Weekly Meeting</Badge>
-                    <span className="text-sm text-gray-500">Every Wednesday</span>
-                  </div>
-                  <CardTitle>General Assembly</CardTitle>
-                  <CardDescription>Regular planning and coordination meeting</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-3 mb-4">
-                    <div className="flex items-center space-x-2">
-                      <Calendar className="h-4 w-4 text-gray-500" />
-                      <span className="text-sm">7:00 PM - 8:30 PM</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Users className="h-4 w-4 text-gray-500" />
-                      <span className="text-sm">All members welcome</span>
-                    </div>
-                  </div>
-                  <Button size="sm" className="bg-science-red">
-                    Join Meeting
-                  </Button>
-                </CardContent>
-              </Card>
+              {upcomingEvents && upcomingEvents.length > 0 ? (
+                upcomingEvents.slice(0, 3).map((event: Event) => (
+                  <EventCard key={event._id} event={event} />
+                ))
+              ) : (
+                <div className="text-center text-gray-500 py-12 col-span-full">
+                  <p>No upcoming events available yet.</p>
+                </div>
+              )}
             </div>
           </div>
         </section>
@@ -375,6 +254,7 @@ export default function HomePage() {
                         width={40}
                         height={40}
                         className="object-cover"
+                        loading="lazy"
                       />
                     </div>
                     <div className="text-left">
@@ -399,6 +279,7 @@ export default function HomePage() {
                         width={40}
                         height={40}
                         className="object-cover"
+                        loading="lazy"
                       />
                     </div>
                     <div className="text-left">
@@ -423,6 +304,7 @@ export default function HomePage() {
                         width={40}
                         height={40}
                         className="object-cover"
+                        loading="lazy"
                       />
                     </div>
                     <div className="text-left">
@@ -444,15 +326,16 @@ export default function HomePage() {
               Join Advocates for Science @ IU and help ensure that scientific evidence guides policy decisions for a better future.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" variant="secondary" className="bg-white text-science-blue hover:bg-gray-100">
-                Get Involved
+              <Button size="lg" variant="secondary" className="bg-white text-science-blue hover:bg-gray-100" asChild>
+                <Link href="/get-involved">Get Involved</Link>
               </Button>
               <Button
                 size="lg"
                 variant="outline"
                 className="border-white text-white hover:bg-white hover:text-science-blue bg-transparent"
+                asChild
               >
-                Learn More
+                <Link href="/about">Learn More</Link>
               </Button>
             </div>
           </div>

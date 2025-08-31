@@ -1,26 +1,4 @@
-export interface CommitteeChair {
-  _id: string
-  name: string
-  role: string
-  bio: string
-  email?: string
-  tags?: string[]
-  socialLinks?: string[]
-  image?: any
-  imageUrl?: string
-}
 
-export interface FacultyAdvisor {
-  _id: string
-  name: string
-  role: string
-  bio: string
-  email?: string
-  tags?: string[]
-  socialLinks?: string[]
-  image?: any
-  imageUrl?: string
-}
 
 export interface BulletinArticle {
   category: string
@@ -43,6 +21,8 @@ export interface Event {
   title: string
   subtitle: string
   description: string
+  image?: any
+  imageUrl?: string
   date: string
   startTime: string
   endTime: string
@@ -53,4 +33,54 @@ export interface Event {
   tags: string[]
   btnText: string
   btnUrl: string
+}
+
+export interface InstagramPost {
+  id: string
+  imageUrl: string
+  caption: string
+  likes: number
+  comments: number
+  timestamp: string
+  permalink: string
+}
+
+export interface NewsletterSubscription {
+  email: string
+  timestamp: string
+  source: string
+  status: string
+}
+
+export interface SanityImage {
+  asset: {
+    _ref: string
+    _type: string
+  }
+  _type: string
+}
+
+// Update existing interfaces to use proper image typing
+export interface CommitteeChair {
+  _id: string
+  name: string
+  role: string
+  bio: string
+  email?: string
+  tags?: string[]
+  socialLinks?: string[]
+  image?: SanityImage
+  imageUrl?: string
+}
+
+export interface FacultyAdvisor {
+  _id: string
+  name: string
+  role: string
+  bio: string
+  email?: string
+  tags?: string[]
+  socialLinks?: string[]
+  image?: SanityImage
+  imageUrl?: string
 }

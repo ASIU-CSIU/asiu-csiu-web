@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/primitives/badge"
 import { Button } from "@/components/ui/primitives/button"
 import { Mail, Linkedin, Twitter, Users, Award, BookOpen, Heart } from "lucide-react"
 import { getPageMetadata, getStructuredData } from "@/lib/metadata"
+import Link from "next/link"
 
 export const metadata = getPageMetadata("team")
 
@@ -313,15 +314,16 @@ export default function TeamPage() {
               efforts.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" variant="secondary" className="bg-white text-science-blue hover:bg-gray-100">
-                Learn About Leadership Opportunities
+              <Button size="lg" variant="secondary" className="bg-white text-science-blue hover:bg-gray-100" asChild>
+                <Link href="/get-involved">Learn About Leadership Opportunities</Link>
               </Button>
               <Button
                 size="lg"
                 variant="outline"
                 className="border-white text-white hover:bg-white hover:text-science-blue bg-transparent"
+                asChild
               >
-                Contact Leadership Team
+                <Link href="/contact">Contact Leadership Team</Link>
               </Button>
             </div>
           </div>

@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/primitives/badge"
 import { Button } from "@/components/ui/primitives/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/composite/tabs"
+import Link from "next/link"
 import {
   Clock,
   MapPin,
@@ -78,6 +79,7 @@ export default async function GetInvolvedPage() {
           primaryButtonText=""
           secondaryButtonText=""
           className="py-16"
+          overlayImage="/images/overlays/overlay-get-involved.JPG"
         />
 
         {/* Content Tabs */}
@@ -311,15 +313,16 @@ export default async function GetInvolvedPage() {
               future.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" variant="secondary" className="bg-white text-science-blue hover:bg-gray-100">
-                Attend a Meeting
+              <Button size="lg" variant="secondary" className="bg-white text-science-blue hover:bg-gray-100" asChild>
+                <Link href="/news">Attend a Meeting</Link>
               </Button>
               <Button
                 size="lg"
                 variant="outline"
                 className="border-white text-white hover:bg-white hover:text-science-blue bg-transparent"
+                asChild
               >
-                Contact Us
+                <Link href="/contact">Contact Us</Link>
               </Button>
             </div>
           </div>

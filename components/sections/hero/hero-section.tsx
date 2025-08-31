@@ -38,15 +38,15 @@ export function HeroSection({
     backgroundGradient = "from-blue-50 to-red-50",
     className = "",
     overlayImage,
-    overlayOpacity = 0.2,
+    overlayOpacity = 1,
     showAffiliateOutcrop = false
 }: HeroSectionProps) {
     return (
         <section className={`relative bg-gradient-to-r ${backgroundGradient} pt-36 pb-32 overflow-hidden ${className}`}>
             <HeroBackground
                 starColor="#FFFFFF"
-                starSize={8}
-                starCount={150}
+                starSize={2}
+                starCount={30}
                 className="opacity-100"
                 overlayImage={overlayImage}
                 overlayOpacity={overlayOpacity}
@@ -67,9 +67,9 @@ export function HeroSection({
                     </div>
                 )} */}
 
-                <h1 className="font-heading text-5xl md:text-7xl font-bold text-gray-900 mb-8" dangerouslySetInnerHTML={{ __html: title }} />
+                <h1 className="font-heading text-5xl md:text-7xl font-bold text-white mb-8" dangerouslySetInnerHTML={{ __html: title }} />
 
-                <p className="text-xl text-gray-800 max-w-3xl mx-auto">
+                <p className="text-xl text-white max-w-3xl mx-auto">
                     {subtitle}
                 </p>
 

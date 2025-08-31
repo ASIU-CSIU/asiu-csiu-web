@@ -67,6 +67,8 @@ export function NewsActivityCard({
                     alt={imageAlt}
                     fill
                     className="object-cover"
+                    loading="lazy"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
             </div>
             <CardHeader className="pb-3 pt-4 px-6">
