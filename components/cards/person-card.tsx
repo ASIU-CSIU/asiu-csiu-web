@@ -11,7 +11,7 @@ interface PersonCardProps {
 
 export function PersonCard({ person }: PersonCardProps) {
   return (
-    <Card key={person._id}>
+    <Card key={person._id} className="min-h-[400px]">
       <CardHeader className="text-center">
         <div className="w-16 h-16 bg-science-green rounded-full flex items-center justify-center mx-auto mb-4 overflow-hidden">
           {person.imageUrl ? (

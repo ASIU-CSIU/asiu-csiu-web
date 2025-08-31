@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/primitives/button"
 import { Clock, MapPin, Users, ExternalLink } from "lucide-react"
 import Image from "next/image"
 import type { Event } from "@/lib/types"
+import { ClampedText } from "@/components/cards/clamped-text"
 
 interface EventCardProps {
     event: Event
@@ -77,28 +78,34 @@ export function EventCard({ event, isPast = false }: EventCardProps) {
     const outlineButtonColor = getOutlineButtonColor(event.tags)
 
     return (
-        <Card className={`${borderColor} hover:shadow-lg transition-shadow ${isPast ? 'opacity-75' : ''}`}>
+        <Card className={`${borderColor} hover:shadow-lg transition-shadow overflow-hidden p-0 pb-6 gap-0`}>
             {event.imageUrl && (
                 <div className="relative h-48 w-full">
                     <Image
                         src={event.imageUrl}
                         alt={event.title}
                         fill
-                        className="object-cover rounded-t-lg"
+                        className="object-cover"
                         loading="lazy"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                 </div>
             )}
-            <CardHeader>
+            <CardHeader className="pb-3 pt-4 px-6">
                 <div className="flex items-center justify-between mb-2">
                     <Badge className={badgeColor}>{event.tags[0] || 'Event'}</Badge>
                     <span className="text-sm text-gray-500">{formatDate(event.date)}</span>
                 </div>
                 <CardTitle className="text-xl">{event.title}</CardTitle>
-                <CardDescription>{event.subtitle}</CardDescription>
+                <ClampedText
+                    text={event.subtitle}
+                    className="text-sm text-muted-foreground line-clamp-2"
+                    asChild
+                >
+                    <CardDescription />
+                </ClampedText>
             </CardHeader>
-            <CardContent>
+            <CardContent className="pt-0 px-6">
                 <div className="space-y-3 mb-4">
                     <div className="flex items-center space-x-2">
                         <Clock className="h-4 w-4 text-gray-500" />
@@ -125,17 +132,23 @@ export function EventCard({ event, isPast = false }: EventCardProps) {
                     </div>
                     <div className="flex items-center space-x-2">
                         <Users className="h-4 w-4 text-gray-500" />
-                        <span className="text-sm">
-                            {event.participantCount
-                                ? `Open to ${event.audience.join(', ')} (${event.participantCount} participants)`
-                                : `Open to ${event.audience.join(', ')}`
-                            }
+                        <span className="text-sm text-gray-500">
+                            {isPast ? (
+                                event.participantCount
+                                    ? `${event.participantCount} participants`
+                                    : `${event.audience.join(', ')}`
+                            ) : (
+                                event.participantCount
+                                    ? `Open to ${event.audience.join(', ')} (${event.participantCount} participants)`
+                                    : `Open to ${event.audience.join(', ')}`
+                            )}
                         </span>
                     </div>
                 </div>
-                <p className="text-gray-600 text-sm mb-4">
-                    {event.description}
-                </p>
+                <ClampedText
+                    text={event.description}
+                    className="text-gray-600 text-sm mb-4 line-clamp-3"
+                />
                 <Button
                     size="sm"
                     variant={isPast ? "outline" : "default"}

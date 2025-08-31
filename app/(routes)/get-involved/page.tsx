@@ -99,9 +99,11 @@ export default async function GetInvolvedPage() {
                 </div>
 
                 {upcomingEvents.length > 0 ? (
-                  <div className="grid md:grid-cols-2 gap-8">
+                  <div className="flex flex-wrap justify-center gap-8">
                     {upcomingEvents.map((event: Event) => (
-                      <EventCard key={event._id} event={event} />
+                      <div key={event._id} className="w-full md:w-96 lg:w-80">
+                        <EventCard event={event} />
+                      </div>
                     ))}
                   </div>
                 ) : (
@@ -119,9 +121,11 @@ export default async function GetInvolvedPage() {
                 </div>
 
                 {pastEvents.length > 0 ? (
-                  <div className="grid md:grid-cols-2 gap-8">
+                  <div className="flex flex-wrap justify-center gap-8">
                     {pastEvents.map((event: Event) => (
-                      <EventCard key={event._id} event={event} isPast={true} />
+                      <div key={event._id} className="w-full md:w-96 lg:w-80">
+                        <EventCard event={event} isPast={true} />
+                      </div>
                     ))}
                   </div>
                 ) : (

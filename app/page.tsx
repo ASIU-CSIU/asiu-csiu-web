@@ -46,10 +46,10 @@ export default async function HomePage() {
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="font-heading text-3xl font-bold mb-4">Latest News & Activities</h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
+              <h2 className="font-heading text-3xl font-bold">Latest News & Activities</h2>
+              {/* <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
                 Stay updated with our latest advocacy efforts and community initiatives.
-              </p>
+              </p> */}
             </div>
 
             <div className="flex overflow-x-auto gap-6 pb-4 scrollbar-hide">
@@ -209,19 +209,21 @@ export default async function HomePage() {
         <section className="py-16 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="font-heading text-3xl font-bold mb-4">Upcoming Events</h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
+              <h2 className="font-heading text-3xl font-bold">Upcoming Events</h2>
+              {/* <p className="text-gray-600 max-w-2xl mx-auto mt-4">
                 Join us for upcoming advocacy training sessions, public forums, and community engagement opportunities.
-              </p>
+              </p> */}
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="flex flex-wrap justify-center gap-8">
               {upcomingEvents && upcomingEvents.length > 0 ? (
                 upcomingEvents.slice(0, 3).map((event: Event) => (
-                  <EventCard key={event._id} event={event} />
+                  <div key={event._id} className="w-full md:w-96 lg:w-80">
+                    <EventCard event={event} />
+                  </div>
                 ))
               ) : (
-                <div className="text-center text-gray-500 py-12 col-span-full">
+                <div className="text-center text-gray-500 py-12 w-full">
                   <p>No upcoming events available yet.</p>
                 </div>
               )}
@@ -233,10 +235,10 @@ export default async function HomePage() {
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="font-heading text-3xl font-bold mb-4">What Our Members Say</h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
+              <h2 className="font-heading text-3xl font-bold">What Our Members Say</h2>
+              {/* <p className="text-gray-600 max-w-2xl mx-auto mt-4">
                 Hear from our community about the impact of science-based advocacy.
-              </p>
+              </p> */}
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

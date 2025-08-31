@@ -140,9 +140,11 @@ export default async function AboutPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="font-heading text-3xl font-bold text-center mb-12">Committee Chairs</h2>
             {chairs && chairs.length > 0 ? (
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="flex flex-wrap justify-center gap-8">
                 {chairs.map((chair: CommitteeChair) => (
-                  <PersonCard key={chair._id} person={chair} />
+                  <div key={chair._id} className="w-full md:w-96 lg:w-85">
+                    <PersonCard person={chair} />
+                  </div>
                 ))}
               </div>
             ) : (
@@ -158,9 +160,11 @@ export default async function AboutPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="font-heading text-3xl font-bold text-center mb-12">Faculty Advisors</h2>
             {advisors && advisors.length > 0 ? (
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="flex flex-wrap justify-center gap-8">
                 {advisors.map((advisor: CommitteeChair) => (
-                  <PersonCard key={advisor._id} person={advisor} />
+                  <div key={advisor._id} className="w-full md:w-96 lg:w-80">
+                    <PersonCard person={advisor} />
+                  </div>
                 ))}
               </div>
             ) : (

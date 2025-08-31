@@ -100,114 +100,126 @@ export default function TeamPage() {
         <section className="py-16 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="font-heading text-3xl font-bold text-center mb-12">Committee Chairs</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <Card>
-                <CardHeader className="text-center">
-                  <div className="w-16 h-16 bg-science-green rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-white font-bold">MJ</span>
-                  </div>
-                  <CardTitle>Marcus Johnson</CardTitle>
-                  <CardDescription className="text-science-green font-medium">Legislative Advocacy Chair</CardDescription>
-                </CardHeader>
-                <CardContent className="text-center">
-                  <p className="text-gray-600 text-sm mb-3">
-                    PhD candidate in Political Science coordinating our policy research and government relations efforts.
-                  </p>
-                  <Badge variant="outline" className="text-xs">
-                    Policy Research
-                  </Badge>
-                </CardContent>
-              </Card>
+            <div className="flex flex-wrap justify-center gap-8">
+              <div className="w-full md:w-80 lg:w-72">
+                <Card>
+                  <CardHeader className="text-center">
+                    <div className="w-16 h-16 bg-science-green rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-white font-bold">MJ</span>
+                    </div>
+                    <CardTitle>Marcus Johnson</CardTitle>
+                    <CardDescription className="text-science-green font-medium">Legislative Advocacy Chair</CardDescription>
+                  </CardHeader>
+                  <CardContent className="text-center">
+                    <p className="text-gray-600 text-sm mb-3">
+                      PhD candidate in Political Science coordinating our policy research and government relations efforts.
+                    </p>
+                    <Badge variant="outline" className="text-xs">
+                      Policy Research
+                    </Badge>
+                  </CardContent>
+                </Card>
+              </div>
 
-              <Card>
-                <CardHeader className="text-center">
-                  <div className="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-white font-bold">EL</span>
-                  </div>
-                  <CardTitle>Emily Liu</CardTitle>
-                  <CardDescription className="text-purple-600 font-medium">Education & Outreach Chair</CardDescription>
-                </CardHeader>
-                <CardContent className="text-center">
-                  <p className="text-gray-600 text-sm mb-3">
-                    Master's student in Science Education developing workshops and community engagement programs.
-                  </p>
-                  <Badge variant="outline" className="text-xs">
-                    Workshop Development
-                  </Badge>
-                </CardContent>
-              </Card>
+              <div className="w-full md:w-80 lg:w-72">
+                <Card>
+                  <CardHeader className="text-center">
+                    <div className="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-white font-bold">EL</span>
+                    </div>
+                    <CardTitle>Emily Liu</CardTitle>
+                    <CardDescription className="text-purple-600 font-medium">Education & Outreach Chair</CardDescription>
+                  </CardHeader>
+                  <CardContent className="text-center">
+                    <p className="text-gray-600 text-sm mb-3">
+                      Master's student in Science Education developing workshops and community engagement programs.
+                    </p>
+                    <Badge variant="outline" className="text-xs">
+                      Workshop Development
+                    </Badge>
+                  </CardContent>
+                </Card>
+              </div>
 
-              <Card>
-                <CardHeader className="text-center">
-                  <div className="w-16 h-16 bg-orange-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-white font-bold">DK</span>
-                  </div>
-                  <CardTitle>David Kim</CardTitle>
-                  <CardDescription className="text-orange-600 font-medium">Events Chair</CardDescription>
-                </CardHeader>
-                <CardContent className="text-center">
-                  <p className="text-gray-600 text-sm mb-3">
-                    Undergraduate in Event Management organizing our advocacy training sessions and public forums.
-                  </p>
-                  <Badge variant="outline" className="text-xs">
-                    Event Planning
-                  </Badge>
-                </CardContent>
-              </Card>
+              <div className="w-full md:w-80 lg:w-72">
+                <Card>
+                  <CardHeader className="text-center">
+                    <div className="w-16 h-16 bg-orange-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-white font-bold">DK</span>
+                    </div>
+                    <CardTitle>David Kim</CardTitle>
+                    <CardDescription className="text-orange-600 font-medium">Events Chair</CardDescription>
+                  </CardHeader>
+                  <CardContent className="text-center">
+                    <p className="text-gray-600 text-sm mb-3">
+                      Undergraduate in Event Management organizing our advocacy training sessions and public forums.
+                    </p>
+                    <Badge variant="outline" className="text-xs">
+                      Event Planning
+                    </Badge>
+                  </CardContent>
+                </Card>
+              </div>
 
-              <Card>
-                <CardHeader className="text-center">
-                  <div className="w-16 h-16 bg-pink-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-white font-bold">RT</span>
-                  </div>
-                  <CardTitle>Rachel Thompson</CardTitle>
-                  <CardDescription className="text-pink-600 font-medium">Communications Chair</CardDescription>
-                </CardHeader>
-                <CardContent className="text-center">
-                  <p className="text-gray-600 text-sm mb-3">
-                    Graduate student in Media Studies managing our digital presence and content strategy.
-                  </p>
-                  <Badge variant="outline" className="text-xs">
-                    Digital Strategy
-                  </Badge>
-                </CardContent>
-              </Card>
+              <div className="w-full md:w-80 lg:w-72">
+                <Card>
+                  <CardHeader className="text-center">
+                    <div className="w-16 h-16 bg-pink-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-white font-bold">RT</span>
+                    </div>
+                    <CardTitle>Rachel Thompson</CardTitle>
+                    <CardDescription className="text-pink-600 font-medium">Communications Chair</CardDescription>
+                  </CardHeader>
+                  <CardContent className="text-center">
+                    <p className="text-gray-600 text-sm mb-3">
+                      Graduate student in Media Studies managing our digital presence and content strategy.
+                    </p>
+                    <Badge variant="outline" className="text-xs">
+                      Digital Strategy
+                    </Badge>
+                  </CardContent>
+                </Card>
+              </div>
 
-              <Card>
-                <CardHeader className="text-center">
-                  <div className="w-16 h-16 bg-teal-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-white font-bold">JW</span>
-                  </div>
-                  <CardTitle>Jordan Williams</CardTitle>
-                  <CardDescription className="text-teal-600 font-medium">Steering Chair</CardDescription>
-                </CardHeader>
-                <CardContent className="text-center">
-                  <p className="text-gray-600 text-sm mb-3">
-                    PhD candidate in Organizational Leadership coordinating strategic planning and group coordination.
-                  </p>
-                  <Badge variant="outline" className="text-xs">
-                    Strategic Planning
-                  </Badge>
-                </CardContent>
-              </Card>
+              <div className="w-full md:w-80 lg:w-72">
+                <Card>
+                  <CardHeader className="text-center">
+                    <div className="w-16 h-16 bg-teal-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-white font-bold">JW</span>
+                    </div>
+                    <CardTitle>Jordan Williams</CardTitle>
+                    <CardDescription className="text-teal-600 font-medium">Steering Chair</CardDescription>
+                  </CardHeader>
+                  <CardContent className="text-center">
+                    <p className="text-gray-600 text-sm mb-3">
+                      PhD candidate in Organizational Leadership coordinating strategic planning and group coordination.
+                    </p>
+                    <Badge variant="outline" className="text-xs">
+                      Strategic Planning
+                    </Badge>
+                  </CardContent>
+                </Card>
+              </div>
 
-              <Card>
-                <CardHeader className="text-center">
-                  <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-white font-bold">AC</span>
-                  </div>
-                  <CardTitle>Aisha Chen</CardTitle>
-                  <CardDescription className="text-green-600 font-medium">Finance Chair</CardDescription>
-                </CardHeader>
-                <CardContent className="text-center">
-                  <p className="text-gray-600 text-sm mb-3">
-                    Master's student in Public Administration managing budgets, grants, and fundraising initiatives.
-                  </p>
-                  <Badge variant="outline" className="text-xs">
-                    Budget Management
-                  </Badge>
-                </CardContent>
-              </Card>
+              <div className="w-full md:w-80 lg:w-72">
+                <Card>
+                  <CardHeader className="text-center">
+                    <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-white font-bold">AC</span>
+                    </div>
+                    <CardTitle>Aisha Chen</CardTitle>
+                    <CardDescription className="text-green-600 font-medium">Finance Chair</CardDescription>
+                  </CardHeader>
+                  <CardContent className="text-center">
+                    <p className="text-gray-600 text-sm mb-3">
+                      Master's student in Public Administration managing budgets, grants, and fundraising initiatives.
+                    </p>
+                    <Badge variant="outline" className="text-xs">
+                      Budget Management
+                    </Badge>
+                  </CardContent>
+                </Card>
+              </div>
             </div>
           </div>
         </section>

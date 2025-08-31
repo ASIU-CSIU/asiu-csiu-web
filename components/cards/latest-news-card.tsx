@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/primitives/button"
 import { Users } from "lucide-react"
 import Image from "next/image"
 import type { Event } from "@/lib/types"
+import { ClampedText } from "./clamped-text"
 
 interface LatestNewsCardProps {
     event: Event
@@ -68,13 +69,26 @@ export function LatestNewsCard({ event }: LatestNewsCardProps) {
                     <Badge className={badgeColor}>{event.tags[0] || 'Event'}</Badge>
                     <span className="text-sm text-gray-500">{formatDate(event.date)}</span>
                 </div>
-                <CardTitle id={`event-title-${event._id}`} className="text-lg line-clamp-3">{event.title}</CardTitle>
-                <CardDescription className="line-clamp-3">{event.subtitle}</CardDescription>
+                <ClampedText
+                    text={event.title}
+                    className="text-lg line-clamp-3"
+                    asChild
+                >
+                    <CardTitle id={`event-title-${event._id}`} />
+                </ClampedText>
+                <ClampedText
+                    text={event.subtitle}
+                    className="text-sm text-muted-foreground line-clamp-2"
+                    asChild
+                >
+                    <CardDescription />
+                </ClampedText>
             </CardHeader>
             <CardContent className="pt-0 px-6">
-                <p className="text-gray-600 text-sm mb-4 line-clamp-3">
-                    {event.description}
-                </p>
+                <ClampedText
+                    text={event.description}
+                    className="text-gray-600 text-sm mb-4 line-clamp-3"
+                />
                 <div className="space-y-3">
                     <div className="flex items-center text-sm text-gray-500">
                         <Users className="h-4 w-4 mr-2" />
