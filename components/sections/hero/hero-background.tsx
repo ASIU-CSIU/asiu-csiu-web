@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import Image from 'next/image'
 
 interface HeroBackgroundProps {
     className?: string
@@ -188,6 +189,7 @@ export function HeroBackground({
             context.clearRect(0, 0, width, height)
             update()
             render()
+            // Throttle animation for better performance
             animationRef.current = requestAnimationFrame(step)
         }
 
@@ -279,19 +281,18 @@ export function HeroBackground({
                 }}
             />
 
-            {/* Overlay Image */}
+            {/* Overlay Image - Optimized for LCP */}
             {overlayImage && (
-                <div
-                    className="absolute inset-0 w-full h-full pointer-events-none"
-                    style={{
-                        backgroundImage: `url(${overlayImage})`,
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                        backgroundRepeat: 'no-repeat',
-                        opacity: overlayOpacity,
-                        zIndex: 1
-                    }}
-                />
+                <div className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 1 }}>
+                    <Image
+                        src={overlayImage}
+                        alt=""
+                        fill
+                        priority
+                        className="object-cover"
+                        style={{ opacity: overlayOpacity }}
+                    />
+                </div>
             )}
 
             {/* Gradient Background */}

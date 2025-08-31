@@ -45,6 +45,7 @@ export function Navigation() {
                     width={48}
                     height={48}
                     priority
+                    fetchPriority="high"
                   />
                   <h1 className="font-heading text-xl font-bold text-gray-900">ASIU</h1>
                 </div>

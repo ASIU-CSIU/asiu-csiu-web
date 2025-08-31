@@ -34,6 +34,14 @@ export default function RootLayout({
 
         {/* Preload critical resources */}
         <link rel="preload" href="/icons/logo.svg" as="image" type="image/svg+xml" />
+
+        {/* Preload overlay images for all pages */}
+        <link rel="preload" href="/images/overlays/overlay-home.JPG" as="image" />
+        <link rel="preload" href="/images/overlays/overlay-about.JPG" as="image" />
+        <link rel="preload" href="/images/overlays/overlay-get-involved.JPG" as="image" />
+        <link rel="preload" href="/images/overlays/overlay-news.JPG" as="image" />
+        <link rel="preload" href="/images/overlays/overlay-contact.JPG" as="image" />
+
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="dns-prefetch" href="//fonts.gstatic.com" />
 
@@ -65,6 +73,28 @@ export default function RootLayout({
         <Analytics />
         <SpeedInsights />
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID!} />
+
+        {/* Performance monitoring */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              // Monitor Core Web Vitals
+              if ('PerformanceObserver' in window) {
+                const observer = new PerformanceObserver((list) => {
+                  for (const entry of list.getEntries()) {
+                    if (entry.entryType === 'largest-contentful-paint') {
+                      console.log('LCP:', entry.startTime);
+                    }
+                    if (entry.entryType === 'interaction') {
+                      console.log('INP:', entry.processingStart - entry.startTime);
+                    }
+                  }
+                });
+                observer.observe({ entryTypes: ['largest-contentful-paint', 'interaction'] });
+              }
+            `
+          }}
+        />
       </body>
     </html>
   )

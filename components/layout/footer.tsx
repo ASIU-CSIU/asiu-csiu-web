@@ -20,6 +20,7 @@ export function Footer() {
                   height={32}
                   className="w-full h-full relative z-10 brightness-0 invert"
                   priority
+                  fetchPriority="high"
                 />
               </div>
               <h3 className="font-heading text-xl font-bold">Advocates for Science @ IU</h3>
