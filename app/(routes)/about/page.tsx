@@ -41,7 +41,7 @@ export default async function AboutPage() {
           subtitle="We are a student-led organization dedicated to bridging the gap between scientific research and public policy, ensuring that evidence-based decision making guides our future."
           showLogo={false}
           showNewsletter={false}
-          primaryButtonText="Learn More"
+          primaryButtonText=""
           secondaryButtonText=""
           className="py-16"
           overlayImage="/images/overlays/overlay-about.JPG"

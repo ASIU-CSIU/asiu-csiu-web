@@ -42,7 +42,7 @@ export function HeroSection({
     showAffiliateOutcrop = false
 }: HeroSectionProps) {
     return (
-        <section className={`relative bg-gradient-to-r ${backgroundGradient} pt-36 pb-32 overflow-hidden ${className}`}>
+        <section className={`relative bg-gradient-to-r ${backgroundGradient} pt-36 pb-32 overflow-hidden min-h-[200px] ${className}`}>
             <HeroBackground
                 starColor="#FFFFFF"
                 starSize={2}
@@ -51,7 +51,7 @@ export function HeroSection({
                 overlayImage={overlayImage}
                 overlayOpacity={overlayOpacity}
             />
-            <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col justify-center min-h-[200px]">
                 {/* {showLogo && (
                     <div className="mb-8">
                         <div className="w-48 h-48 mx-auto relative">
