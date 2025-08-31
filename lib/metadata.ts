@@ -44,7 +44,7 @@ export const baseMetadata: Metadata = {
     description: "Student affiliate of Concerned Scientists @ IU, working to promote scientific integrity and evidence-based decision making in policy and society.",
     images: [
       {
-        url: "https://www.advocatesforscienceatiu.org/icons/favicon.svg",
+        url: "https://www.advocatesforscienceatiu.org/icons/logo.svg",
         width: 1200,
         height: 630,
         alt: "Advocates for Science @ IU Logo",
@@ -55,7 +55,7 @@ export const baseMetadata: Metadata = {
     card: "summary_large_image",
     title: "Advocates for Science @ IU | Science Policy Advocacy",
     description: "Student affiliate of Concerned Scientists @ IU, working to promote scientific integrity and evidence-based decision making in policy and society.",
-    images: ["https://www.advocatesforscienceatiu.org/icons/favicon.svg"],
+    images: ["https://www.advocatesforscienceatiu.org/icons/logo.svg"],
     creator: "@asiu_indiana",
   },
   robots: {
