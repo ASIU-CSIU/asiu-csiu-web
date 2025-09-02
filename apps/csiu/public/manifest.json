@@ -1,0 +1,26 @@
+{
+  "name": "Concerned Scientists @ IU",
+  "short_name": "CSIU",
+  "description": "Faculty organization dedicated to promoting scientific integrity and evidence-based policy at Indiana University.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#A03C30",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "categories": ["education", "science", "advocacy"],
+  "lang": "en-US",
+  "orientation": "portrait-primary"
+}

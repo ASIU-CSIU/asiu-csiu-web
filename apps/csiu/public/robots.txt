@@ -1,0 +1,25 @@
+User-agent: *
+Allow: /
+
+# Block access to admin areas and API endpoints
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/
+Disallow: /studio/
+
+# Block common bot targets
+Disallow: /wp-admin
+Disallow: /wp-content
+Disallow: /wp-includes
+
+# Block UTM parameters for cleaner analytics
+Disallow: /*?utm_*
+Disallow: /*&utm_*
+
+# Sitemaps
+Sitemap: https://www.csiub.org/sitemap.xml
+Sitemap: https://www.csiub.org/sitemap-news.xml
+Sitemap: https://www.csiub.org/sitemap-events.xml
+
+# Crawl-delay to be respectful
+Crawl-delay: 1

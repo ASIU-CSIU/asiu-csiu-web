@@ -1,7 +1,9 @@
 import { createClient } from '@sanity/client'
 import imageUrlBuilder from '@sanity/image-url'
 import type { SanityImageSource } from '@sanity/image-url/lib/types/types'
-import type { Organization } from '@asiu/shared-types'
+
+// Types for the Sanity package
+export type Organization = 'asiu' | 'csiu'
 
 // Create configurable Sanity client
 export function createSanityClient(config?: {

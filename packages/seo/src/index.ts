@@ -1,4 +1,22 @@
-import type { Organization, OrganizationConfig, MetadataConfig } from '@asiu/shared-types'
+// Types for the SEO package
+export type Organization = 'asiu' | 'csiu'
+
+export interface OrganizationConfig {
+  name: string
+  shortName: string
+  url: string
+  description: string
+  brandColor: string
+  logo?: string
+}
+
+export interface MetadataConfig {
+  title: string
+  description: string
+  url: string
+  image?: string
+  keywords?: string[]
+}
 
 // Organization configurations
 export const organizationConfigs: Record<Organization, OrganizationConfig> = {
