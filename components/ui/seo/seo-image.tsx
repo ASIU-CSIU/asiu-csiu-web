@@ -85,7 +85,8 @@ interface LazyImageProps extends SEOImageProps {
 
 export function LazyImage({ 
   loading = "lazy", 
-  placeholder = "empty", 
+  placeholder = "empty",
+  blurDataURL,
   ...props 
 }: LazyImageProps) {
   return (
@@ -93,7 +94,6 @@ export function LazyImage({
       {...props}
       // Force lazy loading unless priority is set
       priority={props.priority || false}
-      placeholder={placeholder}
     />
   )
 }

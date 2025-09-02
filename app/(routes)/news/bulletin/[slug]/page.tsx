@@ -13,7 +13,7 @@ import type { NewsBulletin } from "@/lib/types"
 export async function generateStaticParams() {
     try {
         const bulletins = await getNewsBulletins()
-        return bulletins.map((bulletin) => ({
+        return bulletins.map((bulletin: NewsBulletin) => ({
             slug: bulletin.publication,
         }))
     } catch (error) {
@@ -23,13 +23,13 @@ export async function generateStaticParams() {
 }
 
 interface BulletinPageProps {
-    params: {
+    params: Promise<{
         slug: string
-    }
+    }>
 }
 
 export default async function BulletinPage({ params }: BulletinPageProps) {
-    const { slug } = params
+    const { slug } = await params
 
     // Convert slug back to date format (YYYY-MM-DD)
     const dateMatch = slug.match(/^(\d{4})-(\d{2})-(\d{2})$/)

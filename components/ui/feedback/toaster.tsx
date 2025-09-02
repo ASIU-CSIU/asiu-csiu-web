@@ -1,35 +1,9 @@
 "use client"
 
-import { useToast } from "@/components/hooks/use-toast"
-import {
-  Toast,
-  ToastClose,
-  ToastDescription,
-  ToastProvider,
-  ToastTitle,
-  ToastViewport,
-} from "@/components/ui/feedback/toast"
-
+// Simple toaster implementation that works with our custom toast system
+// The ToastProvider in layout.tsx handles the actual toast display
 export function Toaster() {
-  const { toasts } = useToast()
-
-  return (
-    <ToastProvider>
-      {toasts.map(function ({ id, title, description, action, ...props }) {
-        return (
-          <Toast key={id} {...props}>
-            <div className="grid gap-1">
-              {title && <ToastTitle>{title}</ToastTitle>}
-              {description && (
-                <ToastDescription>{description}</ToastDescription>
-              )}
-            </div>
-            {action}
-            <ToastClose />
-          </Toast>
-        )
-      })}
-      <ToastViewport />
-    </ToastProvider>
-  )
+  // This component is not needed since we use ToastProvider directly in layout
+  // but kept for compatibility with shadcn/ui patterns
+  return null
 }

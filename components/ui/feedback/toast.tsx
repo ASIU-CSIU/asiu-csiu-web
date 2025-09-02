@@ -13,9 +13,15 @@ export interface Toast {
   duration?: number
 }
 
-interface ToastProps {
+export interface ToastProps {
   toast: Toast
   onRemove: (id: string) => void
+}
+
+export interface ToastActionElement {
+  id: string
+  label: string
+  action: () => void
 }
 
 const statusConfig = {
@@ -117,3 +123,30 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
     </ToastContext.Provider>
   )
 }
+
+// Export additional components needed by other files
+export const ToastViewport = ({ children }: { children: React.ReactNode }) => (
+  <div className="fixed top-4 right-4 z-50 space-y-2">
+    {children}
+  </div>
+)
+
+export const ToastClose = ({ onClose }: { onClose: () => void }) => (
+  <button
+    onClick={onClose}
+    className="flex-shrink-0 p-1 hover:bg-black/10 rounded transition-colors"
+  >
+    <X className="h-4 w-4" />
+  </button>
+)
+
+export const ToastTitle = ({ children }: { children: React.ReactNode }) => (
+  <h3 className="text-sm font-medium">{children}</h3>
+)
+
+export const ToastDescription = ({ children }: { children: React.ReactNode }) => (
+  <p className="text-sm opacity-90">{children}</p>
+)
+
+// Re-export ToastItem as Toast for compatibility
+export { ToastItem as Toast }

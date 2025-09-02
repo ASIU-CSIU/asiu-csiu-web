@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+// Temporarily comment out Google Fonts for offline building
 // import { Poppins } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/layout/theme-provider"
@@ -8,12 +9,14 @@ import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { GoogleAnalytics } from '@next/third-parties/google'
 
+// Commented out for offline building
 // const poppins = Poppins({
 //   subsets: ["latin"],
 //   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 //   variable: "--font-poppins",
-//   display: "swap", // Optimize font loading
+//   display: "swap",
 //   preload: true,
+//   fallback: ['Roboto', 'Arial', 'sans-serif'],
 // })
 
 export const metadata: Metadata = baseMetadata

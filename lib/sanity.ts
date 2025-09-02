@@ -12,6 +12,16 @@ const client = createClient({
 const builder = imageUrlBuilder(client)
 export const urlFor = (source: SanityImageSource) => builder.image(source)
 
+// Wrapper function to handle network errors gracefully
+async function safeQuery(query: string, defaultValue: any[] = []) {
+  try {
+    return await client.fetch(query)
+  } catch (error) {
+    console.warn('Sanity query failed, using fallback data:', error)
+    return defaultValue
+  }
+}
+
 // Query to fetch committee chairs
 export const getCommitteeChairs = async () => {
   const query = `*[_type == "committeeChair"] {
@@ -25,7 +35,7 @@ export const getCommitteeChairs = async () => {
     "imageUrl": image.asset->url
   } | order(name asc)`
 
-  return await client.fetch(query)
+  return await safeQuery(query)
 }
 
 export const getFacultyAdvisors = async () => {
@@ -40,7 +50,7 @@ export const getFacultyAdvisors = async () => {
       "imageUrl": image.asset->url
     } | order(name asc)`
 
-    return await client.fetch(query)
+    return await safeQuery(query)
   }
 
 // Query to fetch news bulletins
@@ -51,7 +61,7 @@ export const getNewsBulletins = async () => {
     content
   } | order(publication desc)`
 
-  return await client.fetch(query)
+  return await safeQuery(query)
 }
 
 // Query to fetch testimonials
@@ -63,7 +73,7 @@ export const getTestimonials = async () => {
     role
   } | order(_createdAt desc)`
 
-  return await client.fetch(query)
+  return await safeQuery(query)
 }
 
 // Query to fetch external links
@@ -75,7 +85,7 @@ export const getExternalLinks = async () => {
     description
   } | order(title asc)`
 
-  return await client.fetch(query)
+  return await safeQuery(query)
 }
 
 // Query to fetch committees
@@ -86,7 +96,7 @@ export const getCommittees = async () => {
     description
   } | order(name asc)`
 
-  return await client.fetch(query)
+  return await safeQuery(query)
 }
 
 // Query to fetch news articles
@@ -98,7 +108,7 @@ export const getNewsArticles = async () => {
     publishedAt
   } | order(publishedAt desc)`
 
-  return await client.fetch(query)
+  return await safeQuery(query)
 }
 
 // Query to fetch events
@@ -121,7 +131,7 @@ export const getEvents = async () => {
     btnUrl
   } | order(date asc)`
 
-  return await client.fetch(query)
+  return await safeQuery(query)
 }
 
 // Query to fetch past events (events with date before today)
@@ -145,7 +155,7 @@ export const getPastEvents = async () => {
     btnUrl
   } | order(date desc)`
 
-  return await client.fetch(query)
+  return await safeQuery(query)
 }
 
 // Query to fetch upcoming events (events with date today or in the future)
@@ -169,5 +179,5 @@ export const getUpcomingEvents = async () => {
     btnUrl
   } | order(date asc)`
 
-  return await client.fetch(query)
+  return await safeQuery(query)
 }
