@@ -1,7 +1,8 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/composite/card"
 import { Badge } from "@/components/ui/primitives/badge"
 import { Button } from "@/components/ui/primitives/button"
-import { Clock, MapPin, Users, ExternalLink } from "lucide-react"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/composite/dropdown-menu"
+import { Clock, MapPin, Users, ExternalLink, Bookmark } from "lucide-react"
 import Image from "next/image"
 import type { Event } from "@/lib/types"
 import { ClampedText } from "@/components/cards/clamped-text"
@@ -30,6 +31,55 @@ export function EventCard({ event, isPast = false }: EventCardProps) {
             minute: '2-digit',
             hour12: true
         })
+    }
+
+    // Format date for calendar links (YYYYMMDD format)
+    const formatDateForCalendar = (dateString: string) => {
+        const date = new Date(dateString)
+        return date.toISOString().slice(0, 10).replace(/-/g, '')
+    }
+
+    // Format time for calendar links (HHMM format)
+    const formatTimeForCalendar = (dateTimeString: string) => {
+        const date = new Date(dateTimeString)
+        return date.toTimeString().slice(0, 5).replace(/:/g, '')
+    }
+
+    // Generate calendar links
+    const generateCalendarLinks = () => {
+        const startDate = formatDateForCalendar(event.date)
+        const endDate = formatDateForCalendar(event.date)
+        const startTime = formatTimeForCalendar(event.startTime)
+        const endTime = formatTimeForCalendar(event.endTime)
+
+        const title = encodeURIComponent(event.title)
+        const description = encodeURIComponent(event.description)
+        const location = encodeURIComponent(event.location)
+
+        // Google Calendar
+        const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startDate}T${startTime}00/${endDate}T${endTime}00&details=${description}&location=${location}`
+
+        // Apple Calendar (iCal format)
+        const appleCalendarUrl = `data:text/calendar;charset=utf8,BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+URL:${event.btnUrl}
+DTSTART:${startDate}T${startTime}00
+DTEND:${endDate}T${endTime}00
+SUMMARY:${event.title}
+DESCRIPTION:${event.description}
+LOCATION:${event.location}
+END:VEVENT
+END:VCALENDAR`
+
+        // Outlook Calendar
+        const outlookCalendarUrl = `https://outlook.live.com/calendar/0/deeplink/compose?subject=${title}&startdt=${event.date}T${event.startTime}&enddt=${event.date}T${event.endTime}&body=${description}&location=${location}`
+
+        return {
+            google: googleCalendarUrl,
+            apple: appleCalendarUrl,
+            outlook: outlookCalendarUrl
+        }
     }
 
     // Get badge color based on first tag
@@ -76,6 +126,7 @@ export function EventCard({ event, isPast = false }: EventCardProps) {
     const borderColor = getBorderColor(event.tags)
     const buttonColor = getButtonColor(event.tags)
     const outlineButtonColor = getOutlineButtonColor(event.tags)
+    const calendarLinks = generateCalendarLinks()
 
     return (
         <Card className={`${borderColor} hover:shadow-lg transition-shadow overflow-hidden p-0 pb-6 gap-0`}>
@@ -149,16 +200,49 @@ export function EventCard({ event, isPast = false }: EventCardProps) {
                     text={event.description}
                     className="text-gray-600 text-sm mb-4 line-clamp-3"
                 />
-                <Button
-                    size="sm"
-                    variant={isPast ? "outline" : "default"}
-                    className={isPast ? outlineButtonColor : buttonColor}
-                    asChild
-                >
-                    <a href={event.btnUrl} target="_blank" rel="noopener noreferrer">
-                        {event.btnText}
-                    </a>
-                </Button>
+
+                <div className="flex gap-2">
+                    <Button
+                        size="sm"
+                        variant={isPast ? "outline" : "default"}
+                        className={isPast ? outlineButtonColor : buttonColor}
+                        asChild
+                    >
+                        <a href={event.btnUrl} target="_blank" rel="noopener noreferrer">
+                            {event.btnText}
+                        </a>
+                    </Button>
+                    {!isPast && (
+                        <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                                <Button
+                                    size="sm"
+                                    variant="default"
+                                    className={buttonColor}
+                                >
+                                    <Bookmark className="h-4 w-4" />
+                                </Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent align="end">
+                                <DropdownMenuItem asChild>
+                                    <a href={calendarLinks.google} target="_blank" rel="noopener noreferrer">
+                                        Add to Google Calendar
+                                    </a>
+                                </DropdownMenuItem>
+                                <DropdownMenuItem asChild>
+                                    <a href={calendarLinks.outlook} target="_blank" rel="noopener noreferrer">
+                                        Add to Outlook Calendar
+                                    </a>
+                                </DropdownMenuItem>
+                                <DropdownMenuItem asChild>
+                                    <a href={calendarLinks.apple} download={`${event.title}.ics`}>
+                                        Add toApple Calendar
+                                    </a>
+                                </DropdownMenuItem>
+                            </DropdownMenuContent>
+                        </DropdownMenu>
+                    )}
+                </div>
             </CardContent>
         </Card>
     )
