@@ -96,13 +96,6 @@ ${fullName}`)}`
       />
 
       <LayoutWrapper>
-        {/* Breadcrumb Navigation */}
-        <div className="bg-gray-50 py-4">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <Breadcrumb items={[{ label: "Contact Us" }]} />
-          </div>
-        </div>
-
         {/* Hero Section */}
         <HeroSection
           title="Contact Us"
@@ -113,6 +106,8 @@ ${fullName}`)}`
           secondaryButtonText=""
           className="py-16"
           overlayImage="/images/overlays/overlay-contact.JPG"
+          showPageOutcrop={true}
+          breadcrumbItems={[{ label: "Contact Us" }]}
         />
 
         {/* Contact Information */}

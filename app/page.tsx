@@ -73,7 +73,7 @@ export default async function HomePage() {
           secondaryButtonLink="/about"
           className="py-16"
           overlayImage="/images/overlays/overlay-home.JPG"
-          showAffiliateOutcrop={true}
+          showPageOutcrop={true}
         />
 
         {/* Latest News & Activities */}

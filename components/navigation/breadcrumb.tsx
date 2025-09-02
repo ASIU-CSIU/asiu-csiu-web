@@ -29,7 +29,7 @@ export function Breadcrumb({ items, className = "" }: BreadcrumbProps) {
             <span className="sr-only">Home</span>
           </Link>
         </li>
-        
+
         {items.map((item, index) => (
           <li key={index} className="flex items-center">
             <ChevronRight className="h-4 w-4 mx-1 text-gray-400" />

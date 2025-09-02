@@ -63,7 +63,7 @@ export default async function GetInvolvedPage() {
 
   // Sort past events by date (most recent first)
   pastEvents.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-  
+
   // Generate event schema for upcoming events
   const eventSchemas = upcomingEvents.slice(0, 5).map((event: Event) => {
     const eventSchema: EventSchemaData = {
@@ -110,7 +110,7 @@ export default async function GetInvolvedPage() {
           }}
         />
       ))}
-      
+
       <LayoutWrapper>
         {/* Breadcrumb Navigation */}
         <div className="bg-gray-50 py-4">
@@ -129,6 +129,8 @@ export default async function GetInvolvedPage() {
           secondaryButtonText=""
           className="py-16"
           overlayImage="/images/overlays/overlay-get-involved.JPG"
+          showPageOutcrop={true}
+          breadcrumbItems={[{ label: "Get Involved" }]}
         />
 
         {/* Content Tabs */}

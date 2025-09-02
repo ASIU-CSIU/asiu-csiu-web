@@ -1,6 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/composite/card"
 import { Badge } from "@/components/ui/primitives/badge"
 import { Button } from "@/components/ui/primitives/button"
+import { ClampedText } from "@/components/cards/clamped-text"
 import { Mail, ExternalLink } from "lucide-react"
 import Image from "next/image"
 import type { CommitteeChair } from "@/lib/types"
@@ -33,7 +34,10 @@ export function PersonCard({ person }: PersonCardProps) {
         <CardDescription className="text-science-green font-medium">{person.role}</CardDescription>
       </CardHeader>
       <CardContent className="text-center">
-        <p className="text-gray-600 text-sm mb-3">{person.bio}</p>
+        <ClampedText
+          text={person.bio}
+          className="text-gray-600 text-sm mb-3 line-clamp-6"
+        />
         <div className="flex flex-wrap justify-center gap-2 mb-4">
           {person.tags && person.tags.map((tag, index) => (
             <Badge key={index} variant="secondary">{tag}</Badge>

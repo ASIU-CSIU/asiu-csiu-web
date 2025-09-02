@@ -3,10 +3,15 @@
 import { Button } from "@/components/ui/primitives/button"
 import { NewsletterSignup } from "@/components/forms/newsletter-signup"
 import { HeroBackground } from "@/components/sections/hero/hero-background"
-import { AffiliateOutcrop } from "@/components/features/affiliate-outcrop"
+import { PageOutcrop } from "@/components/features/page-outcrop"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
+
+interface BreadcrumbItem {
+    label: string
+    href?: string
+}
 
 interface HeroSectionProps {
     title: string
@@ -22,7 +27,8 @@ interface HeroSectionProps {
     className?: string
     overlayImage?: string
     overlayOpacity?: number
-    showAffiliateOutcrop?: boolean
+    showPageOutcrop?: boolean
+    breadcrumbItems?: BreadcrumbItem[]
 }
 
 export function HeroSection({
@@ -39,7 +45,8 @@ export function HeroSection({
     className = "",
     overlayImage,
     overlayOpacity = 1,
-    showAffiliateOutcrop = false
+    showPageOutcrop = false,
+    breadcrumbItems
 }: HeroSectionProps) {
     return (
         <section className={`relative bg-gradient-to-r ${backgroundGradient} pt-36 pb-32 overflow-hidden min-h-[200px] ${className}`}>
@@ -109,8 +116,13 @@ export function HeroSection({
                 {/* {showNewsletter && <NewsletterSignup />} */}
             </div>
 
-            {/* Affiliate Outcrop */}
-            {showAffiliateOutcrop && <AffiliateOutcrop />}
+            {/* Page Outcrop with optional breadcrumbs */}
+            {showPageOutcrop && (
+                <PageOutcrop
+                    breadcrumbItems={breadcrumbItems}
+                    showAffiliateText={!breadcrumbItems || breadcrumbItems.length === 0}
+                />
+            )}
         </section>
     )
 }

@@ -1,4 +1,5 @@
 import { LayoutWrapper } from "@/components/layout/layout-wrapper"
+import { HeroSection } from "@/components/sections/hero/hero-section"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/composite/card"
 import { Badge } from "@/components/ui/primitives/badge"
 import { Button } from "@/components/ui/primitives/button"
@@ -19,16 +20,18 @@ export default function TeamPage() {
       />
       <LayoutWrapper>
         {/* Hero Section */}
-        <section className="py-16 bg-gradient-to-r from-science-blue to-science-green text-white">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="font-heading text-4xl font-bold mb-6">Our Team</h1>
-            <p className="text-xl text-blue-100 leading-relaxed">
-              Meet the dedicated students and faculty who lead Advocates for Science @ IU's advocacy efforts. Our
-              diverse team brings together expertise from various disciplines to drive meaningful change in science
-              policy.
-            </p>
-          </div>
-        </section>
+        <HeroSection
+          title="Our Team"
+          subtitle="Meet the dedicated students and faculty who lead Advocates for Science @ IU's advocacy efforts. Our diverse team brings together expertise from various disciplines to drive meaningful change in science policy."
+          showLogo={false}
+          showNewsletter={false}
+          primaryButtonText=""
+          secondaryButtonText=""
+          className="py-16"
+          backgroundGradient="from-science-blue to-science-green"
+          showPageOutcrop={true}
+          breadcrumbItems={[{ label: "Our Team" }]}
+        />
 
         {/* Leadership Team */}
         <section className="py-16 bg-white">

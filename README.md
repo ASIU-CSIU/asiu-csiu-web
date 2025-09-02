@@ -93,7 +93,7 @@ advocates-for-science-at-iu/
 │   ├── navigation/               # Navigation components
 │   │   └── tab-navigation.tsx
 │   ├── features/                 # Feature-specific components
-│   │   └── affiliate-outcrop.tsx
+│   │   └── page-outcrop.tsx
 │   ├── hooks/                    # Custom React hooks
 │   │   ├── use-mobile.tsx
 │   │   └── use-toast.ts

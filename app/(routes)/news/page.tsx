@@ -55,6 +55,8 @@ export default async function NewsPage() {
                     secondaryButtonText=""
                     className="py-16"
                     overlayImage="/images/overlays/overlay-news.JPG"
+                    showPageOutcrop={true}
+                    breadcrumbItems={[{ label: "News" }]}
                 />
 
                 {/* Content Tabs */}

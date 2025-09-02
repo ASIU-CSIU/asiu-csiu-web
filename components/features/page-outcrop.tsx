@@ -42,9 +42,7 @@ export function PageOutcrop({ className = "", breadcrumbItems, showAffiliateText
                 <div className="pl-5 pr-6 pt-2 pb-1">
                     {/* Breadcrumb navigation */}
                     {breadcrumbItems && breadcrumbItems.length > 0 && (
-                        <div className="mb-2">
-                            <Breadcrumb items={breadcrumbItems} />
-                        </div>
+                        <Breadcrumb items={breadcrumbItems} />
                     )}
 
                     {/* Affiliate text (optional) */}

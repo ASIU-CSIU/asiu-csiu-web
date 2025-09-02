@@ -1,4 +1,5 @@
 import { LayoutWrapper } from "@/components/layout/layout-wrapper"
+import { HeroSection } from "@/components/sections/hero/hero-section"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/composite/card"
 import { Badge } from "@/components/ui/primitives/badge"
 import { Button } from "@/components/ui/primitives/button"
@@ -78,33 +79,22 @@ export default async function BulletinPage({ params }: BulletinPageProps) {
 
     return (
         <LayoutWrapper>
-            {/* Header */}
-            <section className="bg-gradient-to-r from-blue-50 to-green-50 py-16">
-                <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex items-center mb-6">
-                        <Link
-                            href="/news"
-                            className="flex items-center text-science-blue hover:text-blue-700 transition-colors"
-                        >
-                            <ArrowLeft className="h-4 w-4 mr-2" />
-                            Back to News
-                        </Link>
-                    </div>
-                    <h1 className="font-heading text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-                        News Bulletin: {formattedDate}
-                    </h1>
-                    <div className="flex items-center space-x-4 text-gray-600">
-                        <div className="flex items-center">
-                            <Calendar className="h-4 w-4 mr-2" />
-                            <span>{formattedDate}</span>
-                        </div>
-                        <div className="flex items-center">
-                            <User className="h-4 w-4 mr-2" />
-                            <span>{articles.length} article{articles.length !== 1 ? 's' : ''}</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            {/* Hero Section */}
+            <HeroSection
+                title={`News Bulletin: ${formattedDate}`}
+                subtitle="Stay updated with our latest news bulletins and organizational updates."
+                showLogo={false}
+                showNewsletter={false}
+                primaryButtonText=""
+                secondaryButtonText=""
+                className="py-16"
+                backgroundGradient="from-blue-50 to-green-50"
+                showPageOutcrop={true}
+                breadcrumbItems={[
+                    { label: "News", href: "/news" },
+                    { label: `Bulletin: ${formattedDate}` }
+                ]}
+            />
 
             {/* Articles */}
             <section className="py-16 bg-white">

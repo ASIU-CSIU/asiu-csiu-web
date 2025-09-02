@@ -36,13 +36,6 @@ export default async function AboutPage() {
         }}
       />
       <LayoutWrapper>
-        {/* Breadcrumb Navigation */}
-        <div className="bg-gray-50 py-4">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <Breadcrumb items={[{ label: "About Our Mission" }]} />
-          </div>
-        </div>
-
         {/* Hero Section */}
         <HeroSection
           title="About Our Mission"
@@ -53,6 +46,8 @@ export default async function AboutPage() {
           secondaryButtonText=""
           className="py-16"
           overlayImage="/images/overlays/overlay-about.JPG"
+          showPageOutcrop={true}
+          breadcrumbItems={[{ label: "About Our Mission" }]}
         />
 
         {/* Mission Statement */}
