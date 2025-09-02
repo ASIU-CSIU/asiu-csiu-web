@@ -1,0 +1,22 @@
+{
+  "name": "@asiu/shared-ui",
+  "version": "0.1.0",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "echo 'UI package build placeholder'",
+    "dev": "echo 'UI package dev placeholder'"
+  },
+  "devDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@asiu/shared-utils": "*",
+    "@asiu/shared-types": "*",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.5.5"
+  }
+}
