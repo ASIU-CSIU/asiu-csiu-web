@@ -11,6 +11,7 @@ import type { CommitteeChair, FacultyAdvisor } from "@/lib/types"
 import { getPageMetadata, getStructuredData, getBreadcrumbData } from "@/lib/metadata"
 import Link from "next/link"
 import Image from "next/image"
+import { Breadcrumb } from "@/components/navigation/breadcrumb"
 
 export const revalidate = 3600
 
@@ -35,6 +36,13 @@ export default async function AboutPage() {
         }}
       />
       <LayoutWrapper>
+        {/* Breadcrumb Navigation */}
+        <div className="bg-gray-50 py-4">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <Breadcrumb items={[{ label: "About Our Mission" }]} />
+          </div>
+        </div>
+
         {/* Hero Section */}
         <HeroSection
           title="About Our Mission"

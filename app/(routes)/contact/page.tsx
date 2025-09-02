@@ -11,6 +11,9 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Mail, Instagram, Facebook, MapPin, Clock, MessageSquare, Users, Calendar } from "lucide-react"
 import { useState } from "react"
 import Link from "next/link"
+import { getStructuredData, getBreadcrumbData } from "@/lib/metadata"
+import { generateFAQSchema, type FAQItem } from "@/lib/schema-generators"
+import { Breadcrumb } from "@/components/navigation/breadcrumb"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -19,6 +22,30 @@ export default function ContactPage() {
     subject: "",
     message: ""
   })
+
+  // FAQ data for schema markup
+  const faqData: FAQItem[] = [
+    {
+      question: "How can I get involved with Advocates for Science @ IU?",
+      answer: "There are many ways to get involved! You can attend our meetings, participate in our events, volunteer for advocacy campaigns, or join one of our committees. Visit our Get Involved page to learn more about current opportunities."
+    },
+    {
+      question: "What types of events do you host?",
+      answer: "We host a variety of events including policy workshops, guest speaker series, advocacy training sessions, community forums, and networking events. Our events are designed to educate, engage, and empower students and community members on science policy issues."
+    },
+    {
+      question: "Do I need to be a science major to join?",
+      answer: "Not at all! While our focus is on science policy, we welcome students from all academic backgrounds including humanities, social sciences, business, and other fields."
+    },
+    {
+      question: "How can faculty and staff get involved?",
+      answer: "Faculty and staff can support our work by serving as advisors, participating in our events, providing expertise for policy research, and helping connect us with relevant networks and resources. We're always open to collaboration opportunities."
+    },
+    {
+      question: "Can community members participate in your events?",
+      answer: "Yes! Many of our events, such as public forums and educational workshops, are open to the broader community. We believe that science policy affects everyone, and we welcome community participation in our advocacy efforts."
+    }
+  ]
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { id, value } = e.target
@@ -48,7 +75,34 @@ ${fullName}`)}`
 
   return (
     <>
+      {/* Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(getStructuredData("contact"))
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generateFAQSchema(faqData))
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(getBreadcrumbData("/contact", "Contact Us"))
+        }}
+      />
+
       <LayoutWrapper>
+        {/* Breadcrumb Navigation */}
+        <div className="bg-gray-50 py-4">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <Breadcrumb items={[{ label: "Contact Us" }]} />
+          </div>
+        </div>
+
         {/* Hero Section */}
         <HeroSection
           title="Contact Us"

@@ -30,6 +30,8 @@ import { getPageMetadata, getStructuredData } from "@/lib/metadata"
 import { getEvents } from "@/lib/sanity"
 import { EventCard } from "@/components/cards/event-card"
 import type { Event } from "@/lib/types"
+import { generateEventSchema, type EventSchemaData } from "@/lib/schema-generators"
+import { Breadcrumb } from "@/components/navigation/breadcrumb"
 
 export const revalidate = 3600
 
@@ -61,6 +63,35 @@ export default async function GetInvolvedPage() {
 
   // Sort past events by date (most recent first)
   pastEvents.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  
+  // Generate event schema for upcoming events
+  const eventSchemas = upcomingEvents.slice(0, 5).map((event: Event) => {
+    const eventSchema: EventSchemaData = {
+      name: event.title,
+      description: event.description || `Join Advocates for Science @ IU for ${event.title}`,
+      startDate: new Date(event.date).toISOString(),
+      location: {
+        name: event.location || "Indiana University Bloomington",
+        address: {
+          addressLocality: "Bloomington",
+          addressRegion: "IN",
+          addressCountry: "US",
+          postalCode: "47405"
+        }
+      },
+      organizer: {
+        name: "Advocates for Science @ IU",
+        url: "https://www.advocatesforscienceatiu.org"
+      },
+      offers: {
+        price: "0",
+        priceCurrency: "USD",
+        availability: "https://schema.org/InStock"
+      }
+    }
+    return generateEventSchema(eventSchema)
+  })
+
   return (
     <>
       <script
@@ -69,7 +100,25 @@ export default async function GetInvolvedPage() {
           __html: JSON.stringify(getStructuredData("getInvolved"))
         }}
       />
+      {/* Event Schemas */}
+      {eventSchemas.map((schema, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(schema)
+          }}
+        />
+      ))}
+      
       <LayoutWrapper>
+        {/* Breadcrumb Navigation */}
+        <div className="bg-gray-50 py-4">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <Breadcrumb items={[{ label: "Get Involved" }]} />
+          </div>
+        </div>
+
         {/* Hero Section */}
         <HeroSection
           title="Get Involved"
