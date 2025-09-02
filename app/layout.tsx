@@ -48,6 +48,8 @@ export default function RootLayout({
 
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+        <link rel="dns-prefetch" href="//vercel-insights.com" />
+        <link rel="dns-prefetch" href="//vitals.vercel-insights.com" />
 
         {/* PWA Manifest */}
         <link rel="manifest" href="/manifest.json" />
@@ -55,6 +57,19 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="ASIU" />
+
+        {/* RSS Feed */}
+        <link rel="alternate" type="application/rss+xml" title="ASIU RSS Feed" href="/rss.xml" />
+
+        {/* Enhanced Language Support */}
+        <link rel="alternate" hrefLang="en-US" href="https://www.advocatesforscienceatiu.org/" />
+        <link rel="alternate" hrefLang="en" href="https://www.advocatesforscienceatiu.org/" />
+        <link rel="alternate" hrefLang="x-default" href="https://www.advocatesforscienceatiu.org/" />
+
+        {/* Additional SEO Meta Tags */}
+        <meta name="application-name" content="Advocates for Science @ IU" />
+        <meta name="msapplication-TileColor" content="#2e6399" />
+        <meta name="msapplication-config" content="/browserconfig.xml" />
 
         <script
           type="application/ld+json"

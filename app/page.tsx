@@ -8,15 +8,39 @@ import { EventCard } from "@/components/cards/event-card"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, Users, Megaphone, BookOpen, Calendar, ExternalLink, Quote, TrendingUp, Award, Target } from "lucide-react"
-import { getPageMetadata, getStructuredData } from "@/lib/metadata"
+import { getPageMetadata, getStructuredData, getBreadcrumbData } from "@/lib/metadata"
 import { getPastEvents, getUpcomingEvents } from "@/lib/sanity"
 import type { Event } from "@/lib/types"
+import { generateEventSchema, type EventSchemaData } from "@/lib/schema-generators"
 
 export const metadata = getPageMetadata("home")
 
 export default async function HomePage() {
   const pastEvents = await getPastEvents()
   const upcomingEvents = await getUpcomingEvents()
+
+  // Generate event schema for featured upcoming events on home page
+  const featuredEventSchemas = upcomingEvents.slice(0, 3).map((event: Event) => {
+    const eventSchema: EventSchemaData = {
+      name: event.title,
+      description: event.description || `Join Advocates for Science @ IU for ${event.title}`,
+      startDate: new Date(event.date).toISOString(),
+      location: {
+        name: event.location || "Indiana University Bloomington",
+        address: {
+          addressLocality: "Bloomington",
+          addressRegion: "IN",
+          addressCountry: "US",
+          postalCode: "47405"
+        }
+      },
+      organizer: {
+        name: "Advocates for Science @ IU",
+        url: "https://www.advocatesforscienceatiu.org"
+      }
+    }
+    return generateEventSchema(eventSchema)
+  })
 
   return (
     <>
@@ -26,6 +50,16 @@ export default async function HomePage() {
           __html: JSON.stringify(getStructuredData("home"))
         }}
       />
+      {/* Featured Event Schemas */}
+      {featuredEventSchemas.map((schema: any, index: number) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(schema)
+          }}
+        />
+      ))}
       <LayoutWrapper>
         {/* Hero Section */}
         <HeroSection

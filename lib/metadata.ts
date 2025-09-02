@@ -34,6 +34,15 @@ export const baseMetadata: Metadata = {
   metadataBase: new URL("https://www.advocatesforscienceatiu.org"),
   alternates: {
     canonical: "/",
+    languages: {
+      'en-US': '/',
+      'en': '/'
+    },
+    types: {
+      'application/rss+xml': [
+        { url: '/rss.xml', title: 'Advocates for Science @ IU RSS Feed' },
+      ],
+    }
   },
   openGraph: {
     type: "website",
@@ -79,7 +88,7 @@ export const baseMetadata: Metadata = {
 export const pageMetadata = {
   home: {
     title: "Advocates for Science @ IU | Science Policy Advocacy",
-    description: "Join Advocates for Science @ IU in promoting scientific integrity and evidence-based decision making. Discover our latest advocacy efforts, events, and opportunities to get involved.",
+    description: "Join Advocates for Science @ IU in promoting scientific integrity and evidence-based decision making. Discover our latest advocacy efforts, events, and opportunities to get involved. Make a difference in science policy today!",
     keywords: [
       "science policy advocacy",
       "evidence-based decision making",
@@ -96,11 +105,11 @@ export const pageMetadata = {
     ],
     openGraph: {
       title: "Science at the Heart of Policy | Advocates for Science @ IU",
-      description: "Join us in promoting scientific integrity and evidence-based decision making.",
+      description: "Join us in promoting scientific integrity and evidence-based decision making. Get involved today!",
     },
     twitter: {
       title: "Science at the Heart of Policy | Advocates for Science @ IU",
-      description: "Join us in promoting scientific integrity and evidence-based decision making.",
+      description: "Join us in promoting scientific integrity and evidence-based decision making. Get involved today!",
     },
     alternates: {
       canonical: "/",
@@ -118,7 +127,7 @@ export const pageMetadata = {
   },
   about: {
     title: "About Our Mission",
-    description: "Learn about Advocates for Science @ IU's mission to bridge the gap between scientific research and public policy. Discover our values, leadership team, and commitment to evidence-based advocacy.",
+    description: "Learn about Advocates for Science @ IU's mission to bridge the gap between scientific research and public policy. Discover our values, leadership team, and commitment to evidence-based advocacy. Join our mission today!",
     keywords: [
       "ASIU mission",
       "science policy mission",
@@ -135,11 +144,11 @@ export const pageMetadata = {
     ],
     openGraph: {
       title: "About Our Mission | Advocates for Science @ IU",
-      description: "Learn about our mission to bridge the gap between scientific research and public policy.",
+      description: "Learn about our mission to bridge the gap between scientific research and public policy. Join us!",
     },
     twitter: {
       title: "About Our Mission | Advocates for Science @ IU",
-      description: "Learn about our mission to bridge the gap between scientific research and public policy.",
+      description: "Learn about our mission to bridge the gap between scientific research and public policy. Join us!",
     },
     alternates: {
       canonical: "/about",
@@ -157,7 +166,7 @@ export const pageMetadata = {
   },
   contact: {
     title: "Contact Us",
-    description: "Get in touch with Advocates for Science @ IU. Connect with our leadership team, join our community, or learn more about our advocacy efforts. We welcome questions and collaboration opportunities.",
+    description: "Get in touch with Advocates for Science @ IU today! Connect with our leadership team, join our community, or learn more about our advocacy efforts. We welcome questions and collaboration opportunities. Reach out now!",
     keywords: [
       "contact ASIU",
       "get in touch",
@@ -172,11 +181,11 @@ export const pageMetadata = {
     ],
     openGraph: {
       title: "Contact Us | Advocates for Science @ IU",
-      description: "Get in touch with our leadership team and learn how to get involved.",
+      description: "Get in touch with our leadership team and learn how to get involved. Contact us today!",
     },
     twitter: {
       title: "Contact Us | Advocates for Science @ IU",
-      description: "Get in touch with our leadership team and learn how to get involved.",
+      description: "Get in touch with our leadership team and learn how to get involved. Contact us today!",
     },
     alternates: {
       canonical: "/contact",
@@ -194,7 +203,7 @@ export const pageMetadata = {
   },
   getInvolved: {
     title: "Get Involved",
-    description: "Join Advocates for Science @ IU and make a difference in science policy. Discover upcoming events, volunteer opportunities, and ways to contribute to evidence-based advocacy efforts.",
+    description: "Join Advocates for Science @ IU and make a real difference in science policy! Discover upcoming events, volunteer opportunities, and ways to contribute to evidence-based advocacy efforts. Start making an impact today!",
     keywords: [
       "join ASIU",
       "get involved",
@@ -210,11 +219,11 @@ export const pageMetadata = {
     ],
     openGraph: {
       title: "Get Involved | Advocates for Science @ IU",
-      description: "Join us and make a difference in science policy. Discover events and opportunities.",
+      description: "Join us and make a difference in science policy. Discover events and opportunities today!",
     },
     twitter: {
       title: "Get Involved | Advocates for Science @ IU",
-      description: "Join us and make a difference in science policy. Discover events and opportunities.",
+      description: "Join us and make a difference in science policy. Discover events and opportunities today!",
     },
     alternates: {
       canonical: "/get-involved",
@@ -369,33 +378,96 @@ export const pageMetadata = {
 export const structuredData = {
   organization: {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": ["Organization", "EducationalOrganization"],
     "name": "Advocates for Science @ IU",
     "alternateName": "ASIU",
     "description": "Student affiliate of Concerned Scientists @ IU, working to promote scientific integrity and evidence-based decision making in policy and society.",
     "url": "https://www.advocatesforscienceatiu.org",
-    "logo": "https://www.advocatesforscienceatiu.org/logo.svg",
-    "image": "https://www.advocatesforscienceatiu.org/logo.svg",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.advocatesforscienceatiu.org/icons/logo.svg",
+      "width": 400,
+      "height": 400
+    },
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://www.advocatesforscienceatiu.org/icons/logo.svg",
+      "width": 1200,
+      "height": 630
+    },
     "sameAs": [
       "https://www.instagram.com/asiu.indiana",
-      "https://www.facebook.com/profile.php?id=61573877797290"
+      "https://www.facebook.com/profile.php?id=61573877797290",
+      "https://twitter.com/asiu_indiana"
     ],
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Bloomington",
       "addressRegion": "IN",
-      "addressCountry": "US"
+      "addressCountry": "US",
+      "postalCode": "47405"
     },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "contactType": "general",
-      "email": "asiu@indiana.edu"
-    },
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "contactType": "general",
+        "email": "asiu@indiana.edu",
+        "availableLanguage": "English"
+      },
+      {
+        "@type": "ContactPoint",
+        "contactType": "public relations",
+        "email": "asiu@indiana.edu",
+        "availableLanguage": "English"
+      }
+    ],
     "foundingDate": "2024",
     "memberOf": {
       "@type": "Organization",
-      "name": "Concerned Scientists @ IU"
-    }
+      "name": "Concerned Scientists @ IU",
+      "url": "https://concernedscientists.iu.edu/"
+    },
+    "parentOrganization": {
+      "@type": "EducationalOrganization",
+      "name": "Indiana University Bloomington",
+      "url": "https://www.indiana.edu/"
+    },
+    "areaServed": {
+      "@type": "Place",
+      "name": "Indiana",
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "39.1637",
+        "longitude": "-86.5264"
+      }
+    },
+    "knowsAbout": [
+      "Science Policy",
+      "Evidence-based Decision Making",
+      "Scientific Integrity",
+      "Climate Policy",
+      "Environmental Advocacy",
+      "Healthcare Policy",
+      "Science Communication"
+    ],
+    "makesOffer": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Science Policy Advocacy Training",
+          "description": "Training and workshops on effective science policy advocacy"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Science Communication Workshops",
+          "description": "Workshops on communicating science to policymakers and the public"
+        }
+      }
+    ]
   },
   home: {
     "@context": "https://schema.org",
