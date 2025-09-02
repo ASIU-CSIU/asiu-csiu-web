@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/primitives/input"
 import { Textarea } from "@/components/ui/primitives/textarea"
 import { Label } from "@/components/ui/primitives/label"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/composite/accordion"
-import { Mail, Instagram, Facebook, MapPin, Clock, MessageSquare, Users, Calendar } from "lucide-react"
+import { Mail, MapPin, Clock, MessageSquare, Users, Calendar } from "lucide-react"
 import { useState } from "react"
 import Link from "next/link"
 import { getStructuredData, getBreadcrumbData } from "@/lib/metadata"
@@ -120,20 +120,20 @@ ${fullName}`)}`
                 <form className="space-y-6" onSubmit={handleSubmit}>
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
-                      <Label htmlFor="firstName">First Name</Label>
+                      <Label htmlFor="firstName" className="block mb-2">Email</Label>
                       <Input
                         id="firstName"
-                        placeholder="Your first name"
+                        placeholder="Your email address"
                         value={formData.firstName}
                         onChange={handleInputChange}
                         required
                       />
                     </div>
                     <div>
-                      <Label htmlFor="lastName">Last Name</Label>
+                      <Label htmlFor="lastName" className="block mb-2">Location</Label>
                       <Input
                         id="lastName"
-                        placeholder="Your last name"
+                        placeholder="Your location or affiliation"
                         value={formData.lastName}
                         onChange={handleInputChange}
                         required
@@ -141,17 +141,17 @@ ${fullName}`)}`
                     </div>
                   </div>
                   <div>
-                    <Label htmlFor="subject">Subject</Label>
+                    <Label htmlFor="subject" className="block mb-2">Meeting Times</Label>
                     <Input
                       id="subject"
-                      placeholder="What can we help you with?"
+                      placeholder="When would you like to meet?"
                       value={formData.subject}
                       onChange={handleInputChange}
                       required
                     />
                   </div>
                   <div>
-                    <Label htmlFor="message">Message</Label>
+                    <Label htmlFor="message" className="block mb-2">Message</Label>
                     <Textarea
                       id="message"
                       placeholder="Tell us more about your inquiry..."
@@ -179,7 +179,7 @@ ${fullName}`)}`
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-gray-600">asiu@indiana.edu</p>
+                      <p className="text-gray-600">advocatesforscience.in@gmail.com</p>
                       <p className="text-sm text-gray-500 mt-2">
                         We typically respond within 24-48 hours during business days.
                       </p>
@@ -210,32 +210,13 @@ ${fullName}`)}`
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-gray-600">General Assembly: Every Wednesday</p>
-                      <p className="text-gray-600">7:00 PM - 8:30 PM</p>
+                      <p className="text-gray-600">Every Tuesday 8:00-9:00PM</p>
+                      <p className="text-gray-600">SPEA (PV) 727</p>
                       <p className="text-sm text-gray-500 mt-2">
                         All are welcome to attend our weekly meetings.
                       </p>
                     </CardContent>
                   </Card>
-                </div>
-
-                {/* Social Media */}
-                <div className="mt-8">
-                  <h3 className="font-heading text-xl font-bold mb-4">Follow Us</h3>
-                  <div className="flex space-x-4">
-                    <Button variant="outline" size="sm" className="flex items-center space-x-2" asChild>
-                      <a href="https://www.instagram.com/asiu.indiana" target="_blank" rel="noopener noreferrer">
-                        <Instagram className="h-4 w-4" />
-                        <span>Instagram</span>
-                      </a>
-                    </Button>
-                    <Button variant="outline" size="sm" className="flex items-center space-x-2" asChild>
-                      <a href="https://www.facebook.com/asiu.indiana" target="_blank" rel="noopener noreferrer">
-                        <Facebook className="h-4 w-4" />
-                        <span>Facebook</span>
-                      </a>
-                    </Button>
-                  </div>
                 </div>
               </div>
             </div>
