@@ -1,9 +1,10 @@
 import { getPastEvents, getUpcomingEvents } from '@/lib/sanity'
+import { parseLocalDate } from '@/lib/utils'
 
 export async function GET() {
   const baseUrl = 'https://www.advocatesforscienceatiu.org'
   const buildDate = new Date().toUTCString()
-  
+
   try {
     // Get recent events and news
     const [pastEvents, upcomingEvents] = await Promise.all([
@@ -13,27 +14,36 @@ export async function GET() {
 
     // Combine and sort by date
     const allEvents = [...pastEvents, ...upcomingEvents]
-      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+      .sort((a, b) => {
+        const dateA = parseLocalDate(a.date)
+        const dateB = parseLocalDate(b.date)
+        return dateB.getTime() - dateA.getTime()
+      })
       .slice(0, 20) // Limit to 20 most recent items
 
     const rssItems = allEvents.map(event => {
-      const eventDate = new Date(event.date).toUTCString()
+      // Parse date as local date to avoid timezone shifts
+      const eventDate = parseLocalDate(event.date)
+      // Create UTC string at local midnight to preserve the intended date
+      const localMidnight = new Date(eventDate.getFullYear(), eventDate.getMonth(), eventDate.getDate())
+      const eventDateUTC = localMidnight.toUTCString()
+
       const eventUrl = `${baseUrl}/get-involved` // Link to get involved page for now
-      
+
       return `
     <item>
       <title><![CDATA[${event.title}]]></title>
       <description><![CDATA[${event.description || 'Join us for this exciting event!'}]]></description>
       <link>${eventUrl}</link>
       <guid isPermaLink="false">${event._id}</guid>
-      <pubDate>${eventDate}</pubDate>
+      <pubDate>${eventDateUTC}</pubDate>
       <category>Events</category>
       ${event.location ? `<category>${event.location}</category>` : ''}
     </item>`
     }).join('')
 
     const rss = `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" 
+<rss version="2.0"
      xmlns:content="http://purl.org/rss/1.0/modules/content/"
      xmlns:dc="http://purl.org/dc/elements/1.1/"
      xmlns:atom="http://www.w3.org/2005/Atom">

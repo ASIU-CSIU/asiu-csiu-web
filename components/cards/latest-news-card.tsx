@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/primitives/button"
 import { Users } from "lucide-react"
 import Image from "next/image"
 import type { Event } from "@/lib/types"
+import { formatLocalDate } from "@/lib/utils"
 import { ClampedText } from "./clamped-text"
 
 interface LatestNewsCardProps {
@@ -11,10 +12,9 @@ interface LatestNewsCardProps {
 }
 
 export function LatestNewsCard({ event }: LatestNewsCardProps) {
-    // Format date
+    // Format date - use timezone-safe parsing to prevent date shifts
     const formatDate = (dateString: string) => {
-        const date = new Date(dateString)
-        return date.toLocaleDateString('en-US', {
+        return formatLocalDate(dateString, {
             year: 'numeric',
             month: 'short'
         })

@@ -6,6 +6,7 @@ import { Clock, MapPin, Users, ExternalLink, Bookmark } from "lucide-react"
 import Image from "next/image"
 import type { Event } from "@/lib/types"
 import { ClampedText } from "@/components/cards/clamped-text"
+import { formatLocalDate, formatDateForCalendar as formatDateForCalendarUtil } from "@/lib/utils"
 
 interface EventCardProps {
     event: Event
@@ -13,14 +14,9 @@ interface EventCardProps {
 }
 
 export function EventCard({ event, isPast = false }: EventCardProps) {
-    // Format date
+    // Format date - use timezone-safe parsing to prevent date shifts
     const formatDate = (dateString: string) => {
-        const date = new Date(dateString)
-        return date.toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'short',
-            day: 'numeric'
-        })
+        return formatLocalDate(dateString)
     }
 
     // Format time
@@ -33,10 +29,9 @@ export function EventCard({ event, isPast = false }: EventCardProps) {
         })
     }
 
-    // Format date for calendar links (YYYYMMDD format)
+    // Format date for calendar links (YYYYMMDD format) - timezone-safe
     const formatDateForCalendar = (dateString: string) => {
-        const date = new Date(dateString)
-        return date.toISOString().slice(0, 10).replace(/-/g, '')
+        return formatDateForCalendarUtil(dateString)
     }
 
     // Format time for calendar links (HHMM format)

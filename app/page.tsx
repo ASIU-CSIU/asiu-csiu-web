@@ -12,6 +12,7 @@ import { getPageMetadata, getStructuredData, getBreadcrumbData } from "@/lib/met
 import { getPastEvents, getUpcomingEvents } from "@/lib/sanity"
 import type { Event } from "@/lib/types"
 import { generateEventSchema, type EventSchemaData } from "@/lib/schema-generators"
+import { createLocalMidnightISO } from "@/lib/utils"
 
 export const metadata = getPageMetadata("home")
 
@@ -24,7 +25,7 @@ export default async function HomePage() {
     const eventSchema: EventSchemaData = {
       name: event.title,
       description: event.description || `Join Advocates for Science @ IU for ${event.title}`,
-      startDate: new Date(event.date).toISOString(),
+      startDate: createLocalMidnightISO(event.date),
       location: {
         name: event.location || "Indiana University Bloomington",
         address: {

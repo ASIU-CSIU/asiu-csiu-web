@@ -109,7 +109,13 @@ export const eventType = defineType({
     },
     prepare(selection) {
       const {title, date, location} = selection
-      const formattedDate = date ? new Date(date).toLocaleDateString() : 'No date'
+      // Parse date as local date to avoid timezone shifts
+      let formattedDate = 'No date'
+      if (date) {
+        const [year, month, day] = date.split('-').map(Number)
+        const localDate = new Date(year, month - 1, day) // month is 0-indexed
+        formattedDate = localDate.toLocaleDateString()
+      }
       return {
         title: title || 'Untitled Event',
         subtitle: `${formattedDate} • ${location || 'No location'}`

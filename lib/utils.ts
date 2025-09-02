@@ -74,3 +74,45 @@ export function getCategoryColor(category: string): string {
       return 'bg-gray-500'
   }
 }
+
+/**
+ * Parse a date string (YYYY-MM-DD) as a local date to avoid timezone shifts
+ * This prevents dates like "2025-09-02" from becoming "2025-09-01" due to UTC conversion
+ */
+export function parseLocalDate(dateString: string): Date {
+  const [year, month, day] = dateString.split('-').map(Number)
+  return new Date(year, month - 1, day) // month is 0-indexed
+}
+
+/**
+ * Format a date string (YYYY-MM-DD) to a localized date string
+ * Uses timezone-safe parsing to prevent date shifts
+ */
+export function formatLocalDate(dateString: string, options?: Intl.DateTimeFormatOptions): string {
+  const date = parseLocalDate(dateString)
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    ...options
+  })
+}
+
+/**
+ * Get a date string (YYYY-MM-DD) formatted for calendar links (YYYYMMDD)
+ * Uses timezone-safe parsing to prevent date shifts
+ */
+export function formatDateForCalendar(dateString: string): string {
+  const [year, month, day] = dateString.split('-').map(Number)
+  return `${year}${month.toString().padStart(2, '0')}${day.toString().padStart(2, '0')}`
+}
+
+/**
+ * Create an ISO string at local midnight to preserve the intended date
+ * This prevents timezone-related date shifts when converting to ISO strings
+ */
+export function createLocalMidnightISO(dateString: string): string {
+  const date = parseLocalDate(dateString)
+  const localMidnight = new Date(date.getFullYear(), date.getMonth(), date.getDate())
+  return localMidnight.toISOString()
+}

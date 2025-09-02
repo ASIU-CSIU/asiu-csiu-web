@@ -32,6 +32,7 @@ import { EventCard } from "@/components/cards/event-card"
 import type { Event } from "@/lib/types"
 import { generateEventSchema, type EventSchemaData } from "@/lib/schema-generators"
 import { Breadcrumb } from "@/components/navigation/breadcrumb"
+import { parseLocalDate, createLocalMidnightISO } from "@/lib/utils"
 
 export const revalidate = 3600
 
@@ -48,7 +49,8 @@ export default async function GetInvolvedPage() {
   const pastEvents: Event[] = []
 
   events.forEach((event: Event) => {
-    const eventDate = new Date(event.date)
+    // Parse date as local date to avoid timezone shifts
+    const eventDate = parseLocalDate(event.date)
     const eventDateOnly = new Date(eventDate.getFullYear(), eventDate.getMonth(), eventDate.getDate())
 
     if (eventDateOnly >= today) {
@@ -58,18 +60,26 @@ export default async function GetInvolvedPage() {
     }
   })
 
-  // Sort upcoming events by date (earliest first)
-  upcomingEvents.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+  // Sort upcoming events by date (earliest first) - timezone-safe
+  upcomingEvents.sort((a, b) => {
+    const dateA = parseLocalDate(a.date)
+    const dateB = parseLocalDate(b.date)
+    return dateA.getTime() - dateB.getTime()
+  })
 
-  // Sort past events by date (most recent first)
-  pastEvents.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  // Sort past events by date (most recent first) - timezone-safe
+  pastEvents.sort((a, b) => {
+    const dateA = parseLocalDate(a.date)
+    const dateB = parseLocalDate(b.date)
+    return dateB.getTime() - dateA.getTime()
+  })
 
-  // Generate event schema for upcoming events
+  // Generate event schema for upcoming events - timezone-safe
   const eventSchemas = upcomingEvents.slice(0, 5).map((event: Event) => {
     const eventSchema: EventSchemaData = {
       name: event.title,
       description: event.description || `Join Advocates for Science @ IU for ${event.title}`,
-      startDate: new Date(event.date).toISOString(),
+      startDate: createLocalMidnightISO(event.date),
       location: {
         name: event.location || "Indiana University Bloomington",
         address: {
