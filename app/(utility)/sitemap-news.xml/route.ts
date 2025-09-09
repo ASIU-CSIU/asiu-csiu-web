@@ -1,14 +1,15 @@
 import { getPastEvents } from '@/lib/sanity'
+import { getCanonicalUrl } from '@/lib/metadata'
 
 export async function GET() {
-  const baseUrl = 'https://www.advocatesforscienceatiu.org'
-  
+  const baseUrl = getCanonicalUrl()
+
   try {
     // Get dynamic news content (if you have news posts)
     // For now, we'll include the main news page and any dynamic news routes
     const newsPages = [
       {
-        url: `${baseUrl}/news`,
+        url: getCanonicalUrl('/news'),
         lastModified: new Date().toISOString(),
         changeFrequency: 'weekly',
         priority: 0.8,

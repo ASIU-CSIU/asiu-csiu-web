@@ -5,6 +5,7 @@ import { LayoutWrapper } from "@/components/layout/layout-wrapper"
 import { HeroSection } from "@/components/sections/hero/hero-section"
 import { LatestNewsCard } from "@/components/cards/latest-news-card"
 import { EventCard } from "@/components/cards/event-card"
+import { EventsCalendar } from "@/components/features/events-calendar"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, Users, Megaphone, BookOpen, Calendar, ExternalLink, Quote, TrendingUp, Award, Target } from "lucide-react"
@@ -65,7 +66,7 @@ export default async function HomePage() {
         {/* Hero Section */}
         <HeroSection
           title="Science at the Heart of Policy"
-          subtitle="Join Advocates for Science @ IU in promoting scientific integrity and evidence-based decision making. We bridge the gap between research and policy to create a better future for all."
+          subtitle="Join our unified mission to promote scientific integrity and evidence-based decision making. Together, Advocates for Science @ IU and Concerned Scientists @ IU bridge the gap between research and policy to create a better future for all."
           showLogo={true}
           showNewsletter={true}
           primaryButtonText="Get Involved"
@@ -76,6 +77,106 @@ export default async function HomePage() {
           overlayImage="/images/overlays/overlay-home.JPG"
           showPageOutcrop={true}
         />
+
+        {/* About Our Organizations */}
+        <section className="py-16 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="font-heading text-3xl font-bold mb-4">Our Organizations</h2>
+              <p className="text-gray-600 max-w-3xl mx-auto">
+                Working together to advance science policy and evidence-based decision making at Indiana University and beyond.
+              </p>
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-12">
+              {/* ASIU Card */}
+              <Card className="p-8">
+                <div className="flex items-center mb-6">
+                  <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center mr-4">
+                    <Image
+                      src="/icons/asiu/logo.svg"
+                      alt="ASIU Logo"
+                      width={48}
+                      height={48}
+                      className="w-12 h-12"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="font-heading text-2xl font-bold text-gray-900">Advocates for Science @ IU</h3>
+                    <p className="text-gray-600">Student Organization</p>
+                  </div>
+                </div>
+                <p className="text-gray-600 mb-6">
+                  Our student affiliate organization brings together passionate students from across disciplines to advocate for evidence-based policy. We provide training, organize events, and create opportunities for students to engage with science policy issues.
+                </p>
+                <div className="space-y-2">
+                  <div className="flex items-center text-sm text-gray-600">
+                    <Users className="w-4 h-4 mr-2 text-science-blue" />
+                    <span>Student-led advocacy and training</span>
+                  </div>
+                  <div className="flex items-center text-sm text-gray-600">
+                    <Megaphone className="w-4 h-4 mr-2 text-science-blue" />
+                    <span>Community engagement and events</span>
+                  </div>
+                  <div className="flex items-center text-sm text-gray-600">
+                    <BookOpen className="w-4 h-4 mr-2 text-science-blue" />
+                    <span>Science communication workshops</span>
+                  </div>
+                </div>
+              </Card>
+
+              {/* CSIU Card */}
+              <Card className="p-8">
+                <div className="flex items-center mb-6">
+                  <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center mr-4">
+                    <Image
+                      src="/icons/csiu/logo.svg"
+                      alt="CSIU Logo"
+                      width={48}
+                      height={48}
+                      className="w-12 h-12"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="font-heading text-2xl font-bold text-gray-900">Concerned Scientists @ IU</h3>
+                    <p className="text-gray-600">Faculty & Staff Organization</p>
+                  </div>
+                </div>
+                <p className="text-gray-600 mb-6">
+                  Our faculty and staff organization provides institutional support and expertise for science policy advocacy. We work with policymakers, conduct research, and mentor students in evidence-based advocacy efforts.
+                </p>
+                <div className="space-y-2">
+                  <div className="flex items-center text-sm text-gray-600">
+                    <Users className="w-4 h-4 mr-2 text-science-green" />
+                    <span>Faculty expertise and mentorship</span>
+                  </div>
+                  <div className="flex items-center text-sm text-gray-600">
+                    <Megaphone className="w-4 h-4 mr-2 text-science-green" />
+                    <span>Policy research and analysis</span>
+                  </div>
+                  <div className="flex items-center text-sm text-gray-600">
+                    <BookOpen className="w-4 h-4 mr-2 text-science-green" />
+                    <span>Institutional advocacy support</span>
+                  </div>
+                </div>
+              </Card>
+            </div>
+
+            <div className="text-center mt-12">
+              <p className="text-gray-600 mb-6">
+                Together, we create a comprehensive approach to science policy advocacy, combining student energy with faculty expertise.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button size="lg" className="bg-science-blue text-white" asChild>
+                  <Link href="/about">Learn More About Our Mission</Link>
+                </Button>
+                <Button size="lg" variant="outline" className="border-science-blue text-science-blue hover:bg-science-blue hover:text-white" asChild>
+                  <Link href="/get-involved">Join Our Efforts</Link>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Latest News & Activities */}
         <section className="py-16 bg-white">
@@ -89,7 +190,7 @@ export default async function HomePage() {
 
             <div className="flex overflow-x-auto gap-6 pb-4 scrollbar-hide">
               {pastEvents && pastEvents.length > 0 ? (
-                pastEvents.slice(0, 5).map((event: Event) => (
+                pastEvents.slice(0, 12).map((event: Event) => (
                   <LatestNewsCard key={event._id} event={event} />
                 ))
               ) : (
@@ -98,6 +199,14 @@ export default async function HomePage() {
                 </div>
               )}
             </div>
+
+            {pastEvents && pastEvents.length > 12 && (
+              <div className="text-center mt-8">
+                <Button size="lg" variant="outline" className="border-science-blue text-science-blue hover:bg-science-blue hover:text-white" asChild>
+                  <Link href="/news">See All Past Events</Link>
+                </Button>
+              </div>
+            )}
           </div>
         </section>
 
@@ -325,28 +434,18 @@ export default async function HomePage() {
           </div>
         </section>
 
-        {/* Upcoming Events */}
+        {/* Event Calendar */}
         <section className="py-16 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="font-heading text-3xl font-bold">Upcoming Events</h2>
+              <h2 className="font-heading text-3xl font-bold">Event Calendar</h2>
               {/* <p className="text-gray-600 max-w-2xl mx-auto mt-4">
                 Join us for upcoming advocacy training sessions, public forums, and community engagement opportunities.
               </p> */}
             </div>
 
-            <div className="flex flex-wrap justify-center gap-8">
-              {upcomingEvents && upcomingEvents.length > 0 ? (
-                upcomingEvents.slice(0, 3).map((event: Event) => (
-                  <div key={event._id} className="w-full md:w-96 lg:w-80">
-                    <EventCard event={event} />
-                  </div>
-                ))
-              ) : (
-                <div className="text-center text-gray-500 py-12 w-full">
-                  <p>No upcoming events available yet.</p>
-                </div>
-              )}
+            <div className="flex justify-center">
+              <EventsCalendar events={[...pastEvents, ...upcomingEvents]} />
             </div>
           </div>
         </section>

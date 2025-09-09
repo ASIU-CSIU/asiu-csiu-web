@@ -27,17 +27,27 @@ export default function RootLayout({
     <html lang="en" className={poppins.variable} suppressHydrationWarning>
       <head>
         {/* Favicon */}
-        <link rel="icon" type="image/x-icon" href="/icons/favicon.ico" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/icons/favicon-apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="192x192" href="/icons/favicon-android-chrome-192x192.png" />
-        <link rel="icon" type="image/png" sizes="512x512" href="/icons/favicon-android-chrome-512x512.png" />
-        <link rel="icon" type="image/svg+xml" href="/icons/logo.svg" />
-        <link rel="shortcut icon" href="/icons/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="/icons/asiu/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/icons/asiu/favicon-16x16.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/icons/asiu/favicon-32x32.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/icons/asiu/favicon-apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/icons/asiu/favicon-android-chrome-192x192.png" />
+        <link rel="icon" type="image/png" sizes="512x512" href="/icons/asiu/favicon-android-chrome-512x512.png" />
+        <link rel="icon" type="image/svg+xml" href="/icons/asiu/logo.svg" />
+        <link rel="shortcut icon" href="/icons/asiu/favicon.ico" />
+
+        <link rel="icon" type="image/x-icon" href="/icons/csiu/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/icons/csiu/favicon-16x16.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/icons/csiu/favicon-32x32.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/icons/csiu/favicon-apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/icons/csiu/favicon-android-chrome-192x192.png" />
+        <link rel="icon" type="image/png" sizes="512x512" href="/icons/csiu/favicon-android-chrome-512x512.png" />
+        <link rel="icon" type="image/svg+xml" href="/icons/asiu/logo.svg" />
+        <link rel="shortcut icon" href="/icons/csiu/favicon.ico" />
 
         {/* Preload critical resources */}
-        <link rel="preload" href="/icons/logo.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/icons/asiu/logo.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/icons/csiu/logo.svg" as="image" type="image/svg+xml" />
 
         {/* Preload overlay images for all pages */}
         <link rel="preload" href="/images/overlays/overlay-home.JPG" as="image" />
@@ -62,9 +72,9 @@ export default function RootLayout({
         <link rel="alternate" type="application/rss+xml" title="ASIU RSS Feed" href="/rss.xml" />
 
         {/* Enhanced Language Support */}
-        <link rel="alternate" hrefLang="en-US" href="https://www.advocatesforscienceatiu.org/" />
-        <link rel="alternate" hrefLang="en" href="https://www.advocatesforscienceatiu.org/" />
-        <link rel="alternate" hrefLang="x-default" href="https://www.advocatesforscienceatiu.org/" />
+        <link rel="alternate" hrefLang="en-US" href="https://www.csiub.org/" />
+        <link rel="alternate" hrefLang="en" href="https://www.csiub.org/" />
+        <link rel="alternate" hrefLang="x-default" href="https://www.csiub.org/" />
 
         {/* Additional SEO Meta Tags */}
         <meta name="application-name" content="Advocates for Science @ IU" />

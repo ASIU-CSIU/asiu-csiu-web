@@ -1,8 +1,9 @@
 import { getPastEvents, getUpcomingEvents } from '@/lib/sanity'
+import { getCanonicalUrl } from '@/lib/metadata'
 
 export async function GET() {
-  const baseUrl = 'https://www.advocatesforscienceatiu.org'
-  
+  const baseUrl = getCanonicalUrl()
+
   try {
     // Get all events from Sanity CMS
     const [pastEvents, upcomingEvents] = await Promise.all([
@@ -12,9 +13,9 @@ export async function GET() {
 
     // Combine and format events for sitemap
     const allEvents = [...pastEvents, ...upcomingEvents]
-    
+
     const eventPages = allEvents.map(event => ({
-      url: `${baseUrl}/events/${event.slug}`, // Assuming you'll have event detail pages
+      url: getCanonicalUrl(`/events/${event.slug}`), // Assuming you'll have event detail pages
       lastModified: event._updatedAt || new Date().toISOString(),
       changeFrequency: 'monthly',
       priority: 0.6,
@@ -22,7 +23,7 @@ export async function GET() {
 
     // Add main events/get-involved page
     eventPages.unshift({
-      url: `${baseUrl}/get-involved`,
+      url: getCanonicalUrl('/get-involved'),
       lastModified: new Date().toISOString(),
       changeFrequency: 'weekly',
       priority: 0.9,

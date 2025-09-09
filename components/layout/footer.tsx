@@ -12,22 +12,35 @@ export function Footer() {
           {/* Organization Info */}
           <div className="md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 relative">
-                <Image
-                  src="/icons/logo.svg"
-                  alt="ASIU Logo"
-                  width={32}
-                  height={32}
-                  className="w-full h-full relative z-10 brightness-0 invert"
-                  priority
-                  fetchPriority="high"
-                />
+              <div className="flex items-center">
+                <div className="w-8 h-8 relative">
+                  <Image
+                    src="/icons/csiu/logo-white.svg"
+                    alt="CSIU Logo"
+                    width={32}
+                    height={32}
+                    className="w-full h-full relative z-10 brightness-0 invert"
+                    priority
+                    fetchPriority="high"
+                  />
+                </div>
+                <div className="w-8 h-8 relative">
+                  <Image
+                    src="/icons/asiu/logo.svg"
+                    alt="ASIU Logo"
+                    width={32}
+                    height={32}
+                    className="w-full h-full relative z-10 brightness-0 invert"
+                    priority
+                    fetchPriority="high"
+                  />
+                </div>
               </div>
-              <h3 className="font-heading text-lg font-bold">Advocates for Science @ IU</h3>
+              <h3 className="font-heading text-lg font-bold leading-none">Concerned Scientists &<br /> Advocates for Science @ IU</h3>
             </div>
             <p className="text-gray-300 mb-4 max-w-md">
-              Student affiliate of Concerned Scientists @ IU, working to promote scientific integrity and evidence-based
-              decision making in policy and society.
+              A unified student organization combining CSIU and ASIU,
+              dedicated to promoting scientific integrity, evidence-based policy, and science advocacy at Indiana University.
             </p>
             <div className="flex space-x-4">
               <Link
@@ -133,6 +146,6 @@ export function Footer() {
           </div>
         </div>
       </div>
-    </footer>
+    </footer >
   )
 }

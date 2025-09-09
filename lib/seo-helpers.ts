@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { getCanonicalUrl, getCurrentDomainUrl } from './metadata'
 
 // Helper function to generate consistent meta tags across pages
 export interface SEOConfig {
@@ -13,15 +14,16 @@ export interface SEOConfig {
   modifiedTime?: string
   author?: string
   section?: string
+  domain?: string
 }
 
 export function generateSEO(config: SEOConfig): Metadata {
-  const baseUrl = 'https://www.advocatesforscienceatiu.org'
-  const canonicalUrl = config.canonical ? `${baseUrl}${config.canonical}` : baseUrl
-  const imageUrl = config.image || `${baseUrl}/icons/logo.svg`
-  
+  const canonicalUrl = config.canonical ? getCanonicalUrl(config.canonical) : getCanonicalUrl()
+  const currentDomainUrl = getCurrentDomainUrl('', config.domain)
+  const imageUrl = config.image || `${currentDomainUrl}/icons/logo.svg`
+
   // Ensure description is between 120-160 characters for optimal SEO
-  const optimizedDescription = config.description.length > 160 
+  const optimizedDescription = config.description.length > 160
     ? config.description.substring(0, 157) + '...'
     : config.description
 
@@ -29,7 +31,7 @@ export function generateSEO(config: SEOConfig): Metadata {
     title: config.title,
     description: optimizedDescription,
     keywords: config.keywords || [],
-    
+
     // Open Graph
     openGraph: {
       type: config.type || 'website',
@@ -53,7 +55,7 @@ export function generateSEO(config: SEOConfig): Metadata {
         section: config.section || 'Science Policy',
       }),
     },
-    
+
     // Twitter Cards
     twitter: {
       card: 'summary_large_image',
@@ -63,12 +65,12 @@ export function generateSEO(config: SEOConfig): Metadata {
       creator: '@asiu_indiana',
       site: '@asiu_indiana',
     },
-    
+
     // Canonical URL
     alternates: {
       canonical: config.canonical || '/',
     },
-    
+
     // Robots
     robots: {
       index: !config.noIndex,
@@ -104,19 +106,20 @@ export function generateArticleSEO(config: {
 }
 
 // Helper function to create breadcrumb JSON-LD
-export function generateBreadcrumbSchema(items: { name: string; url?: string }[]) {
+export function generateBreadcrumbSchema(items: { name: string; url?: string }[], domain?: string) {
+  const canonicalBaseUrl = getCanonicalUrl()
   const breadcrumbItems = [
     {
       '@type': 'ListItem',
       position: 1,
       name: 'Home',
-      item: 'https://www.advocatesforscienceatiu.org',
+      item: canonicalBaseUrl,
     },
     ...items.map((item, index) => ({
       '@type': 'ListItem',
       position: index + 2,
       name: item.name,
-      ...(item.url && { item: `https://www.advocatesforscienceatiu.org${item.url}` }),
+      ...(item.url && { item: getCanonicalUrl(item.url) }),
     })),
   ]
 
@@ -134,7 +137,7 @@ export function validateMetaDescription(description: string): {
   recommendation: string
 } {
   const length = description.length
-  
+
   if (length < 120) {
     return {
       isValid: false,
@@ -142,7 +145,7 @@ export function validateMetaDescription(description: string): {
       recommendation: 'Meta description is too short. Aim for 120-160 characters for better SEO.',
     }
   }
-  
+
   if (length > 160) {
     return {
       isValid: false,
@@ -150,7 +153,7 @@ export function validateMetaDescription(description: string): {
       recommendation: 'Meta description is too long. Keep it under 160 characters to avoid truncation.',
     }
   }
-  
+
   return {
     isValid: true,
     length,
@@ -164,10 +167,10 @@ export function generateAltText(imageName: string, context?: string): string {
     .replace(/\.(jpg|jpeg|png|webp|svg)$/i, '')
     .replace(/[-_]/g, ' ')
     .replace(/\b\w/g, (l) => l.toUpperCase())
-  
+
   if (context) {
     return `${baseAlt} - ${context} | Advocates for Science @ IU`
   }
-  
+
   return `${baseAlt} | Advocates for Science @ IU`
 }

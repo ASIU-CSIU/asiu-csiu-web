@@ -26,13 +26,13 @@ export function ClampedText({ text, className, asChild, children }: ClampedTextP
         setIsClamped(checkClamped(textRef.current))
     }, [text])
 
-    if (asChild && children) {
+    if (asChild && children && React.isValidElement(children)) {
         // Clone the child element and add our ref and classes
         const childElement = children
         const childProps: any = {
             ...childElement.props,
             ref: textRef,
-            className: cn(childElement.props.className, className),
+            className: cn(childElement.props?.className, className),
             children: text
         }
 
@@ -53,6 +53,16 @@ export function ClampedText({ text, className, asChild, children }: ClampedTextP
         }
 
         return React.cloneElement(childElement, childProps)
+    }
+
+    // Fallback if asChild is true but children is not a valid React element
+    if (asChild && children) {
+        console.warn('ClampedText: asChild is true but children is not a valid React element')
+        return (
+            <p ref={textRef} className={className}>
+                {text}
+            </p>
+        )
     }
 
     if (isClamped) {

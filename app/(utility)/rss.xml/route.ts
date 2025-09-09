@@ -1,8 +1,9 @@
 import { getPastEvents, getUpcomingEvents } from '@/lib/sanity'
 import { parseLocalDate } from '@/lib/utils'
+import { getCanonicalUrl } from '@/lib/metadata'
 
 export async function GET() {
-  const baseUrl = 'https://www.advocatesforscienceatiu.org'
+  const baseUrl = getCanonicalUrl()
   const buildDate = new Date().toUTCString()
 
   try {
@@ -28,7 +29,7 @@ export async function GET() {
       const localMidnight = new Date(eventDate.getFullYear(), eventDate.getMonth(), eventDate.getDate())
       const eventDateUTC = localMidnight.toUTCString()
 
-      const eventUrl = `${baseUrl}/get-involved` // Link to get involved page for now
+      const eventUrl = getCanonicalUrl('/get-involved') // Link to get involved page for now
 
       return `
     <item>
@@ -55,9 +56,9 @@ export async function GET() {
     <lastBuildDate>${buildDate}</lastBuildDate>
     <pubDate>${buildDate}</pubDate>
     <ttl>60</ttl>
-    <atom:link href="${baseUrl}/rss.xml" rel="self" type="application/rss+xml"/>
+    <atom:link href="${getCanonicalUrl('/rss.xml')}" rel="self" type="application/rss+xml"/>
     <image>
-      <url>${baseUrl}/icons/logo.svg</url>
+      <url>${getCanonicalUrl('/icons/logo.svg')}</url>
       <title>Advocates for Science @ IU</title>
       <link>${baseUrl}</link>
       <width>144</width>

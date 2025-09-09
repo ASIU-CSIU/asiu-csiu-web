@@ -34,20 +34,65 @@ export function Navigation() {
     <header className="bg-gray-900 sticky top-0 z-50" role="banner">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-8">
         <div className="flex justify-between items-center py-4">
-          {/* Logo */}
+          {/* Dual Logo */}
+          {/* <div className="flex items-center relative">
+            <Link href="/" className="flex items-center space-x-2" aria-label="Advocates for Science @ IU Homepage">
+              <div className="absolute -top-8 w-66 h-23.5 bg-white pt-1">
+                <div className="flex flex-row items-center gap-2 justify-center border border-gray-300 mx-1">
+                  <div className="h-22 flex items-center justify-start pt-2 -mt-1">
+                    <Image
+                      src="/icons/csiu/logo.svg"
+                      alt="CSIU Logo"
+                      width={34.5}
+                      height={34.5}
+                      priority
+                      fetchPriority="high"
+                    />
+                    <h1 className="ml-1 text-left font-heading text-xs font-bold text-gray-900 leading-none">
+                      Concerned<br />Scientists<br />@IU
+                    </h1>
+                  </div>
+                  <div className="h-22 flex items-center justify-start pt-2 -mt-1">
+                    <Image
+                      src="/icons/asiu/logo.svg"
+                      alt="ASIU Logo"
+                      width={48}
+                      height={48}
+                      priority
+                      fetchPriority="high"
+                    />
+                    <h1 className="ml-1 text-left font-heading text-xs font-bold text-gray-900 leading-none">
+                      Advocates<br />for Science<br />@IU
+                    </h1>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </div> */}
+
+          {/* Dual Logo */}
           <div className="flex items-center relative">
             <Link href="/" className="flex items-center space-x-2" aria-label="Advocates for Science @ IU Homepage">
-              <div className="absolute -top-8 w-20 h-24 bg-white flex flex-col items-center justify-start pt-1">
-                <div className="w-18 h-22 bg-white flex flex-col items-center justify-start pt-2 border border-gray-300">
-                  <Image
-                    src="/icons/logo.svg"
-                    alt="ASIU Logo"
-                    width={48}
-                    height={48}
-                    priority
-                    fetchPriority="high"
-                  />
-                  <h1 className="font-heading text-lg font-bold text-gray-900">ASIU</h1>
+              <div className="absolute -top-8 w-38 h-23.5 bg-white pt-1">
+                <div className="flex flex-row items-center justify-center border border-gray-300 mx-1">
+                  <div className="flex flex-row items-center gap-2 h-21">
+                    <Image
+                      src="/icons/csiu/logo-blue.svg"
+                      alt="CSIU Logo"
+                      width={46}
+                      height={46}
+                      priority
+                      fetchPriority="high"
+                    />
+                    <Image
+                      src="/icons/asiu/logo.svg"
+                      alt="ASIU Logo"
+                      width={64}
+                      height={64}
+                      priority
+                      fetchPriority="high"
+                    />
+                  </div>
                 </div>
               </div>
             </Link>

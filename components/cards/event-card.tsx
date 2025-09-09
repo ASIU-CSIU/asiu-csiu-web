@@ -79,12 +79,8 @@ END:VCALENDAR`
 
     // Get badge color based on first tag
     const getBadgeColor = (tags: string[]) => {
-        const firstTag = tags[0]?.toLowerCase() || ''
-        if (firstTag.includes('training') || firstTag.includes('workshop')) return 'bg-science-blue'
-        if (firstTag.includes('forum') || firstTag.includes('discussion')) return 'bg-science-green'
-        if (firstTag.includes('meeting') || firstTag.includes('assembly')) return 'bg-science-red'
-        if (firstTag.includes('special') || firstTag.includes('panel')) return 'bg-purple-600'
-        return 'bg-science-blue'
+        // All events are red for now - color tagging will be added later
+        return 'bg-science-red'
     }
 
     // Get border color based on first tag
@@ -94,22 +90,14 @@ END:VCALENDAR`
 
     // Get button color based on first tag
     const getButtonColor = (tags: string[]) => {
-        const firstTag = tags[0]?.toLowerCase() || ''
-        if (firstTag.includes('training') || firstTag.includes('workshop')) return 'bg-science-blue'
-        if (firstTag.includes('forum') || firstTag.includes('discussion')) return 'bg-science-green'
-        if (firstTag.includes('meeting') || firstTag.includes('assembly')) return 'bg-science-red'
-        if (firstTag.includes('special') || firstTag.includes('panel')) return 'bg-purple-600'
-        return 'bg-science-blue'
+        // All events are red for now - color tagging will be added later
+        return 'bg-science-red'
     }
 
     // Get outline button color for past events
     const getOutlineButtonColor = (tags: string[]) => {
-        const firstTag = tags[0]?.toLowerCase() || ''
-        if (firstTag.includes('training') || firstTag.includes('workshop')) return 'border-science-blue text-science-blue'
-        if (firstTag.includes('forum') || firstTag.includes('discussion')) return 'border-science-green text-science-green'
-        if (firstTag.includes('meeting') || firstTag.includes('assembly')) return 'border-science-red text-science-red'
-        if (firstTag.includes('special') || firstTag.includes('panel')) return 'border-purple-600 text-purple-600'
-        return 'border-science-blue text-science-blue'
+        // All events are red for now - color tagging will be added later
+        return 'border-science-red text-science-red'
     }
 
     const badgeColor = getBadgeColor(event.tags)
