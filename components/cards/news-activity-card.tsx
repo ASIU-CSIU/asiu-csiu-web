@@ -76,11 +76,11 @@ export function NewsActivityCard({
                     <Badge className={getBadgeClasses(badgeColor)}>{badge}</Badge>
                     <span className="text-sm text-gray-500">{date}</span>
                 </div>
-                <CardTitle className="text-lg line-clamp-3">{title}</CardTitle>
+                <CardTitle className="text-xl line-clamp-3">{title}</CardTitle>
                 <CardDescription className="line-clamp-3">{subtitle}</CardDescription>
             </CardHeader>
             <CardContent className="pt-0 px-6">
-                <p className="text-gray-600 text-sm mb-4 line-clamp-3">
+                <p className="text-gray-600 text-base mb-4 line-clamp-3">
                     {description}
                 </p>
                 <div className="space-y-3">

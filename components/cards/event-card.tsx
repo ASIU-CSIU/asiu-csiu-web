@@ -89,12 +89,7 @@ END:VCALENDAR`
 
     // Get border color based on first tag
     const getBorderColor = (tags: string[]) => {
-        const firstTag = tags[0]?.toLowerCase() || ''
-        if (firstTag.includes('training') || firstTag.includes('workshop')) return 'border-l-science-blue'
-        if (firstTag.includes('forum') || firstTag.includes('discussion')) return 'border-l-science-green'
-        if (firstTag.includes('meeting') || firstTag.includes('assembly')) return 'border-l-science-red'
-        if (firstTag.includes('special') || firstTag.includes('panel')) return 'border-l-purple-600'
-        return 'border-l-science-blue'
+        return ''
     }
 
     // Get button color based on first tag
@@ -124,7 +119,7 @@ END:VCALENDAR`
     const calendarLinks = generateCalendarLinks()
 
     return (
-        <Card className={`${borderColor} hover:shadow-lg transition-shadow overflow-hidden p-0 pb-6 gap-0`}>
+        <Card className={`${borderColor} overflow-hidden p-0 pb-6 gap-0`}>
             {event.imageUrl && (
                 <div className="relative h-48 w-full">
                     <Image
@@ -193,7 +188,7 @@ END:VCALENDAR`
                 </div>
                 <ClampedText
                     text={event.description}
-                    className="text-gray-600 text-sm mb-4 line-clamp-3"
+                    className="text-gray-600 text-base mb-4 line-clamp-3"
                 />
 
                 <div className="flex gap-2">

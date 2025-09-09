@@ -55,7 +55,7 @@ export default async function TeamPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="font-heading text-3xl font-bold text-center mb-12">Leadership Team</h2>
             <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              <Card className="hover:shadow-lg transition-shadow">
+              <Card className="">
                 <CardHeader className="text-center">
                   <div className="w-24 h-24 bg-science-blue rounded-full flex items-center justify-center mx-auto mb-4">
                     <span className="text-white font-bold text-2xl">AM</span>
@@ -84,7 +84,7 @@ export default async function TeamPage() {
                 </CardContent>
               </Card>
 
-              <Card className="hover:shadow-lg transition-shadow">
+              <Card className="">
                 <CardHeader className="text-center">
                   <div className="w-24 h-24 bg-science-red rounded-full flex items-center justify-center mx-auto mb-4">
                     <span className="text-white font-bold text-2xl">SP</span>
@@ -140,7 +140,7 @@ export default async function TeamPage() {
         <section className="py-16 bg-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="font-heading text-3xl font-bold text-center mb-12">Faculty Advisor</h2>
-            <Card className="max-w-2xl mx-auto hover:shadow-lg transition-shadow">
+            <Card className="max-w-2xl mx-auto ">
               <CardHeader className="text-center">
                 <div className="w-32 h-32 bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-6">
                   <span className="text-white font-bold text-3xl">DR</span>

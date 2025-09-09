@@ -109,7 +109,7 @@ export default async function NewsPage() {
                                 </div>
 
                                 <div className="grid md:grid-cols-2 gap-8">
-                                    <Card className="border-l-4 border-l-science-blue hover:shadow-lg transition-shadow">
+                                    <Card className=" ">
                                         <CardHeader>
                                             <div className="flex items-center justify-between mb-2">
                                                 <Badge className="bg-science-blue">Advocacy Training</Badge>
@@ -143,7 +143,7 @@ export default async function NewsPage() {
                                         </CardContent>
                                     </Card>
 
-                                    <Card className="border-l-4 border-l-science-green hover:shadow-lg transition-shadow">
+                                    <Card className=" ">
                                         <CardHeader>
                                             <div className="flex items-center justify-between mb-2">
                                                 <Badge className="bg-science-green">Public Forum</Badge>
@@ -177,7 +177,7 @@ export default async function NewsPage() {
                                         </CardContent>
                                     </Card>
 
-                                    <Card className="border-l-4 border-l-science-red hover:shadow-lg transition-shadow">
+                                    <Card className=" ">
                                         <CardHeader>
                                             <div className="flex items-center justify-between mb-2">
                                                 <Badge className="bg-science-red">Weekly Meeting</Badge>
@@ -211,7 +211,7 @@ export default async function NewsPage() {
                                         </CardContent>
                                     </Card>
 
-                                    <Card className="border-l-4 border-l-purple-600 hover:shadow-lg transition-shadow">
+                                    <Card className=" ">
                                         <CardHeader>
                                             <div className="flex items-center justify-between mb-2">
                                                 <Badge className="bg-purple-600">Special Event</Badge>
@@ -265,7 +265,7 @@ export default async function NewsPage() {
                                 </div>
 
                                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                                    <Card className="hover:shadow-lg transition-shadow">
+                                    <Card className="">
                                         <CardHeader>
                                             <div className="w-12 h-12 bg-science-blue rounded-lg flex items-center justify-center mb-4">
                                                 <BookOpen className="h-6 w-6 text-white" />
@@ -285,7 +285,7 @@ export default async function NewsPage() {
                                         </CardContent>
                                     </Card>
 
-                                    <Card className="hover:shadow-lg transition-shadow">
+                                    <Card className="">
                                         <CardHeader>
                                             <div className="w-12 h-12 bg-science-green rounded-lg flex items-center justify-center mb-4">
                                                 <Users className="h-6 w-6 text-white" />
@@ -305,7 +305,7 @@ export default async function NewsPage() {
                                         </CardContent>
                                     </Card>
 
-                                    <Card className="hover:shadow-lg transition-shadow">
+                                    <Card className="">
                                         <CardHeader>
                                             <div className="w-12 h-12 bg-science-red rounded-lg flex items-center justify-center mb-4">
                                                 <Gavel className="h-6 w-6 text-white" />
@@ -325,7 +325,7 @@ export default async function NewsPage() {
                                         </CardContent>
                                     </Card>
 
-                                    <Card className="hover:shadow-lg transition-shadow">
+                                    <Card className="">
                                         <CardHeader>
                                             <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center mb-4">
                                                 <Lightbulb className="h-6 w-6 text-white" />
@@ -345,7 +345,7 @@ export default async function NewsPage() {
                                         </CardContent>
                                     </Card>
 
-                                    <Card className="hover:shadow-lg transition-shadow">
+                                    <Card className="">
                                         <CardHeader>
                                             <div className="w-12 h-12 bg-orange-600 rounded-lg flex items-center justify-center mb-4">
                                                 <FileText className="h-6 w-6 text-white" />
@@ -365,7 +365,7 @@ export default async function NewsPage() {
                                         </CardContent>
                                     </Card>
 
-                                    <Card className="hover:shadow-lg transition-shadow">
+                                    <Card className="">
                                         <CardHeader>
                                             <div className="w-12 h-12 bg-teal-600 rounded-lg flex items-center justify-center mb-4">
                                                 <Globe className="h-6 w-6 text-white" />

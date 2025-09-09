@@ -36,7 +36,7 @@ export function PersonCard({ person }: PersonCardProps) {
       <CardContent className="text-center">
         <ClampedText
           text={person.bio}
-          className="text-gray-600 text-sm mb-3 line-clamp-6"
+          className="text-gray-600 text-base mb-3 line-clamp-6"
         />
         <div className="flex flex-wrap justify-center gap-2 mb-4">
           {person.tags && person.tags.map((tag, index) => (

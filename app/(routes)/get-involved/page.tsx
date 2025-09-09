@@ -122,13 +122,6 @@ export default async function GetInvolvedPage() {
       ))}
 
       <LayoutWrapper>
-        {/* Breadcrumb Navigation */}
-        <div className="bg-gray-50 py-4">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <Breadcrumb items={[{ label: "Get Involved" }]} />
-          </div>
-        </div>
-
         {/* Hero Section */}
         <HeroSection
           title="Get Involved"
@@ -204,7 +197,7 @@ export default async function GetInvolvedPage() {
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-8">
-                  <Card className="border-l-4 border-l-science-blue">
+                  <Card className="">
                     <CardHeader>
                       <div className="flex items-center space-x-4 mb-4">
                         <div className="w-12 h-12 bg-science-blue clip-hexagon flex items-center justify-center">
@@ -244,7 +237,7 @@ export default async function GetInvolvedPage() {
                     </CardContent>
                   </Card>
 
-                  <Card className="border-l-4 border-l-science-green">
+                  <Card className="">
                     <CardHeader>
                       <div className="flex items-center space-x-4 mb-4">
                         <div className="w-12 h-12 bg-science-green clip-hexagon flex items-center justify-center">
@@ -284,7 +277,7 @@ export default async function GetInvolvedPage() {
                     </CardContent>
                   </Card>
 
-                  <Card className="border-l-4 border-l-science-red">
+                  <Card className="">
                     <CardHeader>
                       <div className="flex items-center space-x-4 mb-4">
                         <div className="w-12 h-12 bg-science-red clip-hexagon flex items-center justify-center">
@@ -324,7 +317,7 @@ export default async function GetInvolvedPage() {
                     </CardContent>
                   </Card>
 
-                  <Card className="border-l-4 border-l-purple-600">
+                  <Card className="">
                     <CardHeader>
                       <div className="flex items-center space-x-4 mb-4">
                         <div className="w-12 h-12 bg-purple-600 clip-hexagon flex items-center justify-center">

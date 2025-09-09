@@ -37,7 +37,7 @@ export default async function BulletinPage({ params }: BulletinPageProps) {
         return (
             <LayoutWrapper>
                 <div className="text-center py-16">
-                    <h1 className="text-2xl font-bold text-gray-900 mb-4">Invalid Bulletin</h1>
+                    <h1 className="text-3xl font-bold text-gray-900 mb-4">Invalid Bulletin</h1>
                     <p className="text-gray-600">The requested bulletin could not be found.</p>
                     <Link href="/news" className="text-science-blue hover:underline mt-4 inline-block">
                         Back to News
@@ -64,7 +64,7 @@ export default async function BulletinPage({ params }: BulletinPageProps) {
         return (
             <LayoutWrapper>
                 <div className="text-center py-16">
-                    <h1 className="text-2xl font-bold text-gray-900 mb-4">Bulletin Not Found</h1>
+                    <h1 className="text-3xl font-bold text-gray-900 mb-4">Bulletin Not Found</h1>
                     <p className="text-gray-600">No bulletin found for {formatPublicationDateLong(publicationDate)}.</p>
                     <Link href="/news" className="text-science-blue hover:underline mt-4 inline-block">
                         Back to News
@@ -101,7 +101,7 @@ export default async function BulletinPage({ params }: BulletinPageProps) {
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="space-y-8">
                         {articles.map((article, index) => (
-                            <Card key={index} className="hover:shadow-lg transition-shadow">
+                            <Card key={index} className="">
                                 <CardHeader>
                                     <div className="flex items-center justify-between mb-2">
                                         <Badge className={getCategoryColor(article.category)}>{article.category}</Badge>

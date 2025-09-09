@@ -23,7 +23,7 @@ export function Footer() {
                   fetchPriority="high"
                 />
               </div>
-              <h3 className="font-heading text-xl font-bold">Advocates for Science @ IU</h3>
+              <h3 className="font-heading text-lg font-bold">Advocates for Science @ IU</h3>
             </div>
             <p className="text-gray-300 mb-4 max-w-md">
               Student affiliate of Concerned Scientists @ IU, working to promote scientific integrity and evidence-based
@@ -78,7 +78,7 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-semibold text-lg mb-4">Quick Links</h4>
+            <h4 className="font-semibold text-base mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li>
                 <Link href="/about" className="text-gray-300 hover:text-white transition-colors">
@@ -105,7 +105,7 @@ export function Footer() {
 
           {/* Newsletter Signup */}
           <div suppressHydrationWarning>
-            <h4 className="font-semibold text-lg mb-4">Stay Updated</h4>
+            <h4 className="font-semibold text-base mb-4">Stay Updated</h4>
             <p className="text-gray-300 mb-4 text-sm">
               Subscribe to our newsletter for updates on advocacy efforts and events.
             </p>

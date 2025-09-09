@@ -37,7 +37,7 @@ export function NewsBulletinCard({ bulletin }: NewsBulletinCardProps) {
 
     return (
         <Card
-            className="border-l-4 border-l-science-blue hover:shadow-lg transition-shadow cursor-pointer"
+            className="cursor-pointer"
             onClick={handleClick}
         >
             <CardHeader>

@@ -47,7 +47,7 @@ export function Navigation() {
                     priority
                     fetchPriority="high"
                   />
-                  <h1 className="font-heading text-xl font-bold text-gray-900">ASIU</h1>
+                  <h1 className="font-heading text-lg font-bold text-gray-900">ASIU</h1>
                 </div>
               </div>
             </Link>

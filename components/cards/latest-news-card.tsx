@@ -71,7 +71,7 @@ export function LatestNewsCard({ event }: LatestNewsCardProps) {
                 </div>
                 <ClampedText
                     text={event.title}
-                    className="text-lg line-clamp-3"
+                    className="text-xl line-clamp-3"
                     asChild
                 >
                     <CardTitle id={`event-title-${event._id}`} />
@@ -87,7 +87,7 @@ export function LatestNewsCard({ event }: LatestNewsCardProps) {
             <CardContent className="pt-0 px-6">
                 <ClampedText
                     text={event.description}
-                    className="text-gray-600 text-sm mb-4 line-clamp-3"
+                    className="text-gray-600 text-base mb-4 line-clamp-3"
                 />
                 <div className="space-y-3">
                     <div className="flex items-center text-sm text-gray-500">
