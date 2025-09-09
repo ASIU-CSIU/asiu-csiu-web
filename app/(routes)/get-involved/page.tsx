@@ -7,6 +7,7 @@ import { generateEventSchema, type EventSchemaData } from "@/lib/schema-generato
 import { parseLocalDate, createLocalMidnightISO } from "@/lib/utils"
 import { Button } from "@/components/ui/primitives/button"
 import Link from "next/link"
+import { Suspense } from "react"
 
 export const revalidate = 3600
 
@@ -102,7 +103,9 @@ export default async function GetInvolvedPage() {
                 />
 
                 {/* Content Tabs */}
-                <GetInvolvedClient events={events} />
+                <Suspense fallback={<div className="py-8 text-center">Loading...</div>}>
+                    <GetInvolvedClient events={events} />
+                </Suspense>
 
                 {/* Call to Action */}
                 <section className="py-16 bg-science-blue text-white">

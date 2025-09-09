@@ -3,6 +3,7 @@ import { HeroSection } from "@/components/sections/hero/hero-section"
 import { getNewsBulletins } from "@/lib/sanity"
 import { NewsClient } from "./news-client"
 import type { NewsBulletin } from "@/lib/types"
+import { Suspense } from "react"
 
 export const revalidate = 3600
 
@@ -39,7 +40,9 @@ export default async function NewsPage() {
                 />
 
                 {/* Content Tabs */}
-                <NewsClient newsBulletins={newsBulletins} />
+                <Suspense fallback={<div className="py-8 text-center">Loading...</div>}>
+                    <NewsClient newsBulletins={newsBulletins} />
+                </Suspense>
             </LayoutWrapper>
         </>
     )
