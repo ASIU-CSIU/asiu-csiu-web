@@ -1,7 +1,7 @@
 import { LayoutWrapper } from "@/components/layout/layout-wrapper"
 import { HeroSection } from "@/components/sections/hero/hero-section"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/composite/card"
-import { Target, Heart, Users, Award, BookOpen } from "lucide-react"
+import { Target, Heart, Users, Award, BookOpen, AlertTriangle, TrendingDown, Shield, Lightbulb } from "lucide-react"
 import { Badge } from "@/components/ui/primitives/badge"
 import { Button } from "@/components/ui/primitives/button"
 import { Mail, Linkedin, Twitter } from "lucide-react"
@@ -61,7 +61,7 @@ export default async function AboutPage() {
         {/* Hero Section */}
         <HeroSection
           title="About Our Mission"
-          subtitle="We are a student-led organization dedicated to bridging the gap between scientific research and public policy, ensuring that evidence-based decision making guides our future."
+          subtitle="We are a unified organization dedicated to bridging the gap between scientific research and public policy, ensuring that evidence-based decision making guides our future."
           showLogo={false}
           showNewsletter={false}
           primaryButtonText=""
@@ -92,7 +92,7 @@ export default async function AboutPage() {
 
             {/* Core Aims */}
             <div className="mt-16">
-              <h3 className="font-heading text-2xl font-bold text-center mb-8">Our Core Aims</h3>
+              {/* <h3 className="font-heading text-2xl font-bold text-center mb-8">Our Core Aims</h3> */}
               <div className="grid md:grid-cols-2 gap-6">
                 <Card>
                   <CardHeader>
@@ -154,67 +154,171 @@ export default async function AboutPage() {
           </div>
         </section>
 
-        {/* Our Values */}
-        <section className="py-16 bg-gray-50">
+        {/* Why Scientists Are Concerned */}
+        <section className="pb-16 pt-15 bg-red-900">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="font-heading text-3xl font-bold text-center mb-12">Our Core Values</h2>
+            <h2 className="font-heading text-3xl font-bold text-center mb-8 text-white">Why Are Scientists Concerned?</h2>
+
+            {/* Budget Cuts */}
+            <div className="mb-8">
+              {/* <p className="text-lg text-white/90 mb-6">
+                The President's budget proposes draconian funding cuts for science research, e.g.:
+              </p> */}
+              <div className="grid xl:grid-cols-3 gap-8 mb-8">
+                {/* EPA Cut */}
+                <Card className="bg-science-red text-white border-0">
+                  <CardContent className="px-8">
+                    <div className="text-left">
+                      <div className="text-xl text-white/90"><b>EPA Funding Cuts</b> over</div>
+                      <div className="flex items-center">
+                        <div className="min-w-20 h-14 md:h-18 mb-1 bg-white/20 rounded-lg flex items-center justify-center mr-4">
+                          <TrendingDown className="h-16 w-16 text-white" />
+                        </div>
+                        <div className="text-7xl md:text-8xl font-bold">31%</div>
+                      </div>
+                      <div className="text-xl text-semibold text-white/90">eliminates climate change research</div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* NIH Cut */}
+                <Card className="bg-science-red text-white border-0">
+                  <CardContent className="px-8">
+                    <div className="text-left">
+                      <div className="text-xl text-white/90"><b>NIH Budget Cuts</b> over</div>
+                      <div className="flex items-center">
+                        <div className="min-w-20 h-14 md:h-18 mb-1 bg-white/20 rounded-lg flex items-center justify-center mr-4">
+                          <TrendingDown className="h-16 w-16 text-white" />
+                        </div>
+                        <div className="text-7xl md:text-8xl font-bold">18%</div>
+                      </div>
+                      <div className="text-xl text-semibold text-white/90">hinders biomedical research</div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* DOE Cut */}
+                <Card className="bg-science-red text-white border-0">
+                  <CardContent className="px-8">
+                    <div className="text-left">
+                      <div className="text-xl text-white/90"><b>DOE Spending Cuts</b> over</div>
+                      <div className="flex items-center">
+                        <div className="min-w-20 h-14 md:h-18 mb-1 bg-white/20 rounded-lg flex items-center justify-center mr-4">
+                          <TrendingDown className="h-16 w-16 text-white" />
+                        </div>
+                        <div className="text-7xl md:text-8xl font-bold">17%</div>
+                      </div>
+                      <div className="text-xl text-semibold text-white/90">prevents renewable energy R&D</div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+
+            {/* Additional Concerns */}
             <div className="grid md:grid-cols-2 gap-8">
-              <Card>
+              <Card className="bg-science-red border-none">
                 <CardHeader>
-                  <CardTitle className="flex items-center space-x-2">
-                    <BookOpen className="h-6 w-6 text-science-blue" />
-                    <span>Scientific Integrity</span>
+                  <CardTitle className="flex items-center space-x-2 text-white">
+                    <AlertTriangle className="h-6 w-6" />
+                    <span>Climate Denial</span>
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">
-                    We believe in the importance of rigorous, unbiased scientific research and the responsible
-                    communication of scientific findings to the public and policymakers.
+                  <p className="text-white/90">
+                    The President, some Cabinet members, and many Congressional allies call climate change a "hoax," despite broad scientific evidence showing it is real and primarily driven by human activity.
                   </p>
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="bg-science-red border-none">
                 <CardHeader>
-                  <CardTitle className="flex items-center space-x-2">
-                    <Users className="h-6 w-6 text-science-red" />
-                    <span>Inclusive Advocacy</span>
+                  <CardTitle className="flex items-center space-x-2 text-white">
+                    <Users className="h-6 w-6" />
+                    <span>Unstaffed OSTP</span>
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">
-                    We strive to amplify diverse voices in science and ensure that all communities have access to the
-                    benefits of scientific progress and evidence-based policy.
+                  <p className="text-white/90">
+                    The federal Office of Science and Technology Policy remains unstaffed, leaving the administration without a key body meant to coordinate scientific advice on national policy.
                   </p>
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="bg-science-red border-none md:col-span-2">
                 <CardHeader>
-                  <CardTitle className="flex items-center space-x-2">
-                    <Award className="h-6 w-6 text-science-green" />
-                    <span>Collaborative Action</span>
+                  <CardTitle className="flex items-center space-x-2 text-white">
+                    <Shield className="h-6 w-6" />
+                    <span>Threats to Scientific Review</span>
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">
-                    We work collaboratively with students, faculty, researchers, and community members to create
-                    meaningful change through collective action and shared expertise.
+                  <p className="text-white/90">
+                    Rep. Lamar Smith of Texas, Chair of the House Science Committee, says citizens can only get the “unvarnished truth” from the President, and he has proposed legislation giving the government authority to set criteria for how scientific research is reviewed.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* Why You Should Advocate */}
+        <section className="py-16 bg-gray-900">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="font-heading text-3xl font-bold text-center mb-8 text-white">Why Should You Advocate?</h2>
+            <div className="grid md:grid-cols-2 gap-8">
+              <Card className="border-none bg-science-blue text-white">
+                <CardHeader>
+                  <CardTitle className="flex items-center space-x-2">
+                    <BookOpen className="h-6 w-6" />
+                    <span>Scientific Method</span>
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p>
+                    The scientific method provides a proven, self-correcting approach for establishing real, as opposed to "alternative," facts.
                   </p>
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="border-none bg-science-blue text-white">
                 <CardHeader>
                   <CardTitle className="flex items-center space-x-2">
-                    <Target className="h-6 w-6 text-gray-700" />
-                    <span>Effective Communication</span>
+                    <Target className="h-6 w-6" />
+                    <span>Evidence-Based Solutions</span>
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">
-                    We are committed to translating complex scientific concepts into accessible information that empowers
-                    informed decision-making at all levels of society.
+                  <p>
+                    Scientific research provides a robust foundation for identifying real problems, evaluating potential solutions, and underpinning evidence-based decision making.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="border-none bg-science-blue text-white">
+                <CardHeader>
+                  <CardTitle className="flex items-center space-x-2">
+                    <Lightbulb className="h-6 w-6" />
+                    <span>Economic Driver</span>
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p>
+                    Scientific research has long been, and continues to be, a major driver in improving health, technology, national security and the economy. It leads to lots of jobs in old and new sectors of the economy.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="border-none bg-science-blue text-white">
+                <CardHeader>
+                  <CardTitle className="flex items-center space-x-2">
+                    <Award className="h-6 w-6" />
+                    <span>Bipartisan Support at Risk</span>
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p>
+                    The present political climate threatens what was once strong bipartisan support for federal investment in scientific research, often deemed the most effective non-defense spending the government undertakes.
                   </p>
                 </CardContent>
               </Card>
@@ -225,7 +329,7 @@ export default async function AboutPage() {
         {/* Committee Chairs */}
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="font-heading text-3xl font-bold text-center mb-12">ASIU Committee Chairs</h2>
+            <h2 className="font-heading text-3xl font-bold text-center mb-12">ASIU Student Leadership Team</h2>
             {sortedChairs && sortedChairs.length > 0 ? (
               <div className="flex flex-wrap justify-center gap-8">
                 {sortedChairs.map((chair: CommitteeChair) => (
@@ -245,7 +349,7 @@ export default async function AboutPage() {
         {/* Faculty Advisor */}
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="font-heading text-3xl font-bold text-center mb-12">CSIU Faculty</h2>
+            <h2 className="font-heading text-3xl font-bold text-center mb-12">CSIU Faculty Leadership Team</h2>
             {advisors && advisors.length > 0 ? (
               <div className="flex flex-wrap justify-center gap-8">
                 {advisors.map((advisor: CommitteeChair) => (

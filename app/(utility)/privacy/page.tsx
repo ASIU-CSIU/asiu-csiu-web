@@ -18,7 +18,7 @@ export default function PrivacyPage() {
 
                 <div className="prose prose-lg max-w-none">
                     <p className="text-gray-600 mb-8">
-                        Last updated: December 15, 2024
+                        Last updated: September 10, 2025
                     </p>
 
                     <section className="mb-8">
@@ -106,7 +106,7 @@ export default function PrivacyPage() {
                             <li>Opt out of marketing communications</li>
                         </ul>
                         <p className="text-gray-700 mb-4">
-                            To exercise these rights, please contact us at asiu@indiana.edu.
+                            To exercise these rights, please contact us at advocatesforscience.in@gmail.com.
                         </p>
                     </section>
 
@@ -145,7 +145,7 @@ export default function PrivacyPage() {
                         </p>
                         <div className="bg-gray-50 p-4 rounded-lg">
                             <p className="text-gray-700">
-                                <strong>Email:</strong> asiu@indiana.edu<br />
+                                <strong>Email:</strong> advocatesforscience.in@gmail.com<br />
                                 <strong>Address:</strong> Indiana University Bloomington, Bloomington, IN 47405
                             </p>
                         </div>

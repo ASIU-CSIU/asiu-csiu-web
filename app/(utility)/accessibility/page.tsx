@@ -18,7 +18,7 @@ export default function AccessibilityPage() {
 
                 <div className="prose prose-lg max-w-none">
                     <p className="text-gray-600 mb-8">
-                        Last updated: December 15, 2024
+                        Last updated: September 10, 2025
                     </p>
 
                     <section className="mb-8">
@@ -115,7 +115,7 @@ export default function AccessibilityPage() {
                         </p>
                         <div className="bg-gray-50 p-4 rounded-lg mb-4">
                             <p className="text-gray-700">
-                                <strong>Email:</strong> asiu@indiana.edu<br />
+                                <strong>Email:</strong> advocatesforscience.in@gmail.com<br />
                                 <strong>Subject:</strong> Accessibility Feedback<br />
                                 <strong>Response Time:</strong> We aim to respond within 2 business days
                             </p>

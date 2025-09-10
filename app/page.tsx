@@ -89,6 +89,38 @@ export default async function HomePage() {
           showPageOutcrop={true}
         />
 
+        {/* Latest News & Activities */}
+        <section className="py-16 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-8">
+              <h2 className="font-heading text-3xl font-bold">Latest News & Activities</h2>
+              {/* <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
+                Stay updated with our latest advocacy efforts and community initiatives.
+              </p> */}
+            </div>
+
+            <div className="flex overflow-x-auto gap-6 pb-4 scrollbar-hide">
+              {pastEvents && pastEvents.length > 0 ? (
+                pastEvents.slice(0, 12).map((event: Event) => (
+                  <LatestNewsCard key={event._id} event={event} />
+                ))
+              ) : (
+                <div className="text-center text-gray-500 py-12 w-full">
+                  <p>No past events available yet.</p>
+                </div>
+              )}
+            </div>
+
+            {pastEvents && pastEvents.length > 12 && (
+              <div className="text-center mt-8">
+                <Button size="lg" variant="outline" className="border-science-blue text-science-blue hover:bg-science-blue hover:text-white" asChild>
+                  <Link href="/news">See All Past Events</Link>
+                </Button>
+              </div>
+            )}
+          </div>
+        </section>
+
         {/* About Our Organizations */}
         <section className="py-16 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -189,76 +221,64 @@ export default async function HomePage() {
           </div>
         </section>
 
-        {/* Latest News & Activities */}
-        <section className="py-16 bg-white">
+        {/* Metrics Section */}
+        <section className="py-16 bg-gray-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="font-heading text-3xl font-bold">Latest News & Activities</h2>
-              {/* <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
-                Stay updated with our latest advocacy efforts and community initiatives.
-              </p> */}
-            </div>
+            <div className="grid xl:grid-cols-3 gap-8">
+              {/* Card 1: Community Members */}
+              <Card className="bg-science-blue text-white border-0">
+                <CardContent className="px-8">
+                  <div className="flex items-center justify-between">
+                    <div className="text-left">
+                      <div className="text-xl text-white/90">Over</div>
+                      <div className="text-5xl md:text-6xl font-bold">1,000+</div>
+                      <div className="text-xl text-semibold text-white/90"><b>Community Members</b> Engaged</div>
+                    </div>
+                    <div className="w-24 h-40 rounded-lg -mr-2 bg-white/20 rounded-full flex items-center justify-center ml-6">
+                      <Users className="h-12 w-12 text-white" />
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
 
-            <div className="flex overflow-x-auto gap-6 pb-4 scrollbar-hide">
-              {pastEvents && pastEvents.length > 0 ? (
-                pastEvents.slice(0, 12).map((event: Event) => (
-                  <LatestNewsCard key={event._id} event={event} />
-                ))
-              ) : (
-                <div className="text-center text-gray-500 py-12 w-full">
-                  <p>No past events available yet.</p>
-                </div>
-              )}
-            </div>
+              {/* Card 2: Newsletters */}
+              <Card className="bg-science-blue text-white border-0">
+                <CardContent className="px-8">
+                  <div className="flex items-center justify-between">
+                    <div className="text-left">
+                      <div className="text-7xl md:text-8xl font-bold">20+</div>
+                      <div className="text-xl text-semibold text-sm text-white/90"><b>Biweekly Newsletters</b> Released</div>
+                    </div>
+                    <div className="w-24 h-40 rounded-lg -mr-2 bg-white/20 rounded-full flex items-center justify-center ml-6">
+                      <BookOpen className="h-12 w-12 text-white" />
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
 
-            {pastEvents && pastEvents.length > 12 && (
-              <div className="text-center mt-8">
-                <Button size="lg" variant="outline" className="border-science-blue text-science-blue hover:bg-science-blue hover:text-white" asChild>
-                  <Link href="/news">See All Past Events</Link>
-                </Button>
-              </div>
-            )}
-          </div>
-        </section>
-
-        {/* About ASIU Section */}
-        <section className="py-16 bg-white">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-0 items-center">
-              {/* Image */}
-              <div className="order-1">
-                <div className="relative rounded-2xl overflow-hidden bg-science-blue/10 mx-auto w-80">
-                  <Image
-                    src="/images/events/science-democracy-forum.png"
-                    alt="ASIU members collaborating on science advocacy"
-                    width={400}
-                    height={400}
-                    className="w-full h-auto rounded-2xl object-cover aspect-square"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-
-              {/* Text Content */}
-              <div className="order-2 text-center lg:text-left">
-                <h2 className="font-heading text-3xl font-bold text-gray-900 mb-6">
-                  Striving to do the right thing, from day one
-                </h2>
-                <div className="space-y-4 text-gray-600">
-                  <p className="text-base leading-relaxed">
-                    We were founded on a robust framework that ensures we continue to drive the development of ethical science advocacy. We work with policymakers, researchers, and community members to inform and progress vital standards that make evidence-based decision making accessible to everyone.
-                  </p>
-                </div>
-              </div>
+              {/* Card 3: Events */}
+              <Card className="bg-science-blue text-white border-0">
+                <CardContent className="px-8">
+                  <div className="flex items-center justify-between">
+                    <div className="text-left">
+                      <div className="text-7xl md:text-8xl font-bold">30+</div>
+                      <div className="text-xl text-semibold text-white/90"><b>Events</b> organized & hosted</div>
+                    </div>
+                    <div className="w-24 h-40 rounded-lg -mr-2 bg-white/20 flex items-center justify-center ml-6">
+                      <Megaphone className="h-12 w-12 text-white" />
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </section>
 
-        {/* Our Impact */}
+        {/* Our Mission */}
         <section className="py-16 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="font-heading text-3xl font-bold mb-4">Our Impact</h2>
+            <div className="text-center mb-8">
+              <h2 className="font-heading text-3xl font-bold">Core Focus Areas</h2>
               {/* <p className="text-base text-gray-600 max-w-3xl mx-auto">
                 Discover how we're making a difference in science policy and advocacy. From educational initiatives to
                 community engagement, our activities span various areas of scientific importance.
@@ -332,56 +352,38 @@ export default async function HomePage() {
           </div>
         </section>
 
+        {/* About Section */}
+        <section className="py-16 bg-white">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-0 items-center">
+              {/* Image */}
+              <div className="order-1">
+                <div className="relative rounded-2xl overflow-hidden bg-science-blue/10 mx-auto w-83">
+                  <Image
+                    src="/images/overlays/overlay.png"
+                    alt="ASIU members collaborating on science advocacy"
+                    width={420}
+                    height={420}
+                    className="w-full h-auto rounded-2xl object-cover aspect-square"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
 
-        {/* Metrics Section */}
-        <section className="py-16 bg-gray-900">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid xl:grid-cols-3 gap-8">
-              {/* Card 1: Community Members */}
-              <Card className="bg-science-blue text-white border-0">
-                <CardContent className="px-8">
-                  <div className="flex items-center justify-between">
-                    <div className="text-left">
-                      <div className="text-xl text-white/90">Over</div>
-                      <div className="text-5xl md:text-6xl font-bold">1,000+</div>
-                      <div className="text-xl text-semibold text-white/90"><b>Community Members</b> Engaged</div>
-                    </div>
-                    <div className="w-24 h-40 rounded-lg -mr-2 bg-white/20 rounded-full flex items-center justify-center ml-6">
-                      <Users className="h-12 w-12 text-white" />
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Card 2: Newsletters */}
-              <Card className="bg-science-blue text-white border-0">
-                <CardContent className="px-8">
-                  <div className="flex items-center justify-between">
-                    <div className="text-left">
-                      <div className="text-7xl md:text-8xl font-bold">20+</div>
-                      <div className="text-xl text-semibold text-sm text-white/90"><b>Biweekly Newsletters</b> Released</div>
-                    </div>
-                    <div className="w-24 h-40 rounded-lg -mr-2 bg-white/20 rounded-full flex items-center justify-center ml-6">
-                      <BookOpen className="h-12 w-12 text-white" />
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Card 3: Events */}
-              <Card className="bg-science-blue text-white border-0">
-                <CardContent className="px-8">
-                  <div className="flex items-center justify-between">
-                    <div className="text-left">
-                      <div className="text-7xl md:text-8xl font-bold">30+</div>
-                      <div className="text-xl text-semibold text-white/90"><b>Events</b> organized & hosted</div>
-                    </div>
-                    <div className="w-24 h-40 rounded-lg -mr-2 bg-white/20 flex items-center justify-center ml-6">
-                      <Megaphone className="h-12 w-12 text-white" />
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+              {/* Text Content */}
+              <div className="order-2 text-center lg:text-left">
+                <h2 className="font-heading text-3xl font-bold text-gray-900 mb-6">
+                  Building Tomorrow's Leaders
+                </h2>
+                <div className="space-y-4 text-gray-600">
+                  <p className="text-base leading-relaxed">
+                    Through structured mentorship programs and hands-on policy engagement, we develop the next generation of science advocates. Our members gain practical experience in legislative analysis, stakeholder communication, and evidence synthesis—skills essential for effective science policy careers.
+                  </p>
+                  <p className="text-base leading-relaxed">
+                    We maintain active partnerships with local government offices, research institutions, and advocacy organizations, providing students with direct pathways to influence policy decisions that shape our scientific future.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -448,8 +450,8 @@ export default async function HomePage() {
         {/* Event Calendar */}
         <section className="py-16 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="font-heading text-3xl font-bold">Event Calendar</h2>
+            <div className="text-center mb-8">
+              <h2 className="font-heading text-3xl font-bold">Join an Upcoming Event</h2>
               {/* <p className="text-gray-600 max-w-2xl mx-auto mt-4">
                 Join us for upcoming advocacy training sessions, public forums, and community engagement opportunities.
               </p> */}
@@ -464,7 +466,7 @@ export default async function HomePage() {
         {/* Testimonials */}
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
+            <div className="text-center mb-8">
               <h2 className="font-heading text-3xl font-bold">What Our Members Say</h2>
               {/* <p className="text-gray-600 max-w-2xl mx-auto mt-4">
                 Hear from our community about the impact of science-based advocacy.

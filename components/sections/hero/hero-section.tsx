@@ -95,7 +95,7 @@ export function HeroSection({
                             <a href={secondaryButtonLink} target="_blank" rel="noopener noreferrer">
                                 <Button
                                     size="lg"
-                                    className="border-science-green text-science-green bg-white hover:text-science-green"
+                                    className="border-science-blue text-science-blue bg-white hover:text-science-blue"
                                 >
                                     {secondaryButtonText}
                                 </Button>
@@ -104,7 +104,7 @@ export function HeroSection({
                             <Link href={secondaryButtonLink || "#"}>
                                 <Button
                                     size="lg"
-                                    className="border-science-green text-science-green bg-white hover:text-science-green"
+                                    className="border-science-blue text-science-blue bg-white hover:text-science-blue"
                                 >
                                     {secondaryButtonText}
                                 </Button>

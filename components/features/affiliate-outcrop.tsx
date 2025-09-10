@@ -50,7 +50,7 @@ export function PageOutcrop({ className = "", breadcrumbItems, showAffiliateText
                     {/* Affiliate text (optional) */}
                     {showAffiliateText && (
                         <p className="text-sm text-gray-600 whitespace-nowrap">
-                            Backed by Leading Researchers at Indiana University
+                            Backed by Leading Researchers & Scientists at Indiana University
                         </p>
                     )}
                 </div>

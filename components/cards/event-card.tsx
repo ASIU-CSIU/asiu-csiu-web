@@ -122,7 +122,16 @@ END:VCALENDAR`
             )}
             <CardHeader className="pb-3 pt-4 px-6">
                 <div className="flex items-center justify-between mb-2">
-                    <Badge className={badgeColor}>{event.tags[0] || 'Event'}</Badge>
+                    <div className="flex gap-2">
+                        {event.tags.slice(0, 2).map((tag, index) => (
+                            <Badge key={index} className={badgeColor}>
+                                {tag}
+                            </Badge>
+                        ))}
+                        {event.tags.length === 0 && (
+                            <Badge className={badgeColor}>Event</Badge>
+                        )}
+                    </div>
                     <span className="text-sm text-gray-500">{formatDate(event.date)}</span>
                 </div>
                 <CardTitle className="text-xl">{event.title}</CardTitle>

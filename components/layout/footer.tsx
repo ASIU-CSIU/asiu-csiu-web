@@ -129,7 +129,7 @@ export function Footer() {
         {/* Bottom Section */}
         <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">
-            <p className="text-gray-400 text-sm">© 2024 Advocates for Science @ IU. All rights reserved.</p>
+            <p className="text-gray-400 text-sm">© 2024 Concerned Scientists & Advocates for Science @ IU. All rights reserved.</p>
             <Link href="/accessibility" className="text-gray-400 hover:text-white text-sm transition-colors">
               Accessibility Statement
             </Link>
