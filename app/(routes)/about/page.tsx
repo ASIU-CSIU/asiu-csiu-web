@@ -327,7 +327,7 @@ export default async function AboutPage() {
         </section>
 
         {/* Committee Chairs */}
-        <section className="py-16 bg-white">
+        <section className="py-16 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="font-heading text-3xl font-bold text-center mb-12">ASIU Student Leadership Team</h2>
             {sortedChairs && sortedChairs.length > 0 ? (
@@ -376,7 +376,7 @@ export default async function AboutPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" variant="secondary" className="bg-white text-science-blue hover:bg-gray-100" asChild>
-                <Link href="/get-involved">Learn About Leadership Opportunities</Link>
+                <Link href="/get-involved?tab=working-groups">Learn About Leadership Opportunities</Link>
               </Button>
               <Button
                 size="lg"

@@ -43,7 +43,7 @@ export default function NotFound() {
                   Go Home
                 </Button>
               </Link>
-              <Link href="/get-involved">
+              <Link href="/get-involved?tab=working-groups">
                 <Button className="w-full" variant="outline">
                   <Search className="mr-2 h-4 w-4" />
                   Get Involved

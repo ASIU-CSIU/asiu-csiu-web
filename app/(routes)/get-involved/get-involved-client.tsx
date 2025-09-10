@@ -299,8 +299,7 @@ export function GetInvolvedClient({ events }: GetInvolvedClientProps) {
                                 </CardHeader>
                                 <CardContent>
                                     <p className="text-gray-600 text-sm mb-4">
-                                        Manage social media accounts, create digital content, develop communication strategies, and
-                                        build relationships with media outlets to amplify our advocacy messages.
+                                        Manage social media accounts, create digital content, and develop communication strategies.
                                     </p>
                                     <div className="space-y-2 mb-4">
                                         <div className="flex items-center space-x-2">

@@ -91,7 +91,7 @@ export default async function RootLayout({
           }}
         />
       </head>
-      <body className="font-sans antialiased" suppressHydrationWarning>
+      <body className="font-sans antialiased bg-science-blue" suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"

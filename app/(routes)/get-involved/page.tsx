@@ -117,7 +117,7 @@ export default async function GetInvolvedPage() {
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Button size="lg" variant="secondary" className="bg-white text-science-blue hover:bg-gray-100" asChild>
-                                <Link href="/news">Attend a Meeting</Link>
+                                <Link href="/get-involved?tab=events-calendar">Attend a Meeting</Link>
                             </Button>
                             <Button
                                 size="lg"

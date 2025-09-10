@@ -295,13 +295,9 @@ export function HeroBackground({
                 </div>
             )}
 
-            {/* Gradient Background */}
+            {/* Science Blue Background */}
             <div
-                className="absolute inset-0 w-full h-full pointer-events-none"
-                style={{
-                    background: 'radial-gradient(circle at top right, rgba(0, 0, 0, 0.13), transparent), radial-gradient(circle at 20% 80%, rgba(0, 0, 0, 0.13), transparent)',
-                    zIndex: 2
-                }}
+                className="absolute inset-0 w-full h-full pointer-events-none bg-science-blue"
             />
 
             {/* Particle Effect Canvas (Overlay) */}

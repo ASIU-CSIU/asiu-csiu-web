@@ -4,10 +4,11 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/primitives/button"
-import { Menu, X } from "lucide-react"
+import { Menu, X, ChevronDown } from "lucide-react"
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
 
   // Prevent scroll when menu is open
   useEffect(() => {
@@ -25,8 +26,23 @@ export function Navigation() {
   const navItems = [
     { href: "/", label: "Home" },
     { href: "/about", label: "About" },
-    { href: "/get-involved?tab=events-calendar", label: "Events" },
-    { href: "/news", label: "News" },
+    {
+      href: "/get-involved?tab=events-calendar",
+      label: "Events",
+      children: [
+        { href: "/get-involved?tab=events-calendar", label: "Events Calendar" },
+        { href: "/get-involved?tab=past-events", label: "Past Events" }
+      ]
+    },
+    {
+      href: "/news",
+      label: "News",
+      children: [
+        { href: "/news?tab=bulletins", label: "News Bulletins" },
+        { href: "/news?tab=articles", label: "Articles" },
+        { href: "/news?tab=social-media", label: "Social Media" }
+      ]
+    },
     { href: "/contact", label: "Contact" },
   ]
 
@@ -99,19 +115,52 @@ export function Navigation() {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-6" role="navigation" aria-label="Main navigation">
+          <nav className="hidden lg:flex items-center space-x-6" role="navigation" aria-label="Main navigation">
             {navItems.map((item) => (
-              <Link
+              <div
                 key={item.href}
-                href={item.href}
-                className="text-white hover:text-red transition-colors duration-200 font-medium"
-                aria-label={`Navigate to ${item.label} page`}
+                className="relative group"
+                onMouseEnter={() => item.children && setActiveDropdown(item.label)}
+                onMouseLeave={() => setActiveDropdown(null)}
               >
-                {item.label}
-              </Link>
+                {item.children ? (
+                  <div className="flex items-center space-x-1 text-white hover:text-red transition-colors duration-200 font-medium cursor-pointer">
+                    <span>{item.label}</span>
+                    <ChevronDown className="h-4 w-4" />
+                  </div>
+                ) : (
+                  <Link
+                    href={item.href}
+                    className="text-white hover:text-red transition-colors duration-200 font-medium"
+                    aria-label={`Navigate to ${item.label} page`}
+                  >
+                    {item.label}
+                  </Link>
+                )}
+
+                {/* Dropdown Menu */}
+                {item.children && activeDropdown === item.label && (
+                  <>
+                    {/* Invisible bridge to prevent gap */}
+                    <div className="absolute top-full left-0 w-full h-1 bg-transparent" />
+                    <div className="absolute top-full left-0 mt-1 w-48 bg-gray-900 rounded-md shadow-lg py-1 z-50">
+                      {item.children.map((child) => (
+                        <Link
+                          key={child.href}
+                          href={child.href}
+                          className="block px-4 py-2 text-sm text-white hover:bg-gray-800 hover:text-white transition-colors duration-200"
+                          aria-label={`Navigate to ${child.label}`}
+                        >
+                          {child.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </>
+                )}
+              </div>
             ))}
             <Button size="sm" className="bg-science-blue text-white ml-4" asChild>
-              <Link href="/get-involved" aria-label="Get involved with Advocates for Science @ IU">Get Involved</Link>
+              <Link href="/get-involved" aria-label="Get involved with Advocates for Science @ IU and Concerned Scientists @ IU">Get Involved</Link>
             </Button>
             <Button size="sm" className="bg-science-red text-white" asChild>
               <a
@@ -126,7 +175,7 @@ export function Navigation() {
           </nav>
 
           {/* Mobile buttons and menu */}
-          <div className="md:hidden flex items-center space-x-2">
+          <div className="lg:hidden flex items-center space-x-2">
             <Button size="sm" className="bg-science-blue text-white text-xs px-2 py-1" asChild>
               <Link href="/get-involved" aria-label="Get involved">Get Involved</Link>
             </Button>
@@ -165,7 +214,7 @@ export function Navigation() {
 
         {/* Mobile Navigation */}
         <nav
-          className={`md:hidden fixed inset-0 bg-gray-900 transition-all duration-500 ease-in-out ${isOpen
+          className={`lg:hidden fixed inset-0 bg-gray-900 transition-all duration-500 ease-in-out ${isOpen
             ? 'opacity-100 visible z-[60]'
             : 'opacity-0 invisible pointer-events-none z-[60]'
             }`}
@@ -197,21 +246,46 @@ export function Navigation() {
             {/* Navigation items */}
             <div className="flex-1 flex flex-col justify-center items-center space-y-8 px-4">
               {navItems.map((item, index) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`text-white text-2xl hover:text-gray-500 font-medium hover:text-science-blue transition-all duration-200 ease-out ${isOpen
-                    ? 'opacity-100 translate-y-0'
-                    : 'opacity-0 translate-y-8'
-                    }`}
-                  style={{
-                    transitionDelay: isOpen ? `${index * 100}ms` : '0ms'
-                  }}
-                  onClick={() => setIsOpen(false)}
-                  aria-label={`Navigate to ${item.label} page`}
-                >
-                  {item.label}
-                </Link>
+                <div key={item.href} className="text-center">
+                  <Link
+                    href={item.href}
+                    className={`text-white text-2xl hover:text-gray-500 font-medium hover:text-science-blue transition-all duration-200 ease-out ${isOpen
+                      ? 'opacity-100 translate-y-0'
+                      : 'opacity-0 translate-y-8'
+                      }`}
+                    style={{
+                      transitionDelay: isOpen ? `${index * 100}ms` : '0ms'
+                    }}
+                    onClick={() => setIsOpen(false)}
+                    aria-label={`Navigate to ${item.label} page`}
+                  >
+                    {item.label}
+                  </Link>
+
+                  {/* Mobile dropdown children */}
+                  {item.children && (
+                    <div className={`mt-4 space-y-0 ${isOpen
+                      ? 'opacity-100 translate-y-0'
+                      : 'opacity-0 translate-y-8'
+                      }`}
+                      style={{
+                        transitionDelay: isOpen ? `${index * 100 + 100}ms` : '0ms'
+                      }}
+                    >
+                      {item.children.map((child, childIndex) => (
+                        <Link
+                          key={child.href}
+                          href={child.href}
+                          className="block text-white text-lg hover:text-science-blue transition-colors duration-200"
+                          onClick={() => setIsOpen(false)}
+                          aria-label={`Navigate to ${child.label}`}
+                        >
+                          {child.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ))}
 
               {/* Mobile action buttons */}

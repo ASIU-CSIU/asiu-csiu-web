@@ -214,7 +214,7 @@ export default async function HomePage() {
                   <Link href="/about">Learn More About Our Mission</Link>
                 </Button>
                 <Button size="lg" variant="outline" className="border-science-blue text-science-blue hover:bg-science-blue hover:text-white" asChild>
-                  <Link href="/get-involved">Join Our Efforts</Link>
+                  <Link href="/get-involved?tab=working-groups">Join Our Efforts</Link>
                 </Button>
               </div>
             </div>
@@ -561,7 +561,7 @@ export default async function HomePage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" variant="secondary" className="bg-white text-science-blue hover:bg-gray-100" asChild>
-                <Link href="/get-involved">Get Involved</Link>
+                <Link href="/get-involved?tab=working-groups">Get Involved</Link>
               </Button>
               <Button
                 size="lg"
