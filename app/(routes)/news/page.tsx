@@ -4,10 +4,16 @@ import { getNewsBulletins } from "@/lib/sanity"
 import { NewsClient } from "./news-client"
 import type { NewsBulletin } from "@/lib/types"
 import { Suspense } from "react"
+import { getStructuredData } from "@/lib/metadata"
+import { headers } from 'next/headers'
 
 export const revalidate = 3600
 
 export default async function NewsPage() {
+    const headersList = await headers()
+    const host = headersList.get('host') || ''
+    const domain = host.replace(/^www\./, '') // Remove www prefix for domain matching
+
     const newsBulletins = await getNewsBulletins()
 
     return (
@@ -15,13 +21,7 @@ export default async function NewsPage() {
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
-                    __html: JSON.stringify({
-                        "@context": "https://schema.org",
-                        "@type": "WebPage",
-                        "name": "News - Advocates for Science @ IU",
-                        "description": "Stay updated with our latest news bulletins, articles, and educational content.",
-                        "url": "https://www.advocatesforscienceatiu.org/news"
-                    })
+                    __html: JSON.stringify(getStructuredData("news", domain))
                 }}
             />
             <LayoutWrapper>

@@ -3,10 +3,11 @@ import { Poppins } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/layout/theme-provider"
 import { ToastProvider } from "@/components/ui/feedback/toast"
-import { baseMetadata, getStructuredData } from "@/lib/metadata"
+import { getBaseMetadata, getStructuredData, getOrgConfigForDomain } from "@/lib/metadata"
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { GoogleAnalytics } from '@next/third-parties/google'
+import { headers } from 'next/headers'
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -16,38 +17,40 @@ const poppins = Poppins({
   preload: true,
 })
 
-export const metadata: Metadata = baseMetadata
+export async function generateMetadata(): Promise<Metadata> {
+  const headersList = await headers()
+  const host = headersList.get('host') || ''
+  const domain = host.replace(/^www\./, '') // Remove www prefix for domain matching
 
-export default function RootLayout({
+  return getBaseMetadata(domain)
+}
+
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const headersList = await headers()
+  const host = headersList.get('host') || ''
+  const domain = host.replace(/^www\./, '') // Remove www prefix for domain matching
+  const config = getOrgConfigForDomain(domain)
+  const structuredData = getStructuredData("organization", domain)
+
   return (
     <html lang="en" className={poppins.variable} suppressHydrationWarning>
       <head>
-        {/* Favicon */}
-        <link rel="icon" type="image/x-icon" href="/icons/asiu/favicon.ico" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/icons/asiu/favicon-16x16.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/icons/asiu/favicon-32x32.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/icons/asiu/favicon-apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="192x192" href="/icons/asiu/favicon-android-chrome-192x192.png" />
-        <link rel="icon" type="image/png" sizes="512x512" href="/icons/asiu/favicon-android-chrome-512x512.png" />
-        <link rel="icon" type="image/svg+xml" href="/icons/asiu/logo.svg" />
-        <link rel="shortcut icon" href="/icons/asiu/favicon.ico" />
-
-        <link rel="icon" type="image/x-icon" href="/icons/csiu/favicon.ico" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/icons/csiu/favicon-16x16.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/icons/csiu/favicon-32x32.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/icons/csiu/favicon-apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="192x192" href="/icons/csiu/favicon-android-chrome-192x192.png" />
-        <link rel="icon" type="image/png" sizes="512x512" href="/icons/csiu/favicon-android-chrome-512x512.png" />
-        <link rel="icon" type="image/svg+xml" href="/icons/asiu/logo.svg" />
-        <link rel="shortcut icon" href="/icons/csiu/favicon.ico" />
+        {/* Dynamic Favicon based on domain */}
+        <link rel="icon" type="image/x-icon" href={`${config.logoPath.replace('.svg', '.ico')}`} />
+        <link rel="icon" type="image/png" sizes="16x16" href={`/icons/${config.shortName.toLowerCase()}/favicon-16x16.png`} />
+        <link rel="icon" type="image/png" sizes="32x32" href={`/icons/${config.shortName.toLowerCase()}/favicon-32x32.png`} />
+        <link rel="apple-touch-icon" sizes="180x180" href={`/icons/${config.shortName.toLowerCase()}/favicon-apple-touch-icon.png`} />
+        <link rel="icon" type="image/png" sizes="192x192" href={`/icons/${config.shortName.toLowerCase()}/favicon-android-chrome-192x192.png`} />
+        <link rel="icon" type="image/png" sizes="512x512" href={`/icons/${config.shortName.toLowerCase()}/favicon-android-chrome-512x512.png`} />
+        <link rel="icon" type="image/svg+xml" href={config.logoPath} />
+        <link rel="shortcut icon" href={`${config.logoPath.replace('.svg', '.ico')}`} />
 
         {/* Preload critical resources */}
-        <link rel="preload" href="/icons/asiu/logo.svg" as="image" type="image/svg+xml" />
-        <link rel="preload" href="/icons/csiu/logo.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href={config.logoPath} as="image" type="image/svg+xml" />
 
         {/* Preload overlay images for all pages */}
         <link rel="preload" href="/images/overlays/overlay-home.JPG" as="image" />
@@ -66,25 +69,25 @@ export default function RootLayout({
         <meta name="theme-color" content="#2e6399" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="ASIU" />
+        <meta name="apple-mobile-web-app-title" content={config.shortName} />
 
-        {/* RSS Feed */}
-        <link rel="alternate" type="application/rss+xml" title="ASIU RSS Feed" href="/rss.xml" />
+        {/* Dynamic RSS Feed */}
+        <link rel="alternate" type="application/rss+xml" title={`${config.name} RSS Feed`} href="/rss.xml" />
 
         {/* Enhanced Language Support */}
-        <link rel="alternate" hrefLang="en-US" href="https://www.csiub.org/" />
-        <link rel="alternate" hrefLang="en" href="https://www.csiub.org/" />
-        <link rel="alternate" hrefLang="x-default" href="https://www.csiub.org/" />
+        <link rel="alternate" hrefLang="en-US" href={`https://${config.primaryDomain}/`} />
+        <link rel="alternate" hrefLang="en" href={`https://${config.primaryDomain}/`} />
+        <link rel="alternate" hrefLang="x-default" href={`https://${config.primaryDomain}/`} />
 
-        {/* Additional SEO Meta Tags */}
-        <meta name="application-name" content="Advocates for Science @ IU" />
+        {/* Dynamic SEO Meta Tags */}
+        <meta name="application-name" content={config.name} />
         <meta name="msapplication-TileColor" content="#2e6399" />
         <meta name="msapplication-config" content="/browserconfig.xml" />
 
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(getStructuredData("organization"))
+            __html: JSON.stringify(structuredData)
           }}
         />
       </head>

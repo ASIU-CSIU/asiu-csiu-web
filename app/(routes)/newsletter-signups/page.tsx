@@ -1,10 +1,19 @@
 import { LayoutWrapper } from "@/components/layout/layout-wrapper"
 import { list } from '@vercel/blob'
+import { getOrgConfigForDomain } from "@/lib/metadata"
+import { headers } from 'next/headers'
 
-export const metadata = {
-    title: 'Newsletter Signups - Admin',
-    description: 'Newsletter subscription data',
-    robots: 'noindex, nofollow'
+export async function generateMetadata() {
+    const headersList = await headers()
+    const host = headersList.get('host') || ''
+    const domain = host.replace(/^www\./, '') // Remove www prefix for domain matching
+    const config = getOrgConfigForDomain(domain)
+
+    return {
+        title: `Newsletter Signups - ${config.shortName} Admin`,
+        description: `Newsletter subscription data for ${config.name}`,
+        robots: 'noindex, nofollow'
+    }
 }
 
 interface SubscriptionData {

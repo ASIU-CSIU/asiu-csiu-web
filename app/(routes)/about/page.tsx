@@ -12,12 +12,23 @@ import { getPageMetadata, getStructuredData, getBreadcrumbData } from "@/lib/met
 import Link from "next/link"
 import Image from "next/image"
 import { Breadcrumb } from "@/components/navigation/breadcrumb"
+import { headers } from 'next/headers'
 
 export const revalidate = 3600
 
-export const metadata = getPageMetadata("about")
+export async function generateMetadata() {
+  const headersList = await headers()
+  const host = headersList.get('host') || ''
+  const domain = host.replace(/^www\./, '') // Remove www prefix for domain matching
+
+  return getPageMetadata("about", domain)
+}
 
 export default async function AboutPage() {
+  const headersList = await headers()
+  const host = headersList.get('host') || ''
+  const domain = host.replace(/^www\./, '') // Remove www prefix for domain matching
+
   const chairs = await getCommitteeChairs()
   const advisors = await getFacultyAdvisors()
 
@@ -37,7 +48,7 @@ export default async function AboutPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(getStructuredData("about"))
+          __html: JSON.stringify(getStructuredData("about", domain))
         }}
       />
       <script

@@ -14,10 +14,21 @@ import { getPastEvents, getUpcomingEvents } from "@/lib/sanity"
 import type { Event } from "@/lib/types"
 import { generateEventSchema, type EventSchemaData } from "@/lib/schema-generators"
 import { createLocalMidnightISO } from "@/lib/utils"
+import { headers } from 'next/headers'
 
-export const metadata = getPageMetadata("home")
+export async function generateMetadata() {
+  const headersList = await headers()
+  const host = headersList.get('host') || ''
+  const domain = host.replace(/^www\./, '') // Remove www prefix for domain matching
+
+  return getPageMetadata("home", domain)
+}
 
 export default async function HomePage() {
+  const headersList = await headers()
+  const host = headersList.get('host') || ''
+  const domain = host.replace(/^www\./, '') // Remove www prefix for domain matching
+
   const pastEvents = await getPastEvents()
   const upcomingEvents = await getUpcomingEvents()
 
@@ -49,7 +60,7 @@ export default async function HomePage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(getStructuredData("home"))
+          __html: JSON.stringify(getStructuredData("home", domain))
         }}
       />
       {/* Featured Event Schemas */}

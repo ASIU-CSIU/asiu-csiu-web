@@ -3,14 +3,23 @@ import { Button } from "@/components/ui/primitives/button"
 import { LayoutWrapper } from "@/components/layout/layout-wrapper"
 import { Home, ArrowLeft, Search } from "lucide-react"
 import type { Metadata } from "next"
+import { getOrgConfigForDomain } from "@/lib/metadata"
+import { headers } from 'next/headers'
 
-export const metadata: Metadata = {
-  title: "404 - Page Not Found",
-  description: "Sorry, the page you're looking for doesn't exist. Explore our science policy advocacy content, events, and opportunities to get involved with Advocates for Science @ IU.",
-  robots: {
-    index: false,
-    follow: true,
-  },
+export async function generateMetadata(): Promise<Metadata> {
+  const headersList = await headers()
+  const host = headersList.get('host') || ''
+  const domain = host.replace(/^www\./, '') // Remove www prefix for domain matching
+  const config = getOrgConfigForDomain(domain)
+
+  return {
+    title: "404 - Page Not Found",
+    description: `Sorry, the page you're looking for doesn't exist. Explore our science policy advocacy content, events, and opportunities to get involved with ${config.name}.`,
+    robots: {
+      index: false,
+      follow: true,
+    },
+  }
 }
 
 export default function NotFound() {

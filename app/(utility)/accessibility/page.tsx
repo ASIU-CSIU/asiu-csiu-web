@@ -1,7 +1,14 @@
 import { LayoutWrapper } from "@/components/layout/layout-wrapper"
 import { getPageMetadata } from "@/lib/metadata"
+import { headers } from 'next/headers'
 
-export const metadata = getPageMetadata("accessibility")
+export async function generateMetadata() {
+    const headersList = await headers()
+    const host = headersList.get('host') || ''
+    const domain = host.replace(/^www\./, '') // Remove www prefix for domain matching
+
+    return getPageMetadata("accessibility", domain)
+}
 
 export default function AccessibilityPage() {
     return (

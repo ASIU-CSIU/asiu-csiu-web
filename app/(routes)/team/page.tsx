@@ -9,10 +9,21 @@ import { getCommitteeChairs, getFacultyAdvisors } from "@/lib/sanity"
 import { PersonCard } from "@/components/cards/person-card"
 import type { CommitteeChair, FacultyAdvisor } from "@/lib/types"
 import Link from "next/link"
+import { headers } from 'next/headers'
 
-export const metadata = getPageMetadata("team")
+export async function generateMetadata() {
+  const headersList = await headers()
+  const host = headersList.get('host') || ''
+  const domain = host.replace(/^www\./, '') // Remove www prefix for domain matching
+
+  return getPageMetadata("team", domain)
+}
 
 export default async function TeamPage() {
+  const headersList = await headers()
+  const host = headersList.get('host') || ''
+  const domain = host.replace(/^www\./, '') // Remove www prefix for domain matching
+
   const chairs = await getCommitteeChairs()
   const advisors = await getFacultyAdvisors()
 
@@ -32,7 +43,7 @@ export default async function TeamPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(getStructuredData("team"))
+          __html: JSON.stringify(getStructuredData("team", domain))
         }}
       />
       <LayoutWrapper>
