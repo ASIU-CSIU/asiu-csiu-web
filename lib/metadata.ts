@@ -10,7 +10,8 @@ export const domainMappings = {
     "advocatesforscienceatiu.org",
     "asiu.indiana.edu",
     "advocates-science-iu.vercel.app", // Example placeholder domain
-    "asiu-staging.vercel.app" // Example staging domain
+    "asiu-staging.vercel.app", // Example staging domain
+    "asiu.vercel.app",
   ],
   csiu: [
     "www.csiub.org",
@@ -18,7 +19,8 @@ export const domainMappings = {
     "concernedscientists.iu.edu",
     "csiu.indiana.edu",
     "concerned-scientists-iu.vercel.app", // Example placeholder domain
-    "csiu-staging.vercel.app" // Example staging domain
+    "csiu-staging.vercel.app", // Example staging domain
+    "csiu.vercel.app",
   ]
 }
 
