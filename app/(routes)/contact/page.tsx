@@ -179,6 +179,7 @@ ${fullName}`)}`
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
+                      <p className="text-gray-600">csatiub@gmail.com.in@gmail.com</p>
                       <p className="text-gray-600">advocatesforscience.in@gmail.com</p>
                       <p className="text-sm text-gray-500 mt-2">
                         We typically respond within 24-48 hours during business days.

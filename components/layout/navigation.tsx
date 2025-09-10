@@ -25,7 +25,7 @@ export function Navigation() {
   const navItems = [
     { href: "/", label: "Home" },
     { href: "/about", label: "About" },
-    // { href: "/events", label: "Events" },
+    { href: "/get-involved?tab=events-calendar", label: "Events" },
     { href: "/news", label: "News" },
     { href: "/contact", label: "Contact" },
   ]
@@ -73,9 +73,9 @@ export function Navigation() {
           {/* Dual Logo */}
           <div className="flex items-center relative">
             <Link href="/" className="flex items-center space-x-2" aria-label="Advocates for Science @ IU Homepage">
-              <div className="absolute -top-8 w-38 h-23.5 bg-white pt-1">
-                <div className="flex flex-row items-center justify-center border border-gray-300 mx-1">
-                  <div className="flex flex-row items-center gap-2 h-21">
+              <div className="absolute -top-8 w-38 h-23.5 bg-white pt-1 rounded-b-xl border border-gray-300">
+                <div className="flex flex-row items-center justify-center rounded-b-lg border border-gray-300 mx-1">
+                  <div className="flex flex-row items-center gap-2 h-20.5">
                     <Image
                       src="/icons/csiu/logo-blue.svg"
                       alt="CSIU Logo"

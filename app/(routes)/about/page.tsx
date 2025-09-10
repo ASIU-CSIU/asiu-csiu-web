@@ -63,21 +63,83 @@ export default async function AboutPage() {
 
         {/* Mission Statement */}
         <section className="py-16 bg-white">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="font-heading text-3xl font-bold mb-6">Our Mission</h2>
-            <p className="text-lg text-gray-600 leading-relaxed mb-8">
-              Advocates for Science @ IU is a student affiliate of Concerned Scientists @ IU, working to promote
-              scientific integrity and evidence-based decision making in policy and society. We believe that scientific
-              evidence should be at the heart of all policy decisions that affect our communities, environment, and
-              future.
-            </p>
-            <p className="text-lg text-gray-600 leading-relaxed">
-              Through advocacy, education, and community engagement, we work to bridge the gap between scientific
-              research and public policy, ensuring that the best available evidence guides decisions that impact us all.
-              <Link href="/get-involved" className="text-science-blue hover:text-science-green transition-colors font-medium">
-                Join our efforts
-              </Link> to make a difference in science policy.
-            </p>
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="font-heading text-3xl font-bold mb-6">Our Mission</h2>
+              <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                We are a group of scientists and science supporters, organizing in defense of science. Our coalition has formed as a direct response to attacks on science in the current political climate. Advocates for Science @ IU is a student affiliate of Concerned Scientists @ IU, working to promote scientific integrity and evidence-based decision making in policy.
+              </p>
+              <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                We believe that scientific evidence should be at the heart of all policy decisions that affect our communities, environment, and future. Through advocacy, education, and community engagement, we work to bridge the gap between scientific research and public policy, ensuring that the best available evidence guides impactful decisions.
+              </p>
+              <p className="text-lg text-gray-600 leading-relaxed">
+                <Link href="/get-involved" className="text-science-blue hover:text-science-green transition-colors font-medium">
+                  Join our efforts
+                </Link> to make a difference in science policy.
+              </p>
+            </div>
+
+            {/* Core Aims */}
+            <div className="mt-16">
+              <h3 className="font-heading text-2xl font-bold text-center mb-8">Our Core Aims</h3>
+              <div className="grid md:grid-cols-2 gap-6">
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center space-x-2">
+                      <BookOpen className="h-5 w-5 text-science-blue" />
+                      <span>Accurate Science Representation</span>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-600">
+                      Promote the accurate representation of science in the media, in education, and in the design of legislation.
+                    </p>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center space-x-2">
+                      <Users className="h-5 w-5 text-science-red" />
+                      <span>Public Science Communication</span>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-600">
+                      Engage with the public to communicate science, especially as it relates to core issues influenced by public policy.
+                    </p>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center space-x-2">
+                      <Target className="h-5 w-5 text-science-green" />
+                      <span>Scientific Policy Participation</span>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-600">
+                      Promote the participation of scientists in policy-making processes at all levels of government and international organizations.
+                    </p>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center space-x-2">
+                      <Award className="h-5 w-5 text-gray-700" />
+                      <span>Research Funding Defense</span>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-600">
+                      Support continued federal funding for independent scientific research and defend research from politically motivated attacks.
+                    </p>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -152,7 +214,7 @@ export default async function AboutPage() {
         {/* Committee Chairs */}
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="font-heading text-3xl font-bold text-center mb-12">Committee Chairs</h2>
+            <h2 className="font-heading text-3xl font-bold text-center mb-12">ASIU Committee Chairs</h2>
             {sortedChairs && sortedChairs.length > 0 ? (
               <div className="flex flex-wrap justify-center gap-8">
                 {sortedChairs.map((chair: CommitteeChair) => (
@@ -172,7 +234,7 @@ export default async function AboutPage() {
         {/* Faculty Advisor */}
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="font-heading text-3xl font-bold text-center mb-12">Faculty Advisors</h2>
+            <h2 className="font-heading text-3xl font-bold text-center mb-12">CSIU Faculty</h2>
             {advisors && advisors.length > 0 ? (
               <div className="flex flex-wrap justify-center gap-8">
                 {advisors.map((advisor: CommitteeChair) => (

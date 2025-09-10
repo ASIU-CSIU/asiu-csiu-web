@@ -246,7 +246,7 @@ export function GetInvolvedClient({ events }: GetInvolvedClientProps) {
                             <Card className="">
                                 <CardHeader>
                                     <div className="flex items-center space-x-4 mb-4">
-                                        <div className="w-12 h-12 bg-science-blue clip-hexagon flex items-center justify-center">
+                                        <div className="w-12 h-12 bg-science-blue rounded-md flex items-center justify-center">
                                             <div className="h-10 w-11 flex items-center justify-center">
                                                 <Vote className="h-6 w-6 text-white" />
                                             </div>
@@ -286,7 +286,7 @@ export function GetInvolvedClient({ events }: GetInvolvedClientProps) {
                             <Card className="">
                                 <CardHeader>
                                     <div className="flex items-center space-x-4 mb-4">
-                                        <div className="w-12 h-12 bg-science-green clip-hexagon flex items-center justify-center">
+                                        <div className="w-12 h-12 bg-science-green rounded-md flex items-center justify-center">
                                             <div className="h-10 w-11 flex items-center justify-center">
                                                 <Monitor className="h-6 w-6 text-white" />
                                             </div>
@@ -326,7 +326,7 @@ export function GetInvolvedClient({ events }: GetInvolvedClientProps) {
                             <Card className="">
                                 <CardHeader>
                                     <div className="flex items-center space-x-4 mb-4">
-                                        <div className="w-12 h-12 bg-science-red clip-hexagon flex items-center justify-center">
+                                        <div className="w-12 h-12 bg-science-red rounded-md flex items-center justify-center">
                                             <div className="h-10 w-11 flex items-center justify-center">
                                                 <PenTool className="ml-0.5 mt-0.5 h-6 w-6 text-white" />
                                             </div>
@@ -366,13 +366,13 @@ export function GetInvolvedClient({ events }: GetInvolvedClientProps) {
                             <Card className="">
                                 <CardHeader>
                                     <div className="flex items-center space-x-4 mb-4">
-                                        <div className="w-12 h-12 bg-purple-600 clip-hexagon flex items-center justify-center">
+                                        <div className="w-12 h-12 bg-science-orange rounded-md flex items-center justify-center">
                                             <div className="h-10 w-11 flex items-center justify-center">
                                                 <CalendarDays className="h-6 w-6 text-white" />
                                             </div>
                                         </div>
                                         <div>
-                                            <CardTitle className="text-purple-600">Event Planning</CardTitle>
+                                            <CardTitle className="text-science-orange">Event Planning</CardTitle>
                                             <CardDescription>Planning and coordinating advocacy events and activities</CardDescription>
                                         </div>
                                     </div>
@@ -396,7 +396,7 @@ export function GetInvolvedClient({ events }: GetInvolvedClientProps) {
                                             <span className="text-sm">2-3 hours/week commitment</span>
                                         </div>
                                     </div>
-                                    <Button size="sm" className="bg-purple-600">
+                                    <Button size="sm" className="bg-science-orange">
                                         <Slack className="h-4 w-4 mr-0.5" />
                                         Join Slack
                                     </Button>
