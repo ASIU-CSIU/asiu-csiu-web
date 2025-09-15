@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASIU-CSIU Navbar</title>
+    <link rel="stylesheet" href="../app/globals.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom CSS for navbar specific styling */
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        /* IU Brand color */
+        .text-iu-black {
+            color: #2a2a2a;
+        }
+        
+        /* Dropdown animation */
+        .dropdown-content {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        /* Mobile menu */
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+        
+        /* Hamburger animation */
+        .hamburger span {
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger.open span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.open span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+        
+        /* Phase 29-30: Enhanced responsive design and animations */
+        @media (max-width: 768px) {
+            .mobile-menu {
+                transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            
+            .navbar {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+        
+        /* Enhanced dropdown hover effects */
+        .dropdown:hover .dropdown-content {
+            animation: slideDown 0.3s ease forwards;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Focus states for accessibility */
+        .dropdown button:focus {
+            outline: 2px solid #2a2a2a;
+            outline-offset: 2px;
+        }
+        
+        /* Phase 31-35: Final polish, animations, and accessibility enhancements */
+        
+        /* Smooth transitions for all interactive elements */
+        * {
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+            transition-duration: 200ms;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Enhanced focus indicators for better accessibility */
+        a:focus, button:focus {
+            outline: 2px solid #2a2a2a;
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+        
+        /* Skip link for screen readers */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: #2a2a2a;
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 1000;
+            border-radius: 4px;
+        }
+        
+        .skip-link:focus {
+            top: 6px;
+        }
+        
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            .navbar {
+                border-bottom: 2px solid #000;
+            }
+            
+            .text-iu-black {
+                color: #000 !important;
+            }
+            
+            .dropdown-content {
+                border: 2px solid #000;
+            }
+        }
+        
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+        
+        /* Print styles */
+        @media print {
+            .mobile-menu, .hamburger {
+                display: none !important;
+            }
+            
+            .navbar {
+                position: static !important;
+                box-shadow: none !important;
+            }
+            
+            .dropdown-content {
+                position: static !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                transform: none !important;
+                box-shadow: none !important;
+                border: 1px solid #000;
+                margin-top: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Phase 31-35: Skip link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Phase 6-10: Basic navbar structure with white background, semantics, and accessibility -->
+    <nav class="navbar w-full bg-white border-b border-gray-200 sticky top-0 z-50" 
+         role="navigation" 
+         aria-label="Main navigation"
+         id="main-navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Phase 7-8: Container structure with proper semantics and responsive layout -->
+            <div class="flex justify-between items-center h-16">
+                <!-- Left section: Logo and brand text -->
+                <div class="flex items-center space-x-4" aria-label="Brand and logo">
+                    <!-- Phase 11-15: Logo and arbutus text with proper positioning and styling -->
+                    <div class="flex items-center space-x-3 hover:opacity-90 transition-opacity duration-200">
+                        <img src="images/icons/logo-block-transparent.svg" 
+                             alt="IU Block Logo" 
+                             class="h-12 w-12 flex-shrink-0"
+                             role="img"
+                             aria-label="Indiana University Block Logo">
+                        <span class="text-iu-black text-2xl font-semibold tracking-wide select-none" 
+                              aria-label="Arbutus brand name">
+                            arbutus
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- Center section: Main navigation (desktop) -->
+                <div class="hidden md:flex items-center space-x-8" aria-label="Main navigation">
+                    <!-- Phase 16-18: Navigation items with Order Now and Gallery dropdown -->
+                    
+                    <!-- Order Now - Simple link -->
+                    <a href="#order-now" 
+                       class="text-iu-black font-medium hover:text-gray-600 transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50"
+                       aria-label="Order Now">
+                        Order Now
+                    </a>
+                    
+                    <!-- Gallery Dropdown -->
+                    <div class="dropdown relative" aria-label="Gallery menu">
+                        <button class="text-iu-black font-medium hover:text-gray-600 transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50 flex items-center space-x-1"
+                                aria-expanded="false"
+                                aria-haspopup="true"
+                                id="gallery-menu-button">
+                            <span>Gallery</span>
+                            <svg class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="dropdown-content absolute top-full left-0 mt-1 w-48 bg-white rounded-md shadow-lg py-2 border border-gray-200"
+                             role="menu"
+                             aria-labelledby="gallery-menu-button">
+                            <a href="#sneak-peek" 
+                               class="block px-4 py-2 text-sm text-iu-black hover:bg-gray-100 transition-colors duration-200"
+                               role="menuitem"
+                               aria-label="View sneak peek gallery">
+                                Sneak Peek
+                            </a>
+                            <a href="#portraits" 
+                               class="block px-4 py-2 text-sm text-iu-black hover:bg-gray-100 transition-colors duration-200"
+                               role="menuitem"
+                               aria-label="View portraits gallery">
+                                Portraits
+                            </a>
+                            <a href="#archive" 
+                               class="block px-4 py-2 text-sm text-iu-black hover:bg-gray-100 transition-colors duration-200"
+                               role="menuitem"
+                               aria-label="View archive gallery">
+                                Archive
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Phase 19-20: Opportunities Dropdown (renamed to encompass both Get Involved and Advertise contexts) -->
+                    <div class="dropdown relative" aria-label="Opportunities menu">
+                        <button class="text-iu-black font-medium hover:text-gray-600 transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50 flex items-center space-x-1"
+                                aria-expanded="false"
+                                aria-haspopup="true"
+                                id="opportunities-menu-button">
+                            <span>Opportunities</span>
+                            <svg class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="dropdown-content absolute top-full left-0 mt-1 w-48 bg-white rounded-md shadow-lg py-2 border border-gray-200"
+                             role="menu"
+                             aria-labelledby="opportunities-menu-button">
+                            <a href="#get-involved" 
+                               class="block px-4 py-2 text-sm text-iu-black hover:bg-gray-100 transition-colors duration-200"
+                               role="menuitem"
+                               aria-label="Get involved with our organization">
+                                Get Involved
+                            </a>
+                            <a href="#advertise" 
+                               class="block px-4 py-2 text-sm text-iu-black hover:bg-gray-100 transition-colors duration-200"
+                               role="menuitem"
+                               aria-label="Advertise with us">
+                                Advertise
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Phase 21-24: About Dropdown with Organization and Staff -->
+                    <div class="dropdown relative" aria-label="About menu">
+                        <button class="text-iu-black font-medium hover:text-gray-600 transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50 flex items-center space-x-1"
+                                aria-expanded="false"
+                                aria-haspopup="true"
+                                id="about-menu-button">
+                            <span>About</span>
+                            <svg class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="dropdown-content absolute top-full left-0 mt-1 w-48 bg-white rounded-md shadow-lg py-2 border border-gray-200"
+                             role="menu"
+                             aria-labelledby="about-menu-button">
+                            <a href="#organization" 
+                               class="block px-4 py-2 text-sm text-iu-black hover:bg-gray-100 transition-colors duration-200"
+                               role="menuitem"
+                               aria-label="Learn about our organization">
+                                Organization
+                            </a>
+                            <a href="#staff" 
+                               class="block px-4 py-2 text-sm text-iu-black hover:bg-gray-100 transition-colors duration-200"
+                               role="menuitem"
+                               aria-label="Meet our staff">
+                                Staff
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Phase 25: Contact - Simple link -->
+                    <a href="#contact" 
+                       class="text-iu-black font-medium hover:text-gray-600 transition-colors duration-200 px-3 py-2 rounded-md hover:bg-gray-50"
+                       aria-label="Contact us">
+                        Contact
+                    </a>
+                </div>
+                
+                <!-- Right section: Mobile menu button -->
+                <div class="md:hidden" aria-label="Mobile menu">
+                    <button class="hamburger p-2 rounded-md text-iu-black hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+                            aria-label="Toggle mobile menu"
+                            aria-expanded="false"
+                            aria-controls="mobile-menu"
+                            id="mobile-menu-button">
+                        <span class="sr-only">Open main menu</span>
+                        <div class="w-6 h-6 relative">
+                            <span class="absolute h-0.5 w-6 bg-current transform transition-all duration-300 ease-in-out top-1"></span>
+                            <span class="absolute h-0.5 w-6 bg-current transform transition-all duration-300 ease-in-out top-3"></span>
+                            <span class="absolute h-0.5 w-6 bg-current transform transition-all duration-300 ease-in-out top-5"></span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu (initially hidden) -->
+        <div class="mobile-menu fixed inset-y-0 left-0 w-64 bg-white shadow-lg z-50 md:hidden"
+             id="mobile-menu"
+             aria-hidden="true">
+            <div class="p-4">
+                <div class="flex items-center justify-between mb-8">
+                    <span class="text-lg font-semibold text-iu-black">Menu</span>
+                    <button class="p-2 rounded-md text-iu-black hover:bg-gray-100"
+                            aria-label="Close mobile menu"
+                            id="mobile-menu-close">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <!-- Mobile navigation items will be added in later phases -->
+                <!-- Phase 26-28: Mobile navigation items -->
+                <div class="space-y-1">
+                    <a href="#order-now" 
+                       class="block px-3 py-2 text-base font-medium text-iu-black hover:bg-gray-100 rounded-md transition-colors duration-200">
+                        Order Now
+                    </a>
+                    
+                    <!-- Mobile Gallery Section -->
+                    <div class="space-y-1">
+                        <div class="px-3 py-2 text-base font-medium text-iu-black border-b border-gray-200">
+                            Gallery
+                        </div>
+                        <a href="#sneak-peek" 
+                           class="block px-6 py-2 text-sm text-iu-black hover:bg-gray-100 rounded-md transition-colors duration-200">
+                            Sneak Peek
+                        </a>
+                        <a href="#portraits" 
+                           class="block px-6 py-2 text-sm text-iu-black hover:bg-gray-100 rounded-md transition-colors duration-200">
+                            Portraits
+                        </a>
+                        <a href="#archive" 
+                           class="block px-6 py-2 text-sm text-iu-black hover:bg-gray-100 rounded-md transition-colors duration-200">
+                            Archive
+                        </a>
+                    </div>
+                    
+                    <!-- Mobile Opportunities Section -->
+                    <div class="space-y-1">
+                        <div class="px-3 py-2 text-base font-medium text-iu-black border-b border-gray-200">
+                            Opportunities
+                        </div>
+                        <a href="#get-involved" 
+                           class="block px-6 py-2 text-sm text-iu-black hover:bg-gray-100 rounded-md transition-colors duration-200">
+                            Get Involved
+                        </a>
+                        <a href="#advertise" 
+                           class="block px-6 py-2 text-sm text-iu-black hover:bg-gray-100 rounded-md transition-colors duration-200">
+                            Advertise
+                        </a>
+                    </div>
+                    
+                    <!-- Mobile About Section -->
+                    <div class="space-y-1">
+                        <div class="px-3 py-2 text-base font-medium text-iu-black border-b border-gray-200">
+                            About
+                        </div>
+                        <a href="#organization" 
+                           class="block px-6 py-2 text-sm text-iu-black hover:bg-gray-100 rounded-md transition-colors duration-200">
+                            Organization
+                        </a>
+                        <a href="#staff" 
+                           class="block px-6 py-2 text-sm text-iu-black hover:bg-gray-100 rounded-md transition-colors duration-200">
+                            Staff
+                        </a>
+                    </div>
+                    
+                    <a href="#contact" 
+                       class="block px-3 py-2 text-base font-medium text-iu-black hover:bg-gray-100 rounded-md transition-colors duration-200">
+                        Contact
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu overlay -->
+        <div class="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden hidden"
+             id="mobile-menu-overlay"
+             aria-hidden="true"></div>
+    </nav>
+
+    <!-- Phase 29-30: JavaScript for mobile menu functionality -->
+    <script>
+        // Mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenuClose = document.getElementById('mobile-menu-close');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+            const hamburger = document.querySelector('.hamburger');
+            
+            // Open mobile menu
+            function openMobileMenu() {
+                mobileMenu.classList.remove('mobile-menu');
+                mobileMenu.classList.add('open');
+                mobileMenuOverlay.classList.remove('hidden');
+                hamburger.classList.add('open');
+                mobileMenuButton.setAttribute('aria-expanded', 'true');
+                mobileMenu.setAttribute('aria-hidden', 'false');
+                mobileMenuOverlay.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            // Close mobile menu
+            function closeMobileMenu() {
+                mobileMenu.classList.add('mobile-menu');
+                mobileMenu.classList.remove('open');
+                mobileMenuOverlay.classList.add('hidden');
+                hamburger.classList.remove('open');
+                mobileMenuButton.setAttribute('aria-expanded', 'false');
+                mobileMenu.setAttribute('aria-hidden', 'true');
+                mobileMenuOverlay.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = 'unset';
+            }
+            
+            // Event listeners
+            mobileMenuButton.addEventListener('click', openMobileMenu);
+            mobileMenuClose.addEventListener('click', closeMobileMenu);
+            mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+            
+            // Close menu when clicking on menu links
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', closeMobileMenu);
+            });
+            
+            // Keyboard accessibility
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && !mobileMenu.classList.contains('mobile-menu')) {
+                    closeMobileMenu();
+                }
+            });
+            
+            // Enhanced dropdown functionality for desktop
+            const dropdowns = document.querySelectorAll('.dropdown');
+            dropdowns.forEach(dropdown => {
+                const button = dropdown.querySelector('button');
+                const content = dropdown.querySelector('.dropdown-content');
+                
+                // Keyboard navigation
+                button.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+                        button.setAttribute('aria-expanded', !isExpanded);
+                    }
+                });
+                
+                // Close dropdown when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!dropdown.contains(e.target)) {
+                        button.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
