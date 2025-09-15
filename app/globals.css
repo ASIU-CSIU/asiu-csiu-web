@@ -159,6 +159,12 @@
   .text-science-pink {
     color: var(--color-pink);
   }
+  
+  /* IU Brand color utilities */
+  .text-iu-black {
+    color: var(--color-black);
+  }
+  }
   .text-science-brown {
     color: var(--color-brown);
   }
