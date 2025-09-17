@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 
 // Canonical domain configuration
-export const CANONICAL_DOMAIN = process.env.CANONICAL_DOMAIN || "www.csiub.org"
+export const CANONICAL_DOMAIN = process.env.CANONICAL_DOMAIN || "www.advocatesforscienceatiu.org"
 
 // Domain mappings for each organization
 export const domainMappings = {
@@ -14,7 +14,7 @@ export const domainMappings = {
     "asiu.vercel.app",
   ],
   csiu: [
-    "www.csiub.org",
+    "www.advocatesforscienceatiu.org",
     "csiub.org",
     "concernedscientists.iu.edu",
     "csiu.indiana.edu",
@@ -57,7 +57,7 @@ export const organizationConfigs = {
     shortName: "CSIU",
     description: "Faculty and staff organization at Indiana University dedicated to promoting scientific integrity and evidence-based decision making in policy and society. Working with our student affiliate Advocates for Science @ IU.",
     domains: domainMappings.csiu,
-    primaryDomain: "www.csiub.org",
+    primaryDomain: "www.advocatesforscienceatiu.org",
     logoPath: "/icons/csiu/logo.svg",
     twitterHandle: "@csiu_indiana",
     email: "csiu@indiana.edu",

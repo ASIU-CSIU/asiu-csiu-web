@@ -2,9 +2,9 @@ User-agent: *
 Allow: /
 
 # Sitemap locations - multiple sitemaps for better organization
-Sitemap: https://www.csiub.org/sitemap.xml
-Sitemap: https://www.csiub.org/sitemap-news.xml
-Sitemap: https://www.csiub.org/sitemap-events.xml
+Sitemap: https://www.advocatesforscienceatiu.org/sitemap.xml
+Sitemap: https://www.advocatesforscienceatiu.org/sitemap-news.xml
+Sitemap: https://www.advocatesforscienceatiu.org/sitemap-events.xml
 
 # Crawl-delay for respectful crawling
 Crawl-delay: 1

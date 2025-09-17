@@ -14,10 +14,10 @@ The canonical domain is configured via environment variable:
 
 ```bash
 # In your .env file or Vercel environment variables
-CANONICAL_DOMAIN=www.csiub.org
+CANONICAL_DOMAIN=www.advocatesforscienceatiu.org
 ```
 
-**Default**: `www.csiub.org`
+**Default**: `www.advocatesforscienceatiu.org`
 
 ### Domain Mappings
 
@@ -29,7 +29,7 @@ CANONICAL_DOMAIN=www.csiub.org
 - `asiu-staging.vercel.app` (staging)
 
 #### CSIU Domains
-- `www.csiub.org`
+- `www.advocatesforscienceatiu.org`
 - `csiub.org`
 - `concernedscientists.iu.edu`
 - `csiu.indiana.edu`
@@ -40,7 +40,7 @@ CANONICAL_DOMAIN=www.csiub.org
 
 ### SEO and Canonical URLs
 - **All domains** serve the same content
-- **Canonical domain** (`www.csiub.org`) is used for all SEO purposes
+- **Canonical domain** (`www.advocatesforscienceatiu.org`) is used for all SEO purposes
 - **Search engines** will index the canonical domain
 - **Other domains** are treated as duplicates (no SEO penalty)
 
@@ -69,7 +69,7 @@ export const domainMappings = {
     // ... other domains
   ],
   csiu: [
-    "www.csiub.org",
+    "www.advocatesforscienceatiu.org",
     "your-new-csiu-domain.com", // Add here
     // ... other domains
   ]
@@ -140,7 +140,7 @@ const currentUrl = getCurrentDomainUrl('/about', 'www.advocatesforscienceatiu.or
 ## Environment Variables
 
 ### Required
-- `CANONICAL_DOMAIN` - The canonical domain for SEO (default: `www.csiub.org`)
+- `CANONICAL_DOMAIN` - The canonical domain for SEO (default: `www.advocatesforscienceatiu.org`)
 
 ### Optional
 - `NEXT_PUBLIC_GA_MEASUREMENT_ID` - Google Analytics ID
