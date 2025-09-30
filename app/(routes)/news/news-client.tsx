@@ -22,18 +22,19 @@ import {
     Globe,
     Lightbulb,
     Archive,
-    Link,
 } from "lucide-react"
 
 import { NewsBulletinCard } from "@/components/cards/news-bulletin-card"
 import { InstagramFeed } from "@/components/sections/instagram-feed"
-import type { NewsBulletin } from "@/lib/types"
+import type { NewsBulletin, NewsArticle } from "@/lib/types"
+import Link from "next/link"
 
 interface NewsClientProps {
     newsBulletins: NewsBulletin[]
+    newsArticles: NewsArticle[]
 }
 
-export function NewsClient({ newsBulletins }: NewsClientProps) {
+export function NewsClient({ newsBulletins, newsArticles }: NewsClientProps) {
     const searchParams = useSearchParams()
     const router = useRouter()
     const pathname = usePathname()
@@ -110,143 +111,57 @@ export function NewsClient({ newsBulletins }: NewsClientProps) {
                             <p className="text-gray-600">Read from ASIU's very own journalists and researchers on the latest news in science policy</p>
                         </div>
 
-                        <div className="grid md:grid-cols-2 gap-8">
-                            <Card className=" ">
-                                <CardHeader>
-                                    <div className="flex items-center justify-between mb-2">
-                                        <Badge className="bg-science-blue">Advocacy Training</Badge>
-                                        <span className="text-sm text-gray-500">Jan 15, 2025</span>
-                                    </div>
-                                    <CardTitle className="text-xl">Science Communication Workshop</CardTitle>
-                                    <CardDescription>Learn effective strategies for communicating with policymakers</CardDescription>
-                                </CardHeader>
-                                <CardContent>
-                                    <div className="space-y-3 mb-4">
-                                        <div className="flex items-center space-x-2">
-                                            <Clock className="h-4 w-4 text-gray-500" />
-                                            <span className="text-sm">6:00 PM - 9:00 PM</span>
-                                        </div>
-                                        <div className="flex items-center space-x-2">
-                                            <MapPin className="h-4 w-4 text-gray-500" />
-                                            <span className="text-sm">Wells Library, Conference Room A</span>
-                                        </div>
-                                        <div className="flex items-center space-x-2">
-                                            <Users className="h-4 w-4 text-gray-500" />
-                                            <span className="text-sm">Open to all members</span>
-                                        </div>
-                                    </div>
-                                    <p className="text-gray-600 text-sm mb-4">
-                                        Interactive workshop covering effective messaging, policy briefing techniques, and building
-                                        relationships with elected officials.
-                                    </p>
-                                    <Button size="sm" className="bg-science-blue">
-                                        Register Now
-                                    </Button>
-                                </CardContent>
-                            </Card>
-
-                            <Card className=" ">
-                                <CardHeader>
-                                    <div className="flex items-center justify-between mb-2">
-                                        <Badge className="bg-science-green">Public Forum</Badge>
-                                        <span className="text-sm text-gray-500">Jan 22, 2025</span>
-                                    </div>
-                                    <CardTitle className="text-xl">Climate Action Town Hall</CardTitle>
-                                    <CardDescription>Community discussion on local climate policy initiatives</CardDescription>
-                                </CardHeader>
-                                <CardContent>
-                                    <div className="space-y-3 mb-4">
-                                        <div className="flex items-center space-x-2">
-                                            <Clock className="h-4 w-4 text-gray-500" />
-                                            <span className="text-sm">7:00 PM - 8:30 PM</span>
-                                        </div>
-                                        <div className="flex items-center space-x-2">
-                                            <MapPin className="h-4 w-4 text-gray-500" />
-                                            <span className="text-sm">Monroe County Public Library</span>
-                                        </div>
-                                        <div className="flex items-center space-x-2">
-                                            <Users className="h-4 w-4 text-gray-500" />
-                                            <span className="text-sm">Open to the public</span>
-                                        </div>
-                                    </div>
-                                    <p className="text-gray-600 text-sm mb-4">
-                                        Join local experts, policymakers, and community members to discuss evidence-based climate action
-                                        strategies for our region.
-                                    </p>
-                                    <Button size="sm" className="bg-science-green">
-                                        Learn More
-                                    </Button>
-                                </CardContent>
-                            </Card>
-
-                            <Card className=" ">
-                                <CardHeader>
-                                    <div className="flex items-center justify-between mb-2">
-                                        <Badge className="bg-science-red">Weekly Meeting</Badge>
-                                        <span className="text-sm text-gray-500">Every Wednesday</span>
-                                    </div>
-                                    <CardTitle className="text-xl">General Assembly</CardTitle>
-                                    <CardDescription>Regular planning and coordination meeting</CardDescription>
-                                </CardHeader>
-                                <CardContent>
-                                    <div className="space-y-3 mb-4">
-                                        <div className="flex items-center space-x-2">
-                                            <Clock className="h-4 w-4 text-gray-500" />
-                                            <span className="text-sm">7:00 PM - 8:30 PM</span>
-                                        </div>
-                                        <div className="flex items-center space-x-2">
-                                            <MapPin className="h-4 w-4 text-gray-500" />
-                                            <span className="text-sm">Student Union, Room 204</span>
-                                        </div>
-                                        <div className="flex items-center space-x-2">
-                                            <Users className="h-4 w-4 text-gray-500" />
-                                            <span className="text-sm">All members welcome</span>
-                                        </div>
-                                    </div>
-                                    <p className="text-gray-600 text-sm mb-4">
-                                        Join us for updates, campaign planning, and coordination between working groups. Perfect for new
-                                        members to get involved.
-                                    </p>
-                                    <Button size="sm" className="bg-science-red">
-                                        Join Meeting
-                                    </Button>
-                                </CardContent>
-                            </Card>
-
-                            <Card className=" ">
-                                <CardHeader>
-                                    <div className="flex items-center justify-between mb-2">
-                                        <Badge className="bg-purple-600">Special Event</Badge>
-                                        <span className="text-sm text-gray-500">Feb 5, 2025</span>
-                                    </div>
-                                    <CardTitle className="text-xl">Science Policy Career Panel</CardTitle>
-                                    <CardDescription>Networking event with science policy professionals</CardDescription>
-                                </CardHeader>
-                                <CardContent>
-                                    <div className="space-y-3 mb-4">
-                                        <div className="flex items-center space-x-2">
-                                            <Clock className="h-4 w-4 text-gray-500" />
-                                            <span className="text-sm">5:30 PM - 7:30 PM</span>
-                                        </div>
-                                        <div className="flex items-center space-x-2">
-                                            <MapPin className="h-4 w-4 text-gray-500" />
-                                            <span className="text-sm">Indiana Memorial Union</span>
-                                        </div>
-                                        <div className="flex items-center space-x-2">
-                                            <Users className="h-4 w-4 text-gray-500" />
-                                            <span className="text-sm">Students and professionals</span>
-                                        </div>
-                                    </div>
-                                    <p className="text-gray-600 text-sm mb-4">
-                                        Meet professionals working in science policy, government relations, and advocacy organizations.
-                                        Includes networking reception.
-                                    </p>
-                                    <Button size="sm" className="bg-purple-600">
-                                        RSVP Required
-                                    </Button>
-                                </CardContent>
-                            </Card>
-                        </div>
+                        {newsArticles && newsArticles.length > 0 ? (
+                            <div className="grid md:grid-cols-2 gap-8">
+                                {newsArticles.map((article: NewsArticle) => (
+                                    <Card key={article._id} className="hover:shadow-lg transition-shadow">
+                                        <CardHeader>
+                                            <div className="flex items-center justify-between mb-2">
+                                                <div className="flex flex-wrap gap-2">
+                                                    {article.tags && article.tags.map((tag, index) => (
+                                                        <Badge key={index} className="bg-science-blue text-white">
+                                                            {tag}
+                                                        </Badge>
+                                                    ))}
+                                                </div>
+                                                <span className="text-sm text-gray-500">
+                                                    {new Date(article.publishedAt).toLocaleDateString()}
+                                                </span>
+                                            </div>
+                                            <CardTitle className="text-xl line-clamp-2">{article.title}</CardTitle>
+                                            <CardDescription className="flex items-center space-x-2">
+                                                <span>By {article.author}</span>
+                                                {article.authorImage && (
+                                                    <img
+                                                        src={article.authorImage}
+                                                        alt={article.author}
+                                                        className="w-6 h-6 rounded-full"
+                                                    />
+                                                )}
+                                            </CardDescription>
+                                        </CardHeader>
+                                        <CardContent>
+                                            <p className="text-gray-600 text-sm mb-4 line-clamp-3">
+                                                {article.content
+                                                    .split('\n')
+                                                    .filter(line => !line.trim().startsWith('#'))
+                                                    .join(' ')
+                                                    .substring(0, 150)}...
+                                            </p>
+                                            <Link href={`/news/articles/${article.slug}`}>
+                                                <Button size="sm" className="bg-science-blue">
+                                                    Read More
+                                                </Button>
+                                            </Link>
+                                        </CardContent>
+                                    </Card>
+                                ))}
+                            </div>
+                        ) : (
+                            <div className="text-center text-gray-500 py-12">
+                                <p>No articles available yet.</p>
+                            </div>
+                        )}
                     </TabsContent>
 
                     <TabsContent value="social" className="space-y-8">

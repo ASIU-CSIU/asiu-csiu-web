@@ -159,11 +159,9 @@
   .text-science-pink {
     color: var(--color-pink);
   }
-  
   /* IU Brand color utilities */
   .text-iu-black {
     color: var(--color-black);
-  }
   }
   .text-science-brown {
     color: var(--color-brown);
@@ -341,14 +339,13 @@
   /* Hexagon clip-path for committee icons */
   .clip-hexagon {
     clip-path: polygon(
-  50% 0%,        /* Top */
-  100% 25%,      /* Top right */
-  100% 75%,      /* Bottom right */
-  50% 100%,      /* Bottom */
-  0% 75%,        /* Bottom left */
-  0% 25%         /* Top left */
-);
-
+    50% 0%,        /* Top */
+    100% 25%,      /* Top right */
+    100% 75%,      /* Bottom right */
+    50% 100%,      /* Bottom */
+    0% 75%,        /* Bottom left */
+    0% 25%         /* Top left */
+    );
   }
 }
 

@@ -1,8 +1,8 @@
 import { LayoutWrapper } from "@/components/layout/layout-wrapper"
 import { HeroSection } from "@/components/sections/hero/hero-section"
-import { getNewsBulletins } from "@/lib/sanity"
+import { getNewsBulletins, getNewsArticles } from "@/lib/sanity"
 import { NewsClient } from "./news-client"
-import type { NewsBulletin } from "@/lib/types"
+import type { NewsBulletin, NewsArticle } from "@/lib/types"
 import { Suspense } from "react"
 import { getStructuredData } from "@/lib/metadata"
 import { headers } from 'next/headers'
@@ -14,7 +14,10 @@ export default async function NewsPage() {
     const host = headersList.get('host') || ''
     const domain = host.replace(/^www\./, '') // Remove www prefix for domain matching
 
-    const newsBulletins = await getNewsBulletins()
+    const [newsBulletins, newsArticles] = await Promise.all([
+        getNewsBulletins(),
+        getNewsArticles()
+    ])
 
     return (
         <>
@@ -41,7 +44,7 @@ export default async function NewsPage() {
 
                 {/* Content Tabs */}
                 <Suspense fallback={<div className="py-8 text-center">Loading...</div>}>
-                    <NewsClient newsBulletins={newsBulletins} />
+                    <NewsClient newsBulletins={newsBulletins} newsArticles={newsArticles} />
                 </Suspense>
             </LayoutWrapper>
         </>

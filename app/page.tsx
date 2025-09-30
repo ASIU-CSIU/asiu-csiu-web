@@ -4,14 +4,15 @@ import { Badge } from "@/components/ui/primitives/badge"
 import { LayoutWrapper } from "@/components/layout/layout-wrapper"
 import { HeroSection } from "@/components/sections/hero/hero-section"
 import { LatestNewsCard } from "@/components/cards/latest-news-card"
+import { LatestArticleCard } from "@/components/cards/latest-article-card"
 import { EventCard } from "@/components/cards/event-card"
 import { EventsCalendar } from "@/components/features/events-calendar"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, Users, Megaphone, BookOpen, Calendar, ExternalLink, Quote, TrendingUp, Award, Target } from "lucide-react"
 import { getPageMetadata, getStructuredData, getBreadcrumbData } from "@/lib/metadata"
-import { getPastEvents, getUpcomingEvents } from "@/lib/sanity"
-import type { Event } from "@/lib/types"
+import { getPastEvents, getUpcomingEvents, getNewsArticles } from "@/lib/sanity"
+import type { Event, NewsArticle } from "@/lib/types"
 import { generateEventSchema, type EventSchemaData } from "@/lib/schema-generators"
 import { createLocalMidnightISO } from "@/lib/utils"
 import { headers } from 'next/headers'
@@ -29,8 +30,11 @@ export default async function HomePage() {
   const host = headersList.get('host') || ''
   const domain = host.replace(/^www\./, '') // Remove www prefix for domain matching
 
-  const pastEvents = await getPastEvents()
-  const upcomingEvents = await getUpcomingEvents()
+  const [pastEvents, upcomingEvents, newsArticles] = await Promise.all([
+    getPastEvents(),
+    getUpcomingEvents(),
+    getNewsArticles()
+  ])
 
   // Generate event schema for featured upcoming events on home page
   const featuredEventSchemas = upcomingEvents.slice(0, 3).map((event: Event) => {
@@ -100,24 +104,41 @@ export default async function HomePage() {
             </div>
 
             <div className="flex overflow-x-auto gap-6 pb-4 scrollbar-hide">
-              {pastEvents && pastEvents.length > 0 ? (
-                pastEvents.slice(0, 12).map((event: Event) => (
-                  <LatestNewsCard key={event._id} event={event} />
-                ))
-              ) : (
-                <div className="text-center text-gray-500 py-12 w-full">
-                  <p>No past events available yet.</p>
-                </div>
-              )}
+              {(() => {
+                // Combine events and articles, then sort by date
+                const combinedItems = [
+                  ...pastEvents.map((event: Event) => ({ type: 'event', data: event, date: event.date })),
+                  ...newsArticles.map((article: NewsArticle) => ({ type: 'article', data: article, date: article.publishedAt }))
+                ].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+
+                if (combinedItems.length > 0) {
+                  return combinedItems.slice(0, 12).map((item, index) => {
+                    if (item.type === 'event') {
+                      return <LatestNewsCard key={`event-${item.data._id}`} event={item.data as Event} />
+                    } else {
+                      return <LatestArticleCard key={`article-${item.data._id}`} article={item.data as NewsArticle} />
+                    }
+                  })
+                } else {
+                  return (
+                    <div className="text-center text-gray-500 py-12 w-full">
+                      <p>No news or activities available yet.</p>
+                    </div>
+                  )
+                }
+              })()}
             </div>
 
-            {pastEvents && pastEvents.length > 12 && (
-              <div className="text-center mt-8">
-                <Button size="lg" variant="outline" className="border-science-blue text-science-blue hover:bg-science-blue hover:text-white" asChild>
-                  <Link href="/news">See All Past Events</Link>
-                </Button>
-              </div>
-            )}
+            {(() => {
+              const totalItems = pastEvents.length + newsArticles.length
+              return totalItems > 12 && (
+                <div className="text-center mt-8">
+                  <Button size="lg" variant="outline" className="border-science-blue text-science-blue hover:bg-science-blue hover:text-white" asChild>
+                    <Link href="/news">See All News & Activities</Link>
+                  </Button>
+                </div>
+              )
+            })()}
           </div>
         </section>
 

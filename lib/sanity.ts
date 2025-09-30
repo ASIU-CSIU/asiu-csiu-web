@@ -95,10 +95,32 @@ export const getNewsArticles = async () => {
     _id,
     title,
     content,
-    publishedAt
+    author,
+    authorImage,
+    authorDescription,
+    tags,
+    publishedAt,
+    "slug": slug.current
   } | order(publishedAt desc)`
 
   return await client.fetch(query)
+}
+
+// Query to fetch a single news article by slug
+export const getNewsArticleBySlug = async (slug: string) => {
+  const query = `*[_type == "newsArticle" && slug.current == $slug][0] {
+    _id,
+    title,
+    content,
+    author,
+    authorImage,
+    authorDescription,
+    tags,
+    publishedAt,
+    "slug": slug.current
+  }`
+
+  return await client.fetch(query, { slug })
 }
 
 // Query to fetch events

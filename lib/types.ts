@@ -84,3 +84,15 @@ export interface FacultyAdvisor {
   image?: SanityImage
   imageUrl?: string
 }
+
+export interface NewsArticle {
+  _id: string
+  title: string
+  slug: string
+  content: string
+  author: string
+  authorImage?: string
+  authorDescription?: string
+  tags?: string[]
+  publishedAt: string
+}
