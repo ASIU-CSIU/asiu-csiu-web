@@ -392,13 +392,6 @@
   --font-serif: var(--font-poppins), "Roboto", "Helvetica Neue", sans-serif;
 }
 
-
-/* Prevent horizontal scroll on all elements */
-* {
-  max-width: 100%;
-  box-sizing: border-box;
-}
-
 #dual-logo,
 #dual-logo * {
   max-width: none;
