@@ -87,7 +87,7 @@ export function Navigation() {
           </div> */}
 
           {/* Dual Logo */}
-          <div className="flex items-center relative">
+          <div id="dual-logo" className="flex items-center relative">
             <Link href="/" className="flex items-center space-x-2" aria-label="Advocates for Science @ IU Homepage">
               <div className="absolute -top-8 w-38 h-23.5 bg-white pt-1 rounded-b-xl border border-gray-300">
                 <div className="flex flex-row items-center justify-center rounded-b-lg border border-gray-300 mx-1">
@@ -162,7 +162,7 @@ export function Navigation() {
             <Button size="sm" className="bg-science-blue text-white ml-4" asChild>
               <Link href="/get-involved" aria-label="Get involved with Advocates for Science @ IU and Concerned Scientists @ IU">Get Involved</Link>
             </Button>
-            <Button size="sm" className="bg-science-red text-white" asChild>
+            <Button size="sm" className="bg-science-red text-white hide-below-440" asChild>
               <a
                 href="https://www.gofundme.com/f/support-advocates-for-science-iu/donate?source=btn_donate"
                 target="_blank"
@@ -175,11 +175,11 @@ export function Navigation() {
           </nav>
 
           {/* Mobile buttons and menu */}
-          <div className="lg:hidden flex items-center space-x-2">
+          <div className="lg:hidden flex items-center">
             <Button size="sm" className="bg-science-blue text-white text-xs px-2 py-1" asChild>
               <Link href="/get-involved" aria-label="Get involved">Get Involved</Link>
             </Button>
-            <Button size="sm" className="bg-science-red text-white text-xs px-2 py-1" asChild>
+            <Button size="sm" className="bg-science-red text-white text-xs px-2 mx-2 py-1 hide-below-440" asChild>
               <a
                 href="https://www.gofundme.com/f/support-advocates-for-science-iu/donate?source=btn_donate"
                 target="_blank"
