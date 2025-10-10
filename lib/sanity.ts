@@ -95,9 +95,11 @@ export const getNewsArticles = async () => {
     _id,
     title,
     content,
-    author,
-    authorImage,
-    authorDescription,
+    authors[] {
+      name,
+      bio,
+      "imageUrl": image.asset->url
+    },
     tags,
     publishedAt,
     "slug": slug.current
@@ -112,9 +114,11 @@ export const getNewsArticleBySlug = async (slug: string) => {
     _id,
     title,
     content,
-    author,
-    authorImage,
-    authorDescription,
+    authors[] {
+      name,
+      bio,
+      "imageUrl": image.asset->url
+    },
     tags,
     publishedAt,
     "slug": slug.current

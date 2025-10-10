@@ -6,6 +6,7 @@ import { externalLinkType } from './externalLink'
 import { committeeType } from './committee'
 import { newsArticleType } from './newsArticle'
 import { eventType } from './event'
+import { authorType } from './author'
 
 export const schemaTypes = [
   committeeChairType,
@@ -16,4 +17,5 @@ export const schemaTypes = [
   committeeType,
   newsArticleType,
   eventType,
+  authorType,
 ]

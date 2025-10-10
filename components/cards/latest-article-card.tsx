@@ -70,7 +70,7 @@ export function LatestArticleCard({ article }: LatestArticleCardProps) {
             </div>
             <CardHeader className="pb-3 pt-4 px-6">
                 <div className="flex items-center justify-between mb-2">
-                    <Badge className={badgeColor}>{article.tags?.[0] || 'Article'}</Badge>
+                    <Badge className={badgeColor}>Article</Badge>
                     <span className="text-sm text-gray-500">{formatDate(article.publishedAt)}</span>
                 </div>
                 <ClampedText
@@ -82,7 +82,7 @@ export function LatestArticleCard({ article }: LatestArticleCardProps) {
                 </ClampedText>
                 <div className="flex items-center space-x-2 text-sm text-muted-foreground">
                     <User className="h-4 w-4" />
-                    <span>By {article.author}</span>
+                    <span className="line-clamp-1">By {article.authors.map((author: any) => author.name).join(', ')}</span>
                 </div>
             </CardHeader>
             <CardContent className="pt-0 px-6">

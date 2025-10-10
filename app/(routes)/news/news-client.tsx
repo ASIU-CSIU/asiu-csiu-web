@@ -66,13 +66,13 @@ export function NewsClient({ newsBulletins, newsArticles }: NewsClientProps) {
         <section className="py-16 bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
-                    <TabsList className="grid w-full grid-cols-5 max-w-2xl mx-auto mb-12">
+                    <TabsList className="grid w-full grid-cols-2 max-w-2xl mx-auto mb-12">
                         <TabsTrigger value="bulletins">
                             <span className="hidden lg:inline">News Bulletins</span>
                             <span className="lg:hidden">Bulletins</span>
                         </TabsTrigger>
                         <TabsTrigger value="articles">Articles</TabsTrigger>
-                        <TabsTrigger value="social">
+                        {/* <TabsTrigger value="social">
                             <span className="hidden lg:inline">Social Media</span>
                             <span className="lg:hidden">Social</span>
                         </TabsTrigger>
@@ -83,7 +83,7 @@ export function NewsClient({ newsBulletins, newsArticles }: NewsClientProps) {
                         <TabsTrigger value="external">
                             <span className="hidden lg:inline">External Links</span>
                             <span className="lg:hidden">Links</span>
-                        </TabsTrigger>
+                        </TabsTrigger> */}
                     </TabsList>
 
                     <TabsContent value="bulletins" className="space-y-8">
@@ -130,14 +130,7 @@ export function NewsClient({ newsBulletins, newsArticles }: NewsClientProps) {
                                             </div>
                                             <CardTitle className="text-xl line-clamp-2">{article.title}</CardTitle>
                                             <CardDescription className="flex items-center space-x-2">
-                                                <span>By {article.author}</span>
-                                                {article.authorImage && (
-                                                    <img
-                                                        src={article.authorImage}
-                                                        alt={article.author}
-                                                        className="w-6 h-6 rounded-full"
-                                                    />
-                                                )}
+                                                <span>By {article.authors.map((author: any) => author.name).join(', ')}</span>
                                             </CardDescription>
                                         </CardHeader>
                                         <CardContent>
