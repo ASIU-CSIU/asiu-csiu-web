@@ -276,10 +276,12 @@ export function GetInvolvedClient({ events }: GetInvolvedClientProps) {
                                             <span className="text-sm">3-5 hours/week commitment</span>
                                         </div>
                                     </div>
-                                    <Button size="sm" className="bg-science-blue">
-                                        <Slack className="h-4 w-4 mr-0.5" />
-                                        Join Slack
-                                    </Button>
+                                    <Link href="https://docs.google.com/forms/d/e/1FAIpQLSe5It4DDQM0pXjSP6tw0fPalO9A4ScM86C8UAVZAD6WYlGZ4A/viewform">
+                                        <Button size="sm" className="bg-science-blue">
+                                            <Slack className="h-4 w-4 mr-0.5" />
+                                            Join Slack
+                                        </Button>
+                                    </Link>
                                 </CardContent>
                             </Card>
 
@@ -315,10 +317,12 @@ export function GetInvolvedClient({ events }: GetInvolvedClientProps) {
                                             <span className="text-sm">2-4 hours/week commitment</span>
                                         </div>
                                     </div>
-                                    <Button size="sm" className="bg-science-green">
-                                        <Slack className="h-4 w-4 mr-0.5" />
-                                        Join Slack
-                                    </Button>
+                                    <Link href="https://docs.google.com/forms/d/e/1FAIpQLSe5It4DDQM0pXjSP6tw0fPalO9A4ScM86C8UAVZAD6WYlGZ4A/viewform">
+                                        <Button size="sm" className="bg-science-blue">
+                                            <Slack className="h-4 w-4 mr-0.5" />
+                                            Join Slack
+                                        </Button>
+                                    </Link>
                                 </CardContent>
                             </Card>
 
@@ -355,10 +359,12 @@ export function GetInvolvedClient({ events }: GetInvolvedClientProps) {
                                             <span className="text-sm">2-3 hours/week commitment</span>
                                         </div>
                                     </div>
-                                    <Button size="sm" className="bg-science-red">
-                                        <Slack className="h-4 w-4 mr-0.5" />
-                                        Join Slack
-                                    </Button>
+                                    <Link href="https://docs.google.com/forms/d/e/1FAIpQLSe5It4DDQM0pXjSP6tw0fPalO9A4ScM86C8UAVZAD6WYlGZ4A/viewform">
+                                        <Button size="sm" className="bg-science-blue">
+                                            <Slack className="h-4 w-4 mr-0.5" />
+                                            Join Slack
+                                        </Button>
+                                    </Link>
                                 </CardContent>
                             </Card>
 
@@ -395,10 +401,12 @@ export function GetInvolvedClient({ events }: GetInvolvedClientProps) {
                                             <span className="text-sm">2-3 hours/week commitment</span>
                                         </div>
                                     </div>
-                                    <Button size="sm" className="bg-science-orange">
-                                        <Slack className="h-4 w-4 mr-0.5" />
-                                        Join Slack
-                                    </Button>
+                                    <Link href="https://docs.google.com/forms/d/e/1FAIpQLSe5It4DDQM0pXjSP6tw0fPalO9A4ScM86C8UAVZAD6WYlGZ4A/viewform">
+                                        <Button size="sm" className="bg-science-blue">
+                                            <Slack className="h-4 w-4 mr-0.5" />
+                                            Join Slack
+                                        </Button>
+                                    </Link>
                                 </CardContent>
                             </Card>
                         </div>
