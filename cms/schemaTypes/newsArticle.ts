@@ -51,6 +51,41 @@ export const newsArticleType = defineType({
       type: 'datetime',
       validation: (Rule) => Rule.required(),
     }),
+    {
+      name: 'linkedWords',
+      title: 'Linked Words',
+      description: 'Define specific words in the article content that should become hyperlinks. The matching is case-insensitive.',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            {
+              name: 'word',
+              title: 'Word or Phrase',
+              type: 'string',
+              description: 'The exact word or phrase in the article to be linked.',
+              validation: Rule => Rule.required(),
+            },
+            {
+              name: 'url',
+              title: 'URL',
+              type: 'url',
+              description: 'The URL this word should link to.',
+              validation: Rule => Rule.required().uri({
+                scheme: ['http', 'https']
+              }),
+            },
+          ],
+          preview: {
+            select: {
+              title: 'word',
+              subtitle: 'url',
+            },
+          },
+        },
+      ],
+    },
   ],
   preview: {
     select: {
@@ -64,7 +99,7 @@ export const newsArticleType = defineType({
       const formattedDate =
         publishedAt ? new Date(publishedAt).toLocaleDateString() : 'Not published'
       const excerpt = content ? content.substring(0, 50) + (content.length > 50 ? '...' : '') : 'No content'
-      const authorNames = authors && authors.length > 0 ? authors.map((author) => author.name).join(', ') : 'Unknown'
+      const authorNames = authors && authors.length > 0 ? authors.map((author: any) => author.name).join(', ') : 'Unknown'
 
       return {
         title: title || 'Untitled Article',

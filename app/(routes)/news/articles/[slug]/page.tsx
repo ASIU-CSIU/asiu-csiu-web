@@ -171,7 +171,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                                         }
                                     }
 
-                                    return <LinkifiedText key={index} text={paragraph} className="mb-6 leading-8 text-lg text-gray-700" />
+                                    return <LinkifiedText key={index} text={paragraph} className="mb-6 leading-8 text-lg text-gray-700" customLinks={article.linkedWords} />
                                 })}
                                 </div>
                             </CardContent>

@@ -121,7 +121,11 @@ export const getNewsArticleBySlug = async (slug: string) => {
     },
     tags,
     publishedAt,
-    "slug": slug.current
+    "slug": slug.current,
+    linkedWords[] {
+      word,
+      url
+    },
   }`
 
   return await client.fetch(query, { slug })
