@@ -15,9 +15,7 @@ import { LinkifiedText } from '@/components/util/linkified-text';
 export const revalidate = 3600
 
 interface ArticlePageProps {
-    params: {
-        slug: string
-    }
+    params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
@@ -28,7 +26,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: ArticlePageProps) {
-    const article = await getNewsArticleBySlug(params.slug)
+    const { slug } = await params;
+    const article = await getNewsArticleBySlug(slug)
 
     if (!article) {
         return {
@@ -55,7 +54,8 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     const host = headersList.get('host') || ''
     const domain = host.replace(/^www\./, '')
 
-    const article = await getNewsArticleBySlug(params.slug)
+    const { slug } = await params;
+    const article = await getNewsArticleBySlug(slug)
 
     if (!article) {
         notFound()
