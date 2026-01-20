@@ -154,6 +154,27 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                                 {article.content.split('\n').map((paragraph: any, index: number) => {
                                     if (paragraph.trim() === '') return null
 
+                                    // Handle markdown images: ![alt](url "caption")
+                                    const imageMatch = paragraph.match(/^!\[([^\]]*)\]\(([^\s)]+)(?:\s+"([^"]+)")?\)$/)
+                                    if (imageMatch) {
+                                        const [, alt, url, caption] = imageMatch
+                                        return (
+                                            <figure key={index} className="my-8">
+                                                <img
+                                                    src={url}
+                                                    alt={alt}
+                                                    className="w-full rounded-lg shadow-md"
+                                                />
+                                                {caption && (
+                                                    <figcaption className="mt-3 text-center text-sm text-gray-600 italic">
+                                                        {caption}
+                                                    </figcaption>
+                                                )}
+                                            </figure>
+                                        )
+                                    }
+
+                                    // Handle headings
                                     if (paragraph.startsWith('#')) {
                                         const level = paragraph.match(/^#+/)?.[0].length || 1
                                         const text = paragraph.replace(/^#+\s*/, '')
@@ -161,23 +182,25 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                                         const isFirst = index === 0
 
                                         if (level === 1) {
-                                        return <h1 key={index} className={`text-4xl font-bold mb-6 ${isFirst ? 'mt-0' : 'mt-10'} text-gray-900`}>{text}</h1>
+                                            return <h1 key={index} className={`text-4xl font-bold mb-6 ${isFirst ? 'mt-0' : 'mt-10'} text-gray-900`}>{text}</h1>
                                         } else if (level === 2) {
-                                        return <h2 key={index} className={`text-3xl font-bold mb-4 ${isFirst ? 'mt-0' : 'mt-8'} text-gray-900`}>{text}</h2>
+                                            return <h2 key={index} className={`text-3xl font-bold mb-4 ${isFirst ? 'mt-0' : 'mt-8'} text-gray-900`}>{text}</h2>
                                         } else if (level === 3) {
-                                        return <h3 key={index} className={`text-2xl font-bold mb-3 ${isFirst ? 'mt-0' : 'mt-6'} text-gray-900`}>{text}</h3>
+                                            return <h3 key={index} className={`text-2xl font-bold mb-3 ${isFirst ? 'mt-0' : 'mt-6'} text-gray-900`}>{text}</h3>
                                         } else {
-                                        return <h4 key={index} className={`text-xl font-bold mb-3 ${isFirst ? 'mt-0' : 'mt-5'} text-gray-900`}>{text}</h4>
+                                            return <h4 key={index} className={`text-xl font-bold mb-3 ${isFirst ? 'mt-0' : 'mt-5'} text-gray-900`}>{text}</h4>
                                         }
                                     }
 
+                                    // Handle regular paragraphs
                                     return <LinkifiedText key={index} text={paragraph} className="mb-6 leading-8 text-lg text-gray-700" customLinks={article.linkedWords} />
                                 })}
                                 </div>
                             </CardContent>
                         </Card>
 
-                                                {article.authors && article.authors.map((author: any, index: any) => (
+                        {/* Author Bio */}
+                        {article.authors && article.authors.map((author: any, index: any) => (
                             <Card key={index} className="mb-6 mt-8">
                                 <CardHeader>
                                     <CardTitle className="text-lg flex items-center space-x-2">
