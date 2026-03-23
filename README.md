@@ -24,8 +24,8 @@ This project provides digital infrastructure for student organizations, featurin
 
 1. **Clone and setup:**
    ```bash
-   git clone https://github.com/s4ngl/asiu-csiu-web-monorepo.git
-   cd asiu-csiu-web-monorepo
+   git clone https://github.com/ASIU-CSIU/asiu-csiu-web.git
+   cd asiu-csiu-web
    npm install
    ```
 
