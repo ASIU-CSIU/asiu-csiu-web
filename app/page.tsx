@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/primitives/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/composite/card"
 import { Badge } from "@/components/ui/primitives/badge"
+import VideoSection from "@/components/sections/video-section"
 import { LayoutWrapper } from "@/components/layout/layout-wrapper"
 import { HeroSection } from "@/components/sections/hero/hero-section"
 import { LatestNewsCard } from "@/components/cards/latest-news-card"
@@ -141,6 +142,9 @@ export default async function HomePage() {
             })()}
           </div>
         </section>
+
+        {/* Video Section */}
+        <VideoSection videoId="WPNdtyB6mhs" />
 
         {/* About Our Organizations */}
         <section className="py-16 bg-gray-50">
@@ -373,42 +377,6 @@ export default async function HomePage() {
           </div>
         </section>
 
-        {/* About Section */}
-        <section className="py-16 bg-white">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-0 items-center">
-              {/* Image */}
-              <div className="order-1">
-                <div className="relative rounded-2xl overflow-hidden bg-science-blue/10 mx-auto w-83">
-                  <Image
-                    src="/images/overlays/overlay.png"
-                    alt="ASIU members collaborating on science advocacy"
-                    width={420}
-                    height={420}
-                    className="w-full h-auto rounded-2xl object-cover aspect-square"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-
-              {/* Text Content */}
-              <div className="order-2 text-center lg:text-left">
-                <h2 className="font-heading text-3xl font-bold text-gray-900 mb-6">
-                  Building Tomorrow's Leaders
-                </h2>
-                <div className="space-y-4 text-gray-600">
-                  <p className="text-base leading-relaxed">
-                    Through structured mentorship programs and hands-on policy engagement, we develop the next generation of science advocates. Our members gain practical experience in legislative analysis, stakeholder communication, and evidence synthesis—skills essential for effective science policy careers.
-                  </p>
-                  <p className="text-base leading-relaxed">
-                    We maintain active partnerships with local government offices, research institutions, and advocacy organizations, providing students with direct pathways to influence policy decisions that shape our scientific future.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Donation Banner */}
         <section className="py-16 bg-science-red text-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -485,13 +453,13 @@ export default async function HomePage() {
         </section>
 
         {/* Testimonials */}
-        <section className="py-16 bg-white">
+        {/* <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-8">
               <h2 className="font-heading text-3xl font-bold">What Our Members Say</h2>
-              {/* <p className="text-gray-600 max-w-2xl mx-auto mt-4">
+              <p className="text-gray-600 max-w-2xl mx-auto mt-4">
                 Hear from our community about the impact of science-based advocacy.
-              </p> */}
+              </p>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -571,7 +539,7 @@ export default async function HomePage() {
               </Card>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Call to Action */}
         <section className="py-16 bg-science-blue text-white">
